@@ -1,4 +1,5 @@
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AngularFireDatabaseModule } from '@angular/fire/database'
 import { AngularFireModule } from '@angular/fire'
@@ -18,6 +19,8 @@ import { environment } from '../environments/environment'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [AngularFireAuth],
   bootstrap: [AppComponent],

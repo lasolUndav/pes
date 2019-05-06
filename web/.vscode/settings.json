@@ -27,5 +27,6 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "beautify.language": {
     "html": ["html"]
-  }
+  },
+  "npm.enableScriptExplorer": true
 }
