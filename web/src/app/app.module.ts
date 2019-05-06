@@ -8,7 +8,8 @@ import { AppRoutingModule } from './app-routing.module'
 import { BrowserModule } from '@angular/platform-browser'
 import { MaterialModule } from './material.module'
 import { NgModule } from '@angular/core'
-import { environment } from '../environments/environment'
+import { environment } from '../environments/environment';
+import { PesAdminModule } from './pes-admin/pes-admin.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { environment } from '../environments/environment'
     AngularFireDatabaseModule,
     FormsModule,
     ReactiveFormsModule,
+    PesAdminModule,
   ],
   providers: [AngularFireAuth],
   bootstrap: [AppComponent],
