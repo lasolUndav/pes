@@ -1,30 +1,25 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
-import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireDatabaseModule} from '@angular/fire/database';
-import { RouterModule } from '@angular/router';
-import { AuthenticationModule } from './authentication/authentication.module';
-import { AppRoutingModule } from './app-routing.module';
-import { MaterialModule } from './material.module';
+import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth'
+
+import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { AngularFireModule } from '@angular/fire'
+import { AppComponent } from './app.component'
+import { AppRoutingModule } from './app-routing.module'
+import { BrowserModule } from '@angular/platform-browser'
+import { MaterialModule } from './material.module'
+import { NgModule } from '@angular/core'
+import { environment } from '../environments/environment'
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    RouterModule.forRoot ([]),
-    AuthenticationModule,
-    MaterialModule
   ],
   providers: [AngularFireAuth],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
