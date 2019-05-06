@@ -4,9 +4,9 @@
   "licence": "MIT",
   "scripts": {
     "ng": "ng",
-    "standarize": "prettier**/*.ts--write",
-    "start": "npm run standarize && ng serve --port 5001",
-    "build": "npm run standarize && ng build",
+    "standardize": "prettier **/*.ts --write",
+    "start": "npm run standardize && ng serve --port 5001",
+    "build": "npm run standardize && ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
