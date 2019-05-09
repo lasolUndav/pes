@@ -6,13 +6,13 @@ export const environment = {
   production: false,
   firebase: {
     apiKey: 'AIzaSyAAn9sTaJ-Pbztnc7k8MFgPhiypm8HEAVQ ',
-    authDomain: "pes-dev-515ea.firebaseapp.com",
-    databaseURL: "https://pes-dev-515ea.firebaseio.com",
-    projectId: "pes-dev-515ea",
-    storageBucket: "pes-dev-515ea.appspot.com",
-    messagingSenderId: "198782312580"
-  }
-};
+    authDomain: 'pes-dev-515ea.firebaseapp.com',
+    databaseURL: 'https://pes-dev-515ea.firebaseio.com',
+    projectId: 'pes-dev-515ea',
+    storageBucket: 'pes-dev-515ea.appspot.com',
+    messagingSenderId: '198782312580',
+  },
+}
 
 /*
  * For easier debugging in development mode, you can import the following file
