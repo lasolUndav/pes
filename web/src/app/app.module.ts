@@ -8,11 +8,12 @@ import { AppRoutingModule } from './app-routing.module'
 import { BrowserModule } from '@angular/platform-browser'
 import { MaterialModule } from './material.module'
 import { NgModule } from '@angular/core'
-import { environment } from '../environments/environment';
 import { PesAdminModule } from './pes-admin/pes-admin.module'
+import { ProvidersComponent } from './pes-admin/providers/providers.component'
+import { environment } from '../environments/environment'
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ProvidersComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
