@@ -1,4 +1,4 @@
-export class Provider {
+pugiexport class Provider {
   name: string
   locality: string
   province: string

@@ -20,7 +20,6 @@ export class ServiceProvider {
       this.listProviders.push(new Provider(jsonProvider[i]))
     }
   }
-
   getProviders() {
     return this.listProviders
   }

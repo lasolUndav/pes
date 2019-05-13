@@ -13,6 +13,7 @@ export class ProvidersComponent implements OnInit {
   providers: Array<Provider>
   constructor(serviceProvider: ServiceProvider) {
     this.service = serviceProvider
+
     this.providers = serviceProvider.getProviders()
   }
   ngOnInit() {}
