@@ -1,3 +1,17 @@
-<h1>Header pes</h1>
-<router-outlet></router-outlet>
-<h1>Footer pes</h1>
+<mat-toolbar fxLayout="row" id="header">
+  <div fxFlex="30%">
+    <div class="mat-display-1" class="pesHeader">pes</div>
+    <div class="mat-subheading-2">plataforma para la economía social</div>
+  </div>
+  <div>
+    <h1 fxFlexAlign="center">Los Pibes</h1>
+  </div>
+</mat-toolbar>
+
+<div fxLayout="row" id="content">
+  <router-outlet></router-outlet>
+</div>
+
+<mat-toolbar fxLayout="row" id="footer">
+  <h1>Footer pes</h1>
+</mat-toolbar>
