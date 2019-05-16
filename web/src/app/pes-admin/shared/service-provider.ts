@@ -1,2 +1,1 @@
-export class ServiceProvider {
-}
+export class ServiceProvider {}
