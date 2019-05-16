@@ -17,6 +17,8 @@ import { environment } from '../../environments/environment'
 @NgModule({
   declarations: [ProvidersComponent, ProviderComponent, PesAdminComponent],
   imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
     CommonModule,
     PesAdminRoutingModule,
     PesAdminMaterialModule,

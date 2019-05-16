@@ -1,5 +1,16 @@
+<<<<<<< HEAD
 .iconCenter {
   vertical-align: middle;
   text-align: center;
   font-size: 18px;
+=======
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.contenedor {
+  display: flex;
+  flex-flow: column wrap
+>>>>>>> 8c1d65c736b478f528daa1a1aa1965cb99c0dcb7
 }
