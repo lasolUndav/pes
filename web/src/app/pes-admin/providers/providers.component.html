@@ -1,12 +1,35 @@
-<mat-card>
-  <mat-list>
-    <mat-list-item *ngFor="let provider of providers">
-      <h3 mat-line>{{provider.name}} {{provider.tagsItem}} </h3>
-      <p mat-line> {{provider.contactName}} </p>
-      <p mat-line>Telefono: {{provider.contactPhone}}</p>
-      <p mat-line> Cuil/Cuit: {{provider.cuilCuit}}</p>
-      <p mat-line> NroCuenta: {{provider.numAccount}}</p>
-      <mat-divider></mat-divider>
-    </mat-list-item>
-  </mat-list>
-</mat-card>
+<mat-list>
+  <mat-list-item *ngFor="let provider of providers">
+    <button mat-mini-fab matTooltip="Editar">
+      <mat-icon>edit</mat-icon>
+    </button>
+    &nbsp; &nbsp; &nbsp;
+    <button mat-mini-fab matTooltip="Eliminar">
+      <mat-icon>delete_outline</mat-icon>
+    </button>
+    <h3 mat-line>
+      <mat-icon class="iconCenter">home_outline</mat-icon>{{provider.name}}
+    </h3>
+    <p mat-line>
+      <mat-icon class="iconCenter">contact_phone</mat-icon>
+      <b>Nombre:</b> {{provider.contactName}} &nbsp; &nbsp; &nbsp;<b>Telefono: </b> {{provider.contactPhone}}
+    </p>
+    <p mat-line>
+      <mat-icon class="iconCenter">person</mat-icon>
+      <b>Cuil/Cuit:</b> {{provider.cuilCuit}}
+    </p>
+    <p mat-line>
+      <mat-icon class="iconCenter">local_atm</mat-icon>
+      <b>NroCuenta:</b> {{provider.numAccount}}
+      <button mat-flat-button matTooltip="Copiar">
+        <mat-icon class="iconCenter">file_copy</mat-icon>
+      </button>
+    </p>
+    <p mat-line>
+      <mat-chip-list>
+        <mat-chip>{{provider.tagsItem}}</mat-chip>
+      </mat-chip-list>
+    </p>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>

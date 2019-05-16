@@ -1,11 +1,13 @@
 import {
   MatButtonModule,
   MatCardModule,
+  MatChipsModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
   MatToolbarModule,
+  MatTooltipModule,
 } from '@angular/material'
 
 import { NgModule } from '@angular/core'
@@ -20,6 +22,8 @@ import { NgModule } from '@angular/core'
     MatInputModule,
     MatListModule,
     MatCardModule,
+    MatChipsModule,
+    MatTooltipModule,
   ],
   exports: [
     MatButtonModule,
@@ -29,6 +33,8 @@ import { NgModule } from '@angular/core'
     MatInputModule,
     MatListModule,
     MatCardModule,
+    MatChipsModule,
+    MatTooltipModule,
   ],
 })
 export class PesAdminMaterialModule {}
