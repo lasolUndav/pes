@@ -1,8 +1,10 @@
 import {
   MatButtonModule,
+  MatCardModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
+  MatListModule,
   MatToolbarModule,
 } from '@angular/material'
 
@@ -16,6 +18,8 @@ import { NgModule } from '@angular/core'
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
+    MatListModule,
+    MatCardModule,
   ],
   exports: [
     MatButtonModule,
@@ -23,6 +27,8 @@ import { NgModule } from '@angular/core'
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
+    MatListModule,
+    MatCardModule,
   ],
 })
 export class PesAdminMaterialModule {}
