@@ -8,6 +8,7 @@ import {
   MatToolbarModule,
 } from '@angular/material'
 
+import { FlexLayoutModule } from '@angular/flex-layout'
 import { NgModule } from '@angular/core'
 
 @NgModule({
@@ -20,6 +21,7 @@ import { NgModule } from '@angular/core'
     MatInputModule,
     MatListModule,
     MatCardModule,
+    FlexLayoutModule,
   ],
   exports: [
     MatButtonModule,
@@ -29,6 +31,7 @@ import { NgModule } from '@angular/core'
     MatInputModule,
     MatListModule,
     MatCardModule,
+    FlexLayoutModule,
   ],
 })
 export class PesAdminMaterialModule {}

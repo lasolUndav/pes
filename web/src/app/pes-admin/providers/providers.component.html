@@ -1,12 +1,21 @@
-<mat-card>
-  <mat-list>
-    <mat-list-item *ngFor="let provider of providers">
-      <h3 mat-line>{{provider.name}} {{provider.tagsItem}} </h3>
-      <p mat-line> {{provider.contactName}} </p>
-      <p mat-line>Telefono: {{provider.contactPhone}}</p>
-      <p mat-line> Cuil/Cuit: {{provider.cuilCuit}}</p>
-      <p mat-line> NroCuenta: {{provider.numAccount}}</p>
-      <mat-divider></mat-divider>
-    </mat-list-item>
-  </mat-list>
-</mat-card>
+<div>
+  <mat-form-field>
+    <mat-icon matPrefix>search</mat-icon>
+    <input matInput [formControl]="search" placeholder="Buscar:">
+  </mat-form-field>
+</div>
+<div>
+  <mat-card>
+    <mat-list class="contenedor">
+      <mat-list-item *ngFor="let provider of providersFiltrados">
+        <h3 mat-line>{{provider.name}} </h3>
+        <p mat-line>{{provider.tagsItem}}</p>
+        <p mat-line> {{provider.contactName}} </p>
+        <p mat-line>Telefono: {{provider.contactPhone}}</p>
+        <p mat-line> Cuil/Cuit: {{provider.cuilCuit}}</p>
+        <p mat-line> NroCuenta: {{provider.numAccount}}</p>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>
