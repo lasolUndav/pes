@@ -14,6 +14,7 @@ export class ProvidersComponent implements OnInit {
   providers: Array<Provider>
   providersFiltrados: Provider[]
   search = new FormControl('')
+
   constructor(serviceProvider: ServiceProvider) {
     this.service = serviceProvider
 
@@ -29,8 +30,8 @@ export class ProvidersComponent implements OnInit {
   filterProviders(provider, filterValue: string) {
     filterValue = filterValue.toLowerCase().trim()
     console.log(filterValue)
-    var porNombre = provider.name.toLowerCase()
-    var porRubro = provider.tagsItem.toLowerCase()
+    let porNombre = provider.name.toLowerCase()
+    let porRubro = provider.tagsItem.toLowerCase()
     return (porNombre.indexOf(filterValue) && porRubro.indexOf(filterValue)) >= 0
   }
   ngOnInit() {

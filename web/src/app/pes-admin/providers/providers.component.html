@@ -6,6 +6,7 @@
 </div>
 <div>
   <mat-card>
+    <h2>Lista de Proveedores</h2>
     <mat-list class="contenedor">
       <mat-list-item *ngFor="let provider of providers">
         <button mat-mini-fab matTooltip="Editar">
@@ -29,18 +30,19 @@
         <p mat-line>
           <mat-icon class="iconCenter">local_atm</mat-icon>
           <b>NroCuenta:</b> {{provider.numAccount}}
-          <button mat-flat-button matTooltip="Copiar">
+          <button mat-icon-button matTooltip="Copiar">
             <mat-icon class="iconCenter">file_copy</mat-icon>
           </button>
         </p>
         <p mat-line>
-          <mat-chip-list>
-            <mat-chip>{{provider.tagsItem}}</mat-chip>
+          <mat-chip-list class="no-wrap">
+            <mat-chip class="no-wrap" *ngFor="let n of provider.tagsItem.split(',')" color=accent selected>
+              {{n}}
+            </mat-chip>
           </mat-chip-list>
         </p>
         <mat-divider></mat-divider>
       </mat-list-item>
     </mat-list>
-
   </mat-card>
 </div>
