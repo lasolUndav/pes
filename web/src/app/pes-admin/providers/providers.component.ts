@@ -30,13 +30,27 @@ export class ProvidersComponent implements OnInit {
   filterProviders(provider, filterValue: string) {
     filterValue = filterValue.toLowerCase().trim()
     console.log(filterValue)
-    let porNombre = provider.name.toLowerCase()
-    let porRubro = provider.tagsItem.toLowerCase()
+    var porNombre = provider.name.toLowerCase()
+    var porRubro = provider.tagsItem.toLowerCase()
     return (porNombre.indexOf(filterValue) && porRubro.indexOf(filterValue)) >= 0
   }
   ngOnInit() {
     this.search.valueChanges.subscribe((filterValue: string) =>
       this.applyFilter(filterValue)
     )
+  }
+
+  copyText(val: string) {
+    let selBox = document.createElement('textarea')
+    selBox.style.position = 'fixed'
+    selBox.style.left = '0'
+    selBox.style.top = '0'
+    selBox.style.opacity = '0'
+    selBox.value = val
+    document.body.appendChild(selBox)
+    selBox.focus()
+    selBox.select()
+    document.execCommand('copy')
+    document.body.removeChild(selBox)
   }
 }
