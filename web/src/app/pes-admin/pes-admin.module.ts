@@ -6,6 +6,7 @@ import { AngularFireModule } from '@angular/fire'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { BrowserModule } from '@angular/platform-browser'
 import { CommonModule } from '@angular/common'
+import { FlexLayoutModule } from '@angular/flex-layout'
 import { NgModule } from '@angular/core'
 import { PesAdminComponent } from './pes-admin.component'
 import { PesAdminMaterialModule } from './pes-admin.material.module'
@@ -27,8 +28,7 @@ import { environment } from '../../environments/environment'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    BrowserModule,
-    BrowserAnimationsModule,
+    FlexLayoutModule,
   ],
 })
 export class PesAdminModule {}
