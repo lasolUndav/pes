@@ -1,0 +1,15 @@
+.iconCenter {
+  vertical-align: middle;
+  text-align: center;
+  font-size: 18px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.contenedor {
+  display: flex;
+  flex-flow: column wrap
+}
