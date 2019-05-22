@@ -11,5 +11,13 @@
 
 .contenedor {
   display: flex;
-  flex-flow: column wrap
+  flex-flow: column wrap;
+}
+
+.proveedores {
+  min-height: 300px;
+}
+
+.spinner {
+  margin: auto;
 }

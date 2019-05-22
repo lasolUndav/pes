@@ -1,14 +1,15 @@
 <div>
-  <mat-form-field>
-    <mat-icon matPrefix>search</mat-icon>
-    <input matInput [formControl]="search" placeholder="Buscar:">
-  </mat-form-field>
-</div>
-<div>
-  <mat-card>
-    <h2>Lista de Proveedores</h2>
-    <mat-list class="contenedor">
-      <mat-list-item *ngFor="let provider of providers">
+  <mat-card class="proveedores">
+    <h2>Proveedores</h2>
+    <mat-spinner class="spinner" *ngIf="providersFiltrados == null || providersFiltrados.length == 0"></mat-spinner>
+    <div *ngIf="providersFiltrados!=null && providersFiltrados.length > 0">
+      <mat-form-field>
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput [formControl]="search" placeholder="Buscar:">
+      </mat-form-field>
+    </div>
+    <mat-list *ngIf="providersFiltrados!=null && providersFiltrados.length > 0" class="contenedor">
+      <mat-list-item *ngFor="let provider of providersFiltrados">
         <button mat-mini-fab matTooltip="Editar">
           <mat-icon>edit</mat-icon>
         </button>
@@ -23,11 +24,11 @@
           <mat-icon class="iconCenter">contact_phone</mat-icon>
           <b>Nombre:</b> {{provider.contactName}} &nbsp; &nbsp; &nbsp;<b>Telefono: </b> {{provider.contactPhone}}
         </p>
-        <p mat-line>
+        <p *ngIf="provider.cuilCuit" mat-line>
           <mat-icon class="iconCenter">person</mat-icon>
           <b>Cuil/Cuit:</b> {{provider.cuilCuit}}
         </p>
-        <p mat-line>
+        <p *ngIf="provider.numAccount" mat-line>
           <mat-icon class="iconCenter">local_atm</mat-icon>
           <b>NroCuenta:</b> {{provider.numAccount}}
           <button mat-icon-button matTooltip="Copiar" (click)="copyText(provider.numAccount)">
@@ -36,8 +37,8 @@
         </p>
         <p mat-line>
           <mat-chip-list class="no-wrap">
-            <mat-chip class="no-wrap" *ngFor="let n of provider.tagsItem.split(',')" color=accent selected>
-              {{n}}
+            <mat-chip class="no-wrap" *ngFor="let tag of provider.tagsItem.split(',')" color="accent" selected>
+              {{tag}}
             </mat-chip>
           </mat-chip-list>
         </p>
