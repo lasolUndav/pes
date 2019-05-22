@@ -1,14 +1,14 @@
 <div>
   <mat-card class="proveedores">
     <h2>Proveedores</h2>
-    <mat-spinner class="spinner" *ngIf="providersFiltrados == null || providersFiltrados.length == 0"></mat-spinner>
-    <div *ngIf="providersFiltrados!=null && providersFiltrados.length > 0">
+    <mat-spinner class="spinner" *ngIf="providersFiltrados == null"></mat-spinner>
+    <div *ngIf="providersFiltrados!=null">
       <mat-form-field>
         <mat-icon matPrefix>search</mat-icon>
         <input matInput [formControl]="search" placeholder="Buscar:">
       </mat-form-field>
     </div>
-    <mat-list *ngIf="providersFiltrados!=null && providersFiltrados.length > 0" class="contenedor">
+    <mat-list *ngIf="providersFiltrados!=null" class="contenedor">
       <mat-list-item *ngFor="let provider of providersFiltrados">
         <button mat-mini-fab matTooltip="Editar">
           <mat-icon>edit</mat-icon>
