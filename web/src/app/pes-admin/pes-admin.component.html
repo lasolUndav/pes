@@ -1,17 +1,19 @@
-<mat-toolbar fxLayout="row" id="header">
-  <div fxFlex="30%">
-    <div class="mat-display-1" class="pesHeader">pes</div>
-    <div class="mat-subheading-2">plataforma para la economía social</div>
-  </div>
-  <div>
-    <h1 fxFlexAlign="center">Los Pibes</h1>
-  </div>
+<mat-toolbar color="primary" fxLayout="row" id="header">
+  <span id="logo">
+    <img src="../../assets/logo/logo_transparent.png" alt="logo" />
+  </span>
+  <span class="fill-remaining-space"></span>
+  <span id="title">
+    <h1>Los Pibes, Organización Social y Política</h1>
+  </span>
+  <span class="fill-remaining-space"></span>
+  <span class="fill-remaining-space"></span>
 </mat-toolbar>
 
-<div fxLayout="row" id="content">
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>
 
-<mat-toolbar fxLayout="row" id="footer">
-  <h1>Footer pes</h1>
+<mat-toolbar color="primary" fxLayout="row" id="footer">
+  <span class="fill-remaining-space"></span>
+  <h1>LASOL - UNDAV - 2019</h1>
+  <span class="fill-remaining-space"></span>
 </mat-toolbar>
