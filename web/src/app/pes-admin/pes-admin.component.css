@@ -1,17 +1,3 @@
-#header {
-  height: 250px;
-}
-
-#logo,
-img {
-  width: 250px;
-  height: 250px;
-}
-
-.fill-remaining-space {
-  flex: 1 1 auto;
-}
-
 .container {
   background: #eee;
 }
