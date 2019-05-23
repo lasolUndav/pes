@@ -5,11 +5,32 @@
 }
 
 .mat-form-field {
-  font-size: 14px;
+  font-size: 10px;
   width: 100%;
 }
 
 .contenedor {
   display: flex;
-  flex-flow: column wrap
+  flex-flow: column wrap;
+}
+
+.proveedores {
+  min-height: 300px;
+}
+
+.mat-chip {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.spinner {
+  margin: auto;
+}
+
+.buttonDelete {
+  margin-left: 3px;
+}
+
+.buttonEdit {
+  margin-right: 3px;
 }

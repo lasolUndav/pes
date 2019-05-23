@@ -6,7 +6,8 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatToolbarModule,
+  MatProgressSpinnerModule,
+  MatSidenavModule,
   MatTooltipModule,
 } from '@angular/material'
 
@@ -18,7 +19,6 @@ import { NgModule } from '@angular/core'
   imports: [
     MatButtonModule,
     MatIconModule,
-    MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
@@ -26,11 +26,12 @@ import { NgModule } from '@angular/core'
     FlexLayoutModule,
     MatChipsModule,
     MatTooltipModule,
+    MatSidenavModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     MatButtonModule,
     MatIconModule,
-    MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
@@ -38,6 +39,8 @@ import { NgModule } from '@angular/core'
     FlexLayoutModule,
     MatChipsModule,
     MatTooltipModule,
+    MatSidenavModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class PesAdminMaterialModule {}
