@@ -1,8 +1,8 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
-import { AngularFireAuthModule } from '@angular/fire/auth'
-import { AngularFireDatabaseModule } from '@angular/fire/database'
-import { AngularFireModule } from '@angular/fire'
+import { AngularFireAuthModule } from 'angularfire2/auth'
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { BrowserModule } from '@angular/platform-browser'
 import { CommonModule } from '@angular/common'
@@ -13,9 +13,10 @@ import { PesAdminRoutingModule } from './pes-admin-routing.module'
 import { ProviderComponent } from './provider/provider.component'
 import { ProvidersComponent } from './providers/providers.component'
 import { environment } from '../../environments/environment'
+import { DialogProviderComponent } from './dialog-provider/dialog-provider.component'
 
 @NgModule({
-  declarations: [ProvidersComponent, ProviderComponent, PesAdminComponent],
+  declarations: [ProvidersComponent, ProviderComponent, PesAdminComponent, DialogProviderComponent,],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
@@ -30,5 +31,6 @@ import { environment } from '../../environments/environment'
     BrowserModule,
     BrowserAnimationsModule,
   ],
+  entryComponents: [DialogProviderComponent]
 })
 export class PesAdminModule {}

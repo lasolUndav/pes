@@ -8,6 +8,8 @@ import {
   MatListModule,
   MatToolbarModule,
   MatTooltipModule,
+  MatDialogModule,
+  
 } from '@angular/material'
 
 import { FlexLayoutModule } from '@angular/flex-layout'
@@ -26,6 +28,7 @@ import { NgModule } from '@angular/core'
     FlexLayoutModule,
     MatChipsModule,
     MatTooltipModule,
+    MatDialogModule,
   ],
   exports: [
     MatButtonModule,
@@ -38,6 +41,7 @@ import { NgModule } from '@angular/core'
     FlexLayoutModule,
     MatChipsModule,
     MatTooltipModule,
+    MatDialogModule,
   ],
 })
 export class PesAdminMaterialModule {}

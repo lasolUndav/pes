@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import { Provider } from '../shared/provider'
 import { ServiceProvider } from '../shared/service-provider'
+import { DialogProviderComponent } from '../dialog-provider/dialog-provider.component'
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-providers',
@@ -11,11 +13,11 @@ import { ServiceProvider } from '../shared/service-provider'
 })
 export class ProvidersComponent implements OnInit {
   service: ServiceProvider
-  providers: Array<Provider>
+  providers: Array <Provider>;
   providersFiltrados: Provider[]
   search = new FormControl('')
 
-  constructor(serviceProvider: ServiceProvider) {
+  constructor(public dialog: MatDialog, serviceProvider: ServiceProvider) {
     this.service = serviceProvider
 
     this.providers = serviceProvider.getProviders()
@@ -52,5 +54,17 @@ export class ProvidersComponent implements OnInit {
     selBox.select()
     document.execCommand('copy')
     document.body.removeChild(selBox)
+  }
+
+  openDialog(provider) {
+    const dialogRef = this.dialog.open(DialogProviderComponent, {
+      width: '500px',
+      data: provider.name
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == "SI") {
+        this.service.deleteProvider(provider.key);
+      }
+    });
   }
 }
