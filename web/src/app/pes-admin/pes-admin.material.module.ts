@@ -8,7 +8,6 @@ import {
   MatListModule,
   MatProgressSpinnerModule,
   MatSidenavModule,
-  MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material'
 
@@ -20,7 +19,6 @@ import { NgModule } from '@angular/core'
   imports: [
     MatButtonModule,
     MatIconModule,
-    MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
@@ -34,7 +32,6 @@ import { NgModule } from '@angular/core'
   exports: [
     MatButtonModule,
     MatIconModule,
-    MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
