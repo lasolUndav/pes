@@ -34,7 +34,7 @@ export class ProvidersComponent implements OnInit {
     filterValue = filterValue.toLowerCase().trim()
     const porNombre = provider.name.toLowerCase()
     const porRubro = provider.tagsItem.toLowerCase()
-    const porContacto = provider.contactName
+    const porContacto = provider.contactName.toLowerCase()
     return (
       porNombre.indexOf(filterValue) > 0 ||
       porRubro.indexOf(filterValue) > 0 ||
