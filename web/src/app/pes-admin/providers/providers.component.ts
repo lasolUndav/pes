@@ -36,9 +36,9 @@ export class ProvidersComponent implements OnInit {
     const porRubro = provider.tagsItem.toLowerCase()
     const porContacto = provider.contactName.toLowerCase()
     return (
-      porNombre.indexOf(filterValue) > 0 ||
-      porRubro.indexOf(filterValue) > 0 ||
-      porContacto.indexOf(filterValue) > 0
+      porNombre.indexOf(filterValue) >= 0 ||
+      porRubro.indexOf(filterValue) >= 0 ||
+      porContacto.indexOf(filterValue) >= 0
     )
   }
   ngOnInit() {
