@@ -5,13 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyDG3lFOD3xjwWTbxX1Tjyh-ZGxtshbOfg4',
-    authDomain: 'pes-lasol.firebaseapp.com',
-    databaseURL: 'https://pes-lasol.firebaseio.com',
-    projectId: 'pes-lasol',
-    storageBucket: 'pes-lasol.appspot.com',
-    messagingSenderId: '298551263946',
-    appId: '1:298551263946:web:7062b943c64703d7',
+    apiKey: 'AIzaSyAAn9sTaJ-Pbztnc7k8MFgPhiypm8HEAVQ ',
+    authDomain: 'pes-dev-515ea.firebaseapp.com',
+    databaseURL: 'https://pes-dev-515ea.firebaseio.com',
+    projectId: 'pes-dev-515ea',
+    storageBucket: 'pes-dev-515ea.appspot.com',
+    messagingSenderId: '198782312580',
   },
 }
 
