@@ -5,15 +5,15 @@
     <div *ngIf="providersFiltrados!=null">
       <mat-form-field>
         <mat-icon matPrefix>search</mat-icon>
-        <input matInput [formControl]="search" placeholder="Buscar:">
+        <input matInput [formControl]="search" placeholder="Buscar a...">
       </mat-form-field>
     </div>
     <mat-list class='mat-typography' *ngIf="providersFiltrados!=null" class="contenedor">
       <mat-list-item *ngFor="let provider of providersFiltrados">
-        <button disabled style="margin: 3px" mat-mini-fab matTooltip="Editar">
+        <button class="buttonEdit" disabled mat-mini-fab matTooltip="Editar">
           <mat-icon>edit</mat-icon>
         </button>
-        <button disabled style="margin: 3px" mat-mini-fab matTooltip="Eliminar">
+        <button class="buttonDelete" disabled mat-mini-fab matTooltip="Eliminar">
           <mat-icon>delete_outline</mat-icon>
         </button>
         <p mat-line>
@@ -37,7 +37,7 @@
         <p mat-line>
           <mat-chip-list class="no-wrap">
             <mat-chip class="no-wrap" *ngFor="let tag of provider.tagsItem.split(',')" color="accent" selected>
-              <span class='mat-body'>{{tag}}</span>
+              {{tag}}
             </mat-chip>
           </mat-chip-list>
         </p>
