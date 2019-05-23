@@ -10,8 +10,7 @@ export class ServiceProvider {
   listProviders = Array<Provider>()
   providersRef: AngularFireList<Provider> = null;
   providers: any;
-
-
+ 
   constructor(private db: AngularFireDatabase) {
     this.providersRef = db.list('/proveedores');
     this.getProvidersList();
