@@ -1,43 +1,44 @@
 <div>
-  <mat-form-field>
-    <mat-icon matPrefix>search</mat-icon>
-    <input matInput [formControl]="search" placeholder="Buscar:">
-  </mat-form-field>
-</div>
-<div>
-  <mat-card>
-    <h2>Lista de Proveedores</h2>
-    <mat-list class="contenedor">
-      <mat-list-item *ngFor="let provider of providers">
-        <button mat-mini-fab matTooltip="Editar">
+  <mat-card class="proveedores">
+    <h2>Proveedores</h2>
+    <mat-spinner class="spinner" *ngIf="providersFiltrados == null"></mat-spinner>
+    <div *ngIf="providersFiltrados!=null">
+      <mat-form-field>
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput [formControl]="search" placeholder="Buscar a...">
+      </mat-form-field>
+    </div>
+    <mat-list class='mat-typography' *ngIf="providersFiltrados!=null" class="contenedor">
+      <mat-list-item *ngFor="let provider of providersFiltrados">
+        <button class="buttonEdit" disabled mat-mini-fab matTooltip="Editar">
           <mat-icon>edit</mat-icon>
         </button>
         &nbsp; &nbsp; &nbsp;
         <button mat-mini-fab matTooltip="Eliminar" (click)="openDialog(provider)">
           <mat-icon>delete_outline</mat-icon>
         </button>
-        <h3 mat-line>
-          <mat-icon class="iconCenter">home_outline</mat-icon>{{provider.name}}
-        </h3>
+        <p mat-line>
+          <mat-icon class="iconCenter">home_outline</mat-icon><span class='mat-body-strong'>{{provider.name}}</span>
+        </p>
         <p mat-line>
           <mat-icon class="iconCenter">contact_phone</mat-icon>
-          <b>Nombre:</b> {{provider.contactName}} &nbsp; &nbsp; &nbsp;<b>Telefono: </b> {{provider.contactPhone}}
+          <span class='mat-body'>{{provider.contactName}} &nbsp;{{provider.contactPhone}}</span>
         </p>
-        <p mat-line>
+        <p *ngIf="provider.cuilCuit" mat-line>
           <mat-icon class="iconCenter">person</mat-icon>
-          <b>Cuil/Cuit:</b> {{provider.cuilCuit}}
+          <span class='mat-body-strong'>Cuil/Cuit:</span> <span class='mat-body'>{{provider.cuilCuit}}</span>
         </p>
-        <p mat-line>
+        <p *ngIf="provider.numAccount" mat-line>
           <mat-icon class="iconCenter">local_atm</mat-icon>
-          <b>NroCuenta:</b> {{provider.numAccount}}
+          <span class='mat-body-strong'>NroCuenta:</span> <span class='mat-body'>{{provider.numAccount}}</span>
           <button mat-icon-button matTooltip="Copiar" (click)="copyText(provider.numAccount)">
             <mat-icon class="iconCenter">file_copy</mat-icon>
           </button>
         </p>
         <p mat-line>
           <mat-chip-list class="no-wrap">
-            <mat-chip class="no-wrap" *ngFor="let n of provider.tagsItem.split(',')" color=accent selected>
-              {{n}}
+            <mat-chip class="no-wrap" *ngFor="let tag of provider.tagsItem.split(',')" color="accent" selected>
+              {{tag}}
             </mat-chip>
           </mat-chip-list>
         </p>

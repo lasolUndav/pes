@@ -1,0 +1,24 @@
+#header {
+  height: 150px;
+}
+
+#logo,
+img {
+  width: 250px;
+  height: 50px;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.sombra {
+  text-shadow: 0 0 30px black;
+}
+
+.titulo {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}

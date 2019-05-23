@@ -10,13 +10,13 @@ const routes: Routes = [
     path: '',
     component: PesAdminComponent,
     children: [
-      { path: '', redirectTo: '/admin/providers', pathMatch: 'full' },
+      { path: '', redirectTo: '/admin/proveedores', pathMatch: 'full' },
       {
-        path: 'admin/providers',
+        path: 'admin/proveedores',
         component: ProvidersComponent,
       },
       {
-        path: 'admin/provider',
+        path: 'admin/proveedores',
         component: ProviderComponent,
       },
     ],

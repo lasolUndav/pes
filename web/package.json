@@ -7,9 +7,12 @@
     "standardize": "prettier **/*.ts --write",
     "start": "npm run standardize && ng serve --port 5001",
     "build": "npm run standardize && ng build",
+    "build-production": "npm run standardize && ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy-dev": "npm run build && firebase deploy --project pes-dev-515ea",
+    "deploy-produccion": "npm run build-production && firebase deploy --project pes-lasol"
   },
   "private": true,
   "dependencies": {
