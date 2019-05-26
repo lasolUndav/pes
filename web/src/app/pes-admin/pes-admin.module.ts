@@ -1,11 +1,12 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AngularFireAuthModule } from 'angularfire2/auth'
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabaseModule } from 'angularfire2/database'
+import { AngularFireModule } from 'angularfire2'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { BrowserModule } from '@angular/platform-browser'
 import { CommonModule } from '@angular/common'
+import { ConfirmDeleteProviderComponent } from './providers/confirm-delete-provider/confirm-delete-provider.component'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { NgModule } from '@angular/core'
 import { PesAdminComponent } from './pes-admin.component'
@@ -14,10 +15,14 @@ import { PesAdminRoutingModule } from './pes-admin-routing.module'
 import { ProviderComponent } from './provider/provider.component'
 import { ProvidersComponent } from './providers/providers.component'
 import { environment } from '../../environments/environment'
-import { DialogProviderComponent } from './dialog-provider/dialog-provider.component'
 
 @NgModule({
-  declarations: [ProvidersComponent, ProviderComponent, PesAdminComponent, DialogProviderComponent,],
+  declarations: [
+    ProvidersComponent,
+    ProviderComponent,
+    PesAdminComponent,
+    ConfirmDeleteProviderComponent,
+  ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
@@ -31,6 +36,6 @@ import { DialogProviderComponent } from './dialog-provider/dialog-provider.compo
     AngularFireDatabaseModule,
     FlexLayoutModule,
   ],
-  entryComponents: [DialogProviderComponent]
+  entryComponents: [ConfirmDeleteProviderComponent],
 })
 export class PesAdminModule {}

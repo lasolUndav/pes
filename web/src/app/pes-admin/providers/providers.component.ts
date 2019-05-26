@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core'
 
+import { ConfirmDeleteProviderComponent } from './confirm-delete-provider/confirm-delete-provider.component'
 import { FormControl } from '@angular/forms'
+import { MatDialog } from '@angular/material'
 import { Provider } from '../shared/provider'
 import { ServiceProvider } from '../shared/service-provider'
-import { DialogProviderComponent } from '../dialog-provider/dialog-provider.component'
-import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-providers',
@@ -13,7 +13,7 @@ import { MatDialog } from '@angular/material';
 })
 export class ProvidersComponent implements OnInit {
   service: ServiceProvider
-  providers: Array <Provider>;
+  providers: Array<Provider>
   providersFiltrados: Provider[]
   search = new FormControl('')
 
@@ -65,14 +65,14 @@ export class ProvidersComponent implements OnInit {
   }
 
   openDialog(provider) {
-    const dialogRef = this.dialog.open(DialogProviderComponent, {
+    const dialogRef = this.dialog.open(ConfirmDeleteProviderComponent, {
       width: '500px',
-      data: provider.name
-    });
+      data: provider.name,
+    })
     dialogRef.afterClosed().subscribe(result => {
-      if (result == "SI") {
-        this.service.deleteProvider(provider.key);
+      if (result == 'SI') {
+        this.service.deleteProvider(provider.key)
       }
-    });
+    })
   }
 }
