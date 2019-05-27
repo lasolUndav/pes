@@ -55,7 +55,7 @@ export class ProvidersComponent implements OnInit {
     selBox.style.top = '0'
     selBox.style.opacity = '0'
     selBox.value =
-      val.cuilCuit.length === 0 ? val.numAccount : `${val.cuilCuit}'\n'${val.numAccount}`
+      val.cuilCuit.length === 0 ? val.numAccount : `${val.cuilCuit}\n${val.numAccount}`
     document.body.appendChild(selBox)
     selBox.focus()
     selBox.select()
