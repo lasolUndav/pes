@@ -9,6 +9,8 @@ import {
   MatProgressSpinnerModule,
   MatSidenavModule,
   MatTooltipModule,
+  MatDialogModule,
+  
 } from '@angular/material'
 
 import { FlexLayoutModule } from '@angular/flex-layout'
@@ -26,6 +28,7 @@ import { NgModule } from '@angular/core'
     FlexLayoutModule,
     MatChipsModule,
     MatTooltipModule,
+    MatDialogModule,
     MatSidenavModule,
     MatProgressSpinnerModule,
   ],
@@ -39,6 +42,7 @@ import { NgModule } from '@angular/core'
     FlexLayoutModule,
     MatChipsModule,
     MatTooltipModule,
+    MatDialogModule,
     MatSidenavModule,
     MatProgressSpinnerModule,
   ],
