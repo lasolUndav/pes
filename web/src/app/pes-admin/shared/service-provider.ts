@@ -1,21 +1,34 @@
-import { AngularFireDatabase } from '@angular/fire/database'
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database'
+
 import { Injectable } from '@angular/core'
-import { MatDialog } from '@angular/material'
 import { Provider } from './provider'
+import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServiceProvider {
   listProviders = Array<Provider>()
+  providersRef: AngularFireList<Provider> = null
+  providers: any
 
-  constructor(db: AngularFireDatabase) {
-    db.list('proveedores')
-      .valueChanges()
-      .subscribe(resultsProvider => {
-        this.parseProvider(resultsProvider)
+  constructor(private db: AngularFireDatabase) {
+    this.providersRef = db.list('/proveedores')
+    this.getProvidersList()
+  }
+
+  getProvidersList() {
+    this.providersRef
+      .snapshotChanges()
+      .pipe(
+        map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))
+      )
+      .subscribe(providers => {
+        this.providers = providers
+        this.parseProvider(this.providers)
       })
   }
+
   parseProvider(jsonProvider) {
     for (let i = 0; i < jsonProvider.length; i++) {
       this.listProviders.push(new Provider(jsonProvider[i]))
@@ -23,5 +36,21 @@ export class ServiceProvider {
   }
   getProviders() {
     return this.listProviders
+  }
+
+  createProvider(provider: Provider): void {
+    this.providersRef.push(provider)
+  }
+
+  updateProvider(key: string, value: any): void {
+    this.providersRef.update(key, value).catch(error => this.handleError(error))
+  }
+
+  deleteProvider(key: string): void {
+    this.providersRef.remove(key).catch(error => this.handleError(error))
+  }
+
+  private handleError(error) {
+    console.log(error)
   }
 }

@@ -1,4 +1,5 @@
 export class Provider {
+  key: string;
   name: string
   locality: string
   province: string
@@ -12,6 +13,7 @@ export class Provider {
   additionalInformation: string
 
   constructor(result) {
+    this.key = result.key
     this.name = result.nombre
     this.contactSurname = result.apellidoContacto
     this.cuilCuit = result.cuilCuit
