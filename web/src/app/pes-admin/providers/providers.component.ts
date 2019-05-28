@@ -4,6 +4,7 @@ import { ConfirmDeleteProviderComponent } from './confirm-delete-provider/confir
 import { FormControl } from '@angular/forms'
 import { MatDialog } from '@angular/material'
 import { Provider } from '../shared/provider'
+import { ProviderDetailComponent } from './provider-detail/provider-detail.component'
 import { ServiceProvider } from '../shared/service-provider'
 
 @Component({
@@ -73,6 +74,13 @@ export class ProvidersComponent implements OnInit {
       if (result == 'SI') {
         this.service.deleteProvider(provider.key)
       }
+    })
+  }
+
+  openInfo(provider) {
+    const dialogRefI = this.dialog.open(ProviderDetailComponent, {
+      width: '400px',
+      data: provider,
     })
   }
 }

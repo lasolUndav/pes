@@ -1,0 +1,88 @@
+<div>
+  <h2 mat-dialog-title>{{data.name}}</h2>
+  <div mat-dialog-content class="mat-typography">
+    <div fxLayout="row">
+      <div style="font-weight: bold">
+        Tags:&nbsp;
+      </div>
+      <div>
+        {{data.tagsItem}}
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div style="font-weight: bold">
+        Nombre:&nbsp;
+      </div>
+      <div>
+        {{data.contactName}}
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div style="font-weight: bold">
+        Apellido:&nbsp;
+      </div>
+      <div>
+        {{data.contactSurname}}
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div style="font-weight: bold">
+        e-mail:&nbsp;
+      </div>
+      <div>
+        {{data.email}}
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div style="font-weight: bold">
+        Télefono:&nbsp;
+      </div>
+      <div>
+        {{data.contactPhone}}
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div style="font-weight: bold">
+        Cuil/Cuit:&nbsp;
+      </div>
+      <div>
+        {{data.cuilCuit}}
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div style="font-weight: bold">
+        Num. cuenta:&nbsp;
+      </div>
+      <div>
+        {{data.numAccount}}
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div style="font-weight: bold">
+        Localidad:&nbsp;
+      </div>
+      <div>
+        {{data.locality}}
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div style="font-weight: bold">
+        Provincia:&nbsp;
+      </div>
+      <div>
+        {{data.province}}
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div style="font-weight: bold">
+        Información adicional:&nbsp;
+      </div>
+      <div>
+        {{data.additionalInformation}}
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions align="center">
+    <button mat-button (click)="closeData()"> Ok </button>
+  </div>
+</div>
