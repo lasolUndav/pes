@@ -10,7 +10,8 @@
     </div>
     <mat-list class='mat-typography' *ngIf="providersFiltrados!=null" class="contenedor">
       <mat-list-item *ngFor="let provider of providersFiltrados">
-        <button class="buttonEdit" disabled mat-mini-fab matTooltip="Editar">
+        <button class="buttonEdit" mat-mini-fab matTooltip="Editar"
+          [routerLink]="['/admin/proveedor',{id: provider.key} ]">
           <mat-icon>edit</mat-icon>
         </button>
         &nbsp; &nbsp; &nbsp;

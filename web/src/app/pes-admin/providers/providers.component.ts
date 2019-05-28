@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 
-import { ConfirmDeleteProviderComponent } from './confirm-delete-provider/confirm-delete-provider.component'
+import {
+  ConfirmDeleteProviderComponent
+} from './confirm-delete-provider/confirm-delete-provider.component'
 import { FormControl } from '@angular/forms'
 import { MatDialog } from '@angular/material'
 import { Provider } from '../shared/provider'

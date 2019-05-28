@@ -37,13 +37,19 @@ export class ServiceProvider {
   getProviders() {
     return this.listProviders
   }
-
+  getProvider(key: string): Provider {
+    return this.listProviders.find(element => element.key == key)
+  }
   createProvider(provider: Provider): void {
     this.providersRef.push(provider)
   }
 
   updateProvider(key: string, value: any): void {
-    this.providersRef.update(key, value).catch(error => this.handleError(error))
+    var json = JSON.stringify(value)
+    var keyout = "key"
+    delete json[keyout]
+    console.log(json)
+    //this.providersRef.update(key, value).catch(error => this.handleError(error))
   }
 
   deleteProvider(key: string): void {
