@@ -1,0 +1,23 @@
+.login-card {
+  max-width: 400px;
+  box-align: center;
+  justify-content: center
+}
+
+.box {
+  align-self: auto;
+}
+
+.form-control.login-user {
+  border: 0 solid #fff !important;
+}
+
+.form-group {
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #fff;
+  border-color: rgba(0, 0, 0, 0.2);
+}

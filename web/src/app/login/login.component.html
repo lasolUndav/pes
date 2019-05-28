@@ -1,0 +1,28 @@
+<mat-card class="login-card">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Inicio De Session</mat-card-title>
+      <mat-card-subtitle>Pes</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="box">
+      <form #formLogin="ngForm" (submit)="login()">
+        <div class="form-group">
+          <input [(ngModel)]="email" type="email" id="email" name="email" class="form-control" placeholder="Email"
+            required>
+        </div>
+        <div class="form-group">
+          <input [(ngModel)]="password" type="password" id="password" name="password" class="form-control"
+            placeholder="Password" required>
+        </div>
+        <div class="form-group">
+          <button (click)="login()" [disabled]="!email || !password">
+            Login
+          </button>
+          <button (click)="logout()" [disabled]=" !email || !password">
+            Logout
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</mat-card>
