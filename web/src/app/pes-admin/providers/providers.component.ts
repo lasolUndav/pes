@@ -50,13 +50,14 @@ export class ProvidersComponent implements OnInit {
     )
   }
 
-  copyText(val: string) {
-    let selBox = document.createElement('textarea')
+  copyText(val: Provider) {
+    const selBox = document.createElement('textarea')
     selBox.style.position = 'fixed'
     selBox.style.left = '0'
     selBox.style.top = '0'
     selBox.style.opacity = '0'
-    selBox.value = val
+    selBox.value =
+      val.cuilCuit.length === 0 ? val.numAccount : `${val.cuilCuit}\n${val.numAccount}`
     document.body.appendChild(selBox)
     selBox.focus()
     selBox.select()
