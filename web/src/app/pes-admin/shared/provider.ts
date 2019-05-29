@@ -1,5 +1,5 @@
 export class Provider {
-  key: string;
+  key: string
   name: string
   locality: string
   province: string
