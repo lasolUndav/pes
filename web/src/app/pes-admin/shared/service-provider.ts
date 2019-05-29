@@ -14,28 +14,21 @@ export class ServiceProvider {
 
   constructor(private db: AngularFireDatabase) {
     this.providersRef = db.list('/proveedores')
-    this.getProvidersList()
   }
 
-  getProvidersList() {
+  getProviders(onProvidersLoaded) {
     this.providersRef
       .snapshotChanges()
       .pipe(
         map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))
       )
       .subscribe(providers => {
-        this.providers = providers
-        this.parseProvider(this.providers)
-      })
-  }
-
-  parseProvider(jsonProvider) {
-    for (let i = 0; i < jsonProvider.length; i++) {
-      this.listProviders.push(new Provider(jsonProvider[i]))
-    }
-  }
-  getProviders() {
-    return this.listProviders
+        const listProviders = Array<Provider>()
+        providers.forEach(function(provider) {
+          listProviders.push(new Provider(provider))
+        })
+        onProvidersLoaded(listProviders)
+      }, this.handleError)
   }
 
   createProvider(provider: Provider): void {

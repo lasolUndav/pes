@@ -23,35 +23,28 @@ export class ProvidersComponent implements OnInit {
     this.providersFiltrados = null
   }
 
-  applyFilter(filterValue: string) {
-    if (filterValue.length === 0) {
-      this.providersFiltrados = this.providers
-    } else {
-      this.providersFiltrados = this.providers.filter(provider =>
-        this.filterProviders(provider, filterValue)
-      )
-    }
-  }
-
-  filterProviders(provider: Provider, filterValue: string) {
-    filterValue = filterValue.toLowerCase().trim()
-    const porNombre = provider.name.toLowerCase()
-    const porRubro = provider.tagsItem.toLowerCase()
-    const porContacto = provider.contactName.toLowerCase()
-    return (
-      porNombre.indexOf(filterValue) >= 0 ||
-      porRubro.indexOf(filterValue) >= 0 ||
-      porContacto.indexOf(filterValue) >= 0
-    )
-  }
   ngOnInit() {
-    this.providersFiltrados = this.providers = this.service.getProviders()
+    var scope = this
+    this.service.getProviders(function(providers) {
+      scope.providers = providers
+      scope.applyFilter(scope.search.value)
+    })
     this.search.valueChanges.subscribe((filterValue: string) =>
       this.applyFilter(filterValue)
     )
   }
 
-  copyText(val: Provider) {
+  applyFilter(filterValue: string) {
+    if (filterValue.length === 0) {
+      this.providersFiltrados = this.providers
+    } else {
+      this.providersFiltrados = this.providers.filter(provider =>
+        this.filterProvider(provider, filterValue)
+      )
+    }
+  }
+
+  copyAccountData(val: Provider) {
     const selBox = document.createElement('textarea')
     selBox.style.position = 'fixed'
     selBox.style.left = '0'
@@ -83,5 +76,17 @@ export class ProvidersComponent implements OnInit {
       width: '400px',
       data: provider,
     })
+  }
+
+  private filterProvider(provider: Provider, filterValue: string) {
+    filterValue = filterValue.toLowerCase().trim()
+    const porNombre = provider.name.toLowerCase()
+    const porRubro = provider.tagsItem.toLowerCase()
+    const porContacto = provider.contactName.toLowerCase()
+    return (
+      porNombre.indexOf(filterValue) >= 0 ||
+      porRubro.indexOf(filterValue) >= 0 ||
+      porContacto.indexOf(filterValue) >= 0
+    )
   }
 }

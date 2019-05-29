@@ -10,7 +10,6 @@ import {
   MatSidenavModule,
   MatTooltipModule,
   MatDialogModule,
-  
 } from '@angular/material'
 
 import { FlexLayoutModule } from '@angular/flex-layout'
