@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 import { Router } from '@angular/router'
+import { auth } from 'firebase/app'
 
 @Injectable()
 export class AuthService {
@@ -13,17 +14,12 @@ export class AuthService {
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
     this.user = firebaseAuth.authState
   }
-
-  login(email: string, password: string) {
-    this.firebaseAuth.auth
-      .signInWithEmailAndPassword(email, password)
-      .then(value => {
-        console.log('ok login')
-        this.router.navigate(['/admin/proveedores'])
-      })
-      .catch(err => {
-        console.log('Para acceder debe iniciar sesion', err.message)
-      })
+  loginEmailUser(email: string, pass: string) {
+    return new Promise((resolve, reject) => {
+      this.firebaseAuth.auth
+        .signInWithEmailAndPassword(email, pass)
+        .then(userData => resolve(userData), err => reject(err))
+    })
   }
 
   logout() {

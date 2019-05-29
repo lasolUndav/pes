@@ -8,10 +8,6 @@
   align-self: auto;
 }
 
-.form-control.login-user {
-  border: 0 solid #fff !important;
-}
-
 .form-group {
   position: relative;
   text-align: center;
@@ -20,4 +16,8 @@
   text-overflow: ellipsis;
   color: #fff;
   border-color: rgba(0, 0, 0, 0.2);
+}
+
+.full-width {
+  width: 100%;
 }

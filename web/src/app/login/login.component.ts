@@ -5,6 +5,7 @@ import { Component } from '@angular/core'
 import { ErrorStateMatcher } from '@angular/material/core'
 import { Router } from '@angular/router'
 
+/** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
     control: FormControl | null,
@@ -18,7 +19,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     )
   }
 }
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -26,22 +26,24 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent {
   emailFormControl = new FormControl('', [Validators.required, Validators.email])
+  matcher = new MyErrorStateMatcher()
   password: string
   email: string
-  matcher = new MyErrorStateMatcher()
+
   constructor(public authService: AuthService, public router: Router) {}
 
-  login() {
-    console.log(this.email + '  ' + this.password)
-    this.authService.login(this.email, this.password)
-    if (this.authService.isLoggedIn) {
-      let redirect = this.authService.redirectUrl
-        ? this.router.parseUrl(this.authService.redirectUrl)
-        : '/home'
+  onLogin(): void {
+    console.log(this.email)
+    this.authService
+      .loginEmailUser(this.email, this.password)
+      .then(res => {
+        this.onLoginRedirect()
+      })
+      .catch(err => console.log('err', err.message))
+  }
 
-      this.router.navigateByUrl(redirect)
-    }
-    this.email = this.password = ''
+  onLoginRedirect(): void {
+    this.router.navigate(['home'])
   }
 
   logout() {

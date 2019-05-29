@@ -1,27 +1,30 @@
 <mat-card class="login-card">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>Inicio De Session</mat-card-title>
+      <mat-card-title> <span>Welcome</span></mat-card-title>
       <mat-card-subtitle>Pes</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content class="box">
-      <form #formLogin="ngForm" (submit)="login()">
-        <div class="form-group">
-          <input [(ngModel)]="email" type="email" id="email" name="email" class="form-control" placeholder="Email"
-            required>
-        </div>
-        <div class="form-group">
-          <input [(ngModel)]="password" type="password" id="password" name="password" class="form-control"
-            placeholder="Password" required>
-        </div>
-        <div class="form-group">
-          <button (click)="login()" [disabled]="!email || !password">
-            Login
+      <form #formLogin="ngForm" (submit)="onLogin()">
+        <mat-form-field class="full-width">
+          <input matInput [(ngModel)]="email" placeholder="Email" [formControl]="emailFormControl"
+            [errorStateMatcher]="matcher">
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <div></div>
+        <mat-form-field class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput [(ngModel)]="password" type="password" id="password" name="password" class="form-control" required>
+        </mat-form-field>
+        <mat-card-actions class="form-group">
+          <button mat-raised-button (click)="onLogin()" [disabled]="!email || !password" color="primary">LOGIN
           </button>
-          <button (click)="logout()" [disabled]=" !email || !password">
-            Logout
-          </button>
-        </div>
+        </mat-card-actions>
       </form>
     </mat-card-content>
   </mat-card>
