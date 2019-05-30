@@ -65,7 +65,7 @@ export class ProviderComponent implements OnInit {
   openDialog(provider) {
     const dialogRef = this.dialog.open(ConfirmUpdateProviderComponent, {
       width: '500px',
-      data: provider.name,
+      data: provider.nombre,
     })
     dialogRef.afterClosed().subscribe(result => {
       if (result == 'SI') {

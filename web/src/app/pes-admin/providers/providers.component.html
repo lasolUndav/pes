@@ -28,26 +28,26 @@
           <mat-icon>delete_outline</mat-icon>
         </button>
         <p mat-line>
-          <mat-icon class="iconCenter">home_outline</mat-icon><span class='mat-body-strong'>{{provider.name}}</span>
+          <mat-icon class="iconCenter">home_outline</mat-icon><span class='mat-body-strong'>{{provider.nombre}}</span>
         </p>
         <p mat-line>
           <mat-icon class="iconCenter">contact_phone</mat-icon>
-          <span class='mat-body'>{{provider.contactName}} &nbsp;{{provider.contactPhone}}</span>
+          <span class='mat-body'>{{provider.nombreContacto}} &nbsp;{{provider.telefonoContacto}}</span>
         </p>
         <p *ngIf="provider.cuilCuit" mat-line>
           <mat-icon class="iconCenter">person</mat-icon>
           <span class='mat-body-strong'>Cuil/Cuit:</span> <span class='mat-body'>{{provider.cuilCuit}}</span>
         </p>
-        <p *ngIf="provider.numAccount" mat-line>
+        <p *ngIf="provider.numeroCuenta" mat-line>
           <mat-icon class="iconCenter">local_atm</mat-icon>
-          <span class='mat-body-strong'>NroCuenta:</span> <span class='mat-body'>{{provider.numAccount}}</span>
+          <span class='mat-body-strong'>NroCuenta:</span> <span class='mat-body'>{{provider.numeroCuenta}}</span>
           <button mat-icon-button matTooltip="Copiar datos de cuenta" (click)="copyAccountData(provider)">
             <mat-icon class="iconCenter">file_copy</mat-icon>
           </button>
         </p>
         <p mat-line>
           <mat-chip-list class="no-wrap">
-            <mat-chip class="no-wrap" *ngFor="let tag of provider.tagsItem.split(',')" color="accent" selected>
+            <mat-chip class="no-wrap" *ngFor="let tag of provider.tagsRubro.split(',')" color="accent" selected>
               {{tag}}
             </mat-chip>
           </mat-chip-list>

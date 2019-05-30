@@ -1,29 +1,29 @@
 export class Provider {
   key: string
-  name: string
-  locality: string
-  province: string
+  nombre: string
+  localidad: string
+  provincia: string
   cuilCuit: string
-  tagsItem: string
-  numAccount: string
-  contactName: string
-  contactSurname: string
-  contactPhone: string
-  email: string
-  additionalInformation: string
+  tagsRubro: string
+  numeroCuenta: string
+  nombreContacto: string
+  apellidoContacto: string
+  telefonoContacto: string
+  mail: string
+  informacionAdicional: string
 
   constructor(result) {
     this.key = result.key
-    this.name = result.nombre
-    this.contactSurname = result.apellidoContacto
+    this.nombre = result.nombre
+    this.apellidoContacto = result.apellidoContacto
     this.cuilCuit = result.cuilCuit
-    this.additionalInformation = result.informacionAdicional
-    this.locality = result.localidad
-    this.email = result.mail
-    this.contactName = result.nombreContacto
-    this.numAccount = result.numeroCuenta
-    this.province = result.provincia
-    this.tagsItem = result.tagsRubro
-    this.contactPhone = result.telefonoContacto
+    this.informacionAdicional = result.informacionAdicional
+    this.localidad = result.localidad
+    this.mail = result.mail
+    this.nombreContacto = result.nombreContacto
+    this.numeroCuenta = result.numeroCuenta
+    this.provincia = result.provincia
+    this.tagsRubro = result.tagsRubro
+    this.telefonoContacto = result.telefonoContacto
   }
 }
