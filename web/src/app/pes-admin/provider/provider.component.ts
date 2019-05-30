@@ -39,23 +39,24 @@ export class ProviderComponent implements OnInit {
       var result = [
         {
           key: newKey,
-          name: '',
-          locality: '',
-          province: '',
+          nombre: '',
+          localidad: '',
+          provincia: '',
           cuilCuit: '',
-          tagsItem: '',
-          numAccount: '',
-          contactName: '',
-          contactSurname: '',
-          contactPhone: '',
-          email: '',
-          additionalInformation: '',
+          tagsRubro: '',
+          numeroCuenta: '',
+          contactoNombre: '',
+          contactoApellido: '',
+          contactoTelefono: '',
+          mail: '',
+          informationAdicional: '',
         },
       ]
       var newProvider = new Provider(result)
-      console.log(newKey)
-      //console.log(newProvider.key)
-      //this.serviceProvider.createProvider(newProvider)
+      //console.log(newKey)
+      console.log(newProvider, 'proveedor creado')
+      this.serviceProvider.createProvider(newProvider)
+      console.log(newProvider, 'proveedor despues ')
     } else {
       return this.serviceProvider.getProvider(this.key)
     }
