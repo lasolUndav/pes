@@ -40,10 +40,10 @@ import { environment } from '../../environments/environment'
     AngularFireDatabaseModule,
     FlexLayoutModule,
   ],
-<<<<<<< HEAD
-  entryComponents: [ConfirmDeleteProviderComponent, ConfirmUpdateProviderComponent],
-=======
-  entryComponents: [ConfirmDeleteProviderComponent, ProviderDetailComponent],
->>>>>>> 87c5acdd6c602ceaa93b35cf945465473c6c9917
+  entryComponents: [
+    ConfirmDeleteProviderComponent,
+    ConfirmUpdateProviderComponent,
+    ProviderDetailComponent,
+  ],
 })
 export class PesAdminModule {}

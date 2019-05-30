@@ -34,8 +34,6 @@ export class ProviderComponent implements OnInit {
     this.key = this.ruteActive.snapshot.paramMap.get('id')
     if (this.key === 'null') {
       this.modeEdition = false
-      var large = this.serviceProvider.getProviders().length
-      var newKey = 'prov-' + large.toString()
       var result = [
         {
           nombre: '',
