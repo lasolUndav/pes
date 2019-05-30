@@ -30,8 +30,11 @@ export class ServiceProvider {
         onProvidersLoaded(listProviders)
       }, this.handleError)
   }
-  getProvider(key: string): Provider {
-    return this.listProviders.find(element => element.key == key)
+  getProvider(key: string, onLoaded) {
+    return this.db
+      .object(`proveedores/${key}`)
+      .snapshotChanges()
+      .subscribe(data => onLoaded(data))
   }
   createProvider(provider: Provider): void {
     this.providersRef.push(provider)

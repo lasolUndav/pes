@@ -13,10 +13,10 @@ import { ServiceProvider } from '../shared/service-provider'
   styleUrls: ['./provider.component.css'],
 })
 export class ProviderComponent implements OnInit {
-  provider: Provider
-  key: string
-  modeEdition = true
+  providerInEdition: Provider
   service: ServiceProvider
+  isNew: boolean
+  key: string
   constructor(
     public dialog: MatDialog,
     private route: Router,
@@ -24,38 +24,33 @@ export class ProviderComponent implements OnInit {
     private serviceProvider: ServiceProvider
   ) {
     this.service = serviceProvider
+    this.providerInEdition = null
   }
 
   ngOnInit(): void {
-    this.provider = this.getProvider()
-  }
-
-  getProvider() {
     this.key = this.ruteActive.snapshot.paramMap.get('id')
     if (this.key === 'null') {
-      this.modeEdition = false
-      var result = [
-        {
-          nombre: '',
-          localidad: '',
-          provincia: '',
-          cuilCuit: '',
-          tagsRubro: '',
-          numeroCuenta: '',
-          contactoNombre: '',
-          contactoApellido: '',
-          contactoTelefono: '',
-          mail: '',
-          informationAdicional: '',
-        },
-      ]
-      var newProvider = new Provider(result)
-      //console.log(newKey)
-      console.log(newProvider, 'proveedor creado')
-      this.serviceProvider.createProvider(newProvider)
-      console.log(newProvider, 'proveedor despues ')
+      this.isNew = true
+      this.providerInEdition = new Provider({
+        nombre: '',
+        localidad: '',
+        provincia: '',
+        cuilCuit: '',
+        tagsRubro: '',
+        numeroCuenta: '',
+        contactoNombre: '',
+        contactoApellido: '',
+        contactoTelefono: '',
+        mail: '',
+        informationAdicional: '',
+      })
     } else {
-      return this.serviceProvider.getProvider(this.key)
+      this.isNew = false
+      var scope = this
+      this.serviceProvider.getProvider(this.key, function(data) {
+        console.log('vino el provider', data)
+        scope.providerInEdition = new Provider(data)
+      })
     }
   }
 
