@@ -38,7 +38,6 @@ export class ProviderComponent implements OnInit {
       var newKey = 'prov-' + large.toString()
       var result = [
         {
-          key: newKey,
           nombre: '',
           localidad: '',
           provincia: '',

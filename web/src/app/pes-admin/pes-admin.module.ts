@@ -14,6 +14,7 @@ import { PesAdminComponent } from './pes-admin.component'
 import { PesAdminMaterialModule } from './pes-admin.material.module'
 import { PesAdminRoutingModule } from './pes-admin-routing.module'
 import { ProviderComponent } from './provider/provider.component'
+import { ProviderDetailComponent } from './providers/provider-detail/provider-detail.component'
 import { ProvidersComponent } from './providers/providers.component'
 import { environment } from '../../environments/environment'
 
@@ -24,6 +25,7 @@ import { environment } from '../../environments/environment'
     PesAdminComponent,
     ConfirmDeleteProviderComponent,
     ConfirmUpdateProviderComponent,
+    ProviderDetailComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -38,6 +40,10 @@ import { environment } from '../../environments/environment'
     AngularFireDatabaseModule,
     FlexLayoutModule,
   ],
+<<<<<<< HEAD
   entryComponents: [ConfirmDeleteProviderComponent, ConfirmUpdateProviderComponent],
+=======
+  entryComponents: [ConfirmDeleteProviderComponent, ProviderDetailComponent],
+>>>>>>> 87c5acdd6c602ceaa93b35cf945465473c6c9917
 })
 export class PesAdminModule {}

@@ -41,9 +41,12 @@
         <p *ngIf="provider.numAccount" mat-line>
           <mat-icon class="iconCenter">local_atm</mat-icon>
           <span class='mat-body-strong'>NroCuenta:</span> <span class='mat-body'>{{provider.numAccount}}</span>
-          <button mat-icon-button matTooltip="Copiar datos de cuenta" (click)="copyText(provider)">
-            <mat-icon class="iconCenter">file_copy</mat-icon>
-          </button>
+          <<<<<<< HEAD <button mat-icon-button matTooltip="Copiar datos de cuenta" (click)="copyText(provider)">
+            =======
+            <button mat-icon-button matTooltip="Copiar datos de cuenta" (click)="copyAccountData(provider)">
+              >>>>>>> 87c5acdd6c602ceaa93b35cf945465473c6c9917
+              <mat-icon class="iconCenter">file_copy</mat-icon>
+            </button>
         </p>
         <p mat-line>
           <mat-chip-list class="no-wrap">
