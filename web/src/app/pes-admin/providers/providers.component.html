@@ -1,15 +1,24 @@
 <div>
-  <mat-card class="proveedores">
-    <h2>Proveedores</h2>
+  <mat-card>
+    <div class="head-content-card">
+      <h2>Proveedores</h2>
+      <button class="buttonAdd" mat-raised-button color="primary"
+        [routerLink]="['/admin/proveedor',{id: null} ]">Agregar
+        Nuevo</button>
+    </div>
     <mat-spinner class="spinner" *ngIf="providersFiltrados == null"></mat-spinner>
     <div *ngIf="providersFiltrados!=null">
       <mat-form-field>
         <mat-icon matPrefix>search</mat-icon>
-        <input matInput [formControl]="search" placeholder="Buscar a...">
+        <input class="search-content" matInput [formControl]="search" placeholder="Buscar a...">
       </mat-form-field>
     </div>
-    <mat-list class='mat-typography' *ngIf="providersFiltrados!=null" class="contenedor">
+    <mat-list class='mat-typography' *ngIf="providersFiltrados!=null" class="content-list">
       <mat-list-item *ngFor="let provider of providersFiltrados">
+        <button class="buttonInfo" mat-mini-fab matTooltip="Más información">
+          <mat-icon>add</mat-icon>
+        </button>
+        &nbsp; &nbsp; &nbsp;
         <button class="buttonEdit" mat-mini-fab matTooltip="Editar"
           [routerLink]="['/admin/proveedor',{id: provider.key} ]">
           <mat-icon>edit</mat-icon>
@@ -32,7 +41,7 @@
         <p *ngIf="provider.numAccount" mat-line>
           <mat-icon class="iconCenter">local_atm</mat-icon>
           <span class='mat-body-strong'>NroCuenta:</span> <span class='mat-body'>{{provider.numAccount}}</span>
-          <button mat-icon-button matTooltip="Copiar" (click)="copyText(provider.numAccount)">
+          <button mat-icon-button matTooltip="Copiar datos de cuenta" (click)="copyText(provider)">
             <mat-icon class="iconCenter">file_copy</mat-icon>
           </button>
         </p>

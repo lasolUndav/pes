@@ -15,7 +15,7 @@ import { ServiceProvider } from '../shared/service-provider'
 export class ProviderComponent implements OnInit {
   provider: Provider
   key: string
-  modeEdition = false
+  modeEdition = true
   service: ServiceProvider
   constructor(
     public dialog: MatDialog,
@@ -32,7 +32,26 @@ export class ProviderComponent implements OnInit {
 
   getProvider() {
     this.key = this.ruteActive.snapshot.paramMap.get('id')
-    return this.serviceProvider.getProvider(this.key)
+    if (this.key === 'null') {
+      this.modeEdition = false
+      var large = this.serviceProvider.getProviders().length
+      var newKey = 'prov-' + large.toString()
+      var result = [{
+        key: newKey, name: '', locality: '', province: '',cuilCuit:'',tagsItem: string
+  numAccount: string
+  contactName: string
+  contactSurname: string
+  contactPhone: string
+  email: string
+  additionalInformation: string }]
+      newProvider = new Provider()
+      newProvider.key = newKey
+      console.log(newKey)
+      console.log(newProvider.key)
+      //this.serviceProvider.createProvider(newProvider)
+    } else {
+      return this.serviceProvider.getProvider(this.key)
+    }
   }
 
   onBack(): void {

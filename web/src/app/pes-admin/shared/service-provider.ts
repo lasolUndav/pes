@@ -45,11 +45,11 @@ export class ServiceProvider {
   }
 
   updateProvider(key: string, value: any): void {
-    var json = JSON.stringify(value)
-    var keyout = "key"
+    const json = JSON.stringify(value)
+    const keyout = 'key'
     delete json[keyout]
-    console.log(json)
-    //this.providersRef.update(key, value).catch(error => this.handleError(error))
+    console.log(value)
+    //this.providersRef.update(key,value ).catch(error => this.handleError(error))
   }
 
   deleteProvider(key: string): void {
