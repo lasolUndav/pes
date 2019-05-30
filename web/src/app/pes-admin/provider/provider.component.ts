@@ -36,18 +36,25 @@ export class ProviderComponent implements OnInit {
       this.modeEdition = false
       var large = this.serviceProvider.getProviders().length
       var newKey = 'prov-' + large.toString()
-      var result = [{
-        key: newKey, name: '', locality: '', province: '',cuilCuit:'',tagsItem: string
-  numAccount: string
-  contactName: string
-  contactSurname: string
-  contactPhone: string
-  email: string
-  additionalInformation: string }]
-      newProvider = new Provider()
-      newProvider.key = newKey
+      var result = [
+        {
+          key: newKey,
+          name: '',
+          locality: '',
+          province: '',
+          cuilCuit: '',
+          tagsItem: '',
+          numAccount: '',
+          contactName: '',
+          contactSurname: '',
+          contactPhone: '',
+          email: '',
+          additionalInformation: '',
+        },
+      ]
+      var newProvider = new Provider(result)
       console.log(newKey)
-      console.log(newProvider.key)
+      //console.log(newProvider.key)
       //this.serviceProvider.createProvider(newProvider)
     } else {
       return this.serviceProvider.getProvider(this.key)
