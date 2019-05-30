@@ -1,7 +1,14 @@
+.loginBox {
+  margin: auto;
+  width: 50%;
+  padding: 70px 0;
+}
+
 .login-card {
   max-width: 400px;
   box-align: center;
-  justify-content: center
+  justify-content: center;
+  margin: auto;
 }
 
 .box {
