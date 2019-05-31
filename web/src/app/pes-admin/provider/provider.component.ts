@@ -63,17 +63,13 @@ export class ProviderComponent implements OnInit {
       data: provider.nombre,
     })
     dialogRef.afterClosed().subscribe(result => {
-      if (result == 'SI') {
-        // const jsonProvider = JSON.stringify(provider)
+      if (result === 'SI') {
         const jsonProvider = provider
-
         const keyout = 'key'
-        console.log(jsonProvider)
-
         delete jsonProvider[keyout]
-        console.log(jsonProvider, '...')
-        console.log(provider)
-        // this.service.updateProvider(provider.key, provider)
+
+        console.log(jsonProvider)
+        this.service.updateProvider(this.key, jsonProvider)
         this.onBack()
       }
     })

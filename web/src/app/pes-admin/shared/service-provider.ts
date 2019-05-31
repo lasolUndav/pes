@@ -34,7 +34,7 @@ export class ServiceProvider {
     return this.db
       .object(`proveedores/${key}`)
       .snapshotChanges()
-      .subscribe(data => onLoaded(data))
+      .subscribe(data => onLoaded(data.payload.val()))
   }
   createProvider(provider: Provider): void {
     this.providersRef.push(provider)
