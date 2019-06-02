@@ -8,7 +8,6 @@ import { map } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class ServiceProvider {
-  listProviders = Array<Provider>()
   providersRef: AngularFireList<Provider> = null
   providers: any
 
@@ -41,6 +40,7 @@ export class ServiceProvider {
   }
 
   updateProvider(key: string, value: any): void {
+    console.log(value, 'dentro del updateProvider')
     this.providersRef.update(key, value).catch(error => this.handleError(error))
   }
 

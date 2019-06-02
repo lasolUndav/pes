@@ -5,60 +5,67 @@
 <mat-spinner class="spinner" *ngIf="providerInEdition == null"></mat-spinner>
 <form class="form" *ngIf="providerInEdition != null">
   <mat-form-field class=" full-width">
-    <input type="nombre" placeholder="Nombre" matInput [(value)]=providerInEdition.nombre>
+    <input type="nombre" placeholder="Nombre" matInput [value]=providerInEdition.nombre
+      (keyup)="setDataName($event.target.value)">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="localidad" placeholder="Localidad " matInput [(value)]=providerInEdition.localidad>
+    <input type="localidad" placeholder="Localidad " matInput [value]=providerInEdition.localidad
+      (keyup)="setDataLocality($event.target.value)">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="provincia" placeholder="Provincia" matInput [(value)]=providerInEdition.provincia>
+    <input type="provincia" placeholder="Provincia" matInput [value]=providerInEdition.provincia
+      (keyup)="setDataProvince($event.target.value)">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="cuilCuit" placeholder="Cuit/Cuil" matInput [(value)]=providerInEdition.cuilCuit>
+    <input type="cuilCuit" placeholder="Cuit/Cuil" matInput [value]=providerInEdition.cuilCuit
+      (keyup)="setDataCuilCuit($event.target.value)">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="numeroCuenta" placeholder="Numero de cuenta" matInput [(value)]=providerInEdition.numeroCuenta>
+    <input type="numeroCuenta" placeholder="Numero de cuenta" matInput [value]=providerInEdition.numeroCuenta
+      (keyup)="setDataNumberAccount($event.target.value)">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="nombreContacto" placeholder="Nombre de contacto" matInput [(value)]=providerInEdition.nombreContacto>
+    <input type="nombreContacto" placeholder="Nombre de contacto" matInput [value]=providerInEdition.nombreContacto
+      (keyup)="setDataContantName($event.target.value)">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
     <input type="apellidoContacto" placeholder="Apellido de contacto" matInput
-      [(value)]=providerInEdition.apellidoContacto>
+      [value]=providerInEdition.apellidoContacto (keyup)="setDataContactSurname($event.target.value)">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
     <input type="telefonoContacto" placeholder="Telefono de contacto" matInput
-      [(value)]=providerInEdition.telefonoContacto>
+      [value]=providerInEdition.telefonoContacto (keyup)="setDataContactPhone($event.target.value)">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="mail" placeholder="Email de contacto " matInput [(value)]=providerInEdition.mail>
+    <input type="mail" placeholder="Email de contacto " matInput [value]=providerInEdition.mail
+      (keyup)="setDataEmail($event.target.value)">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
     <input type="informacionAdicional" placeholder="Informacion adicional" matInput
-      [(value)]=providerInEdition.informacionAdicional>
+      [value]=providerInEdition.informacionAdicional (keyup)="setDataAdditionalInformation($event.target.value)">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="tagsRubro" placeholder="Rubro" matInput [(value)]=providerInEdition.tagsRubro>
+    <input type="tagsRubro" placeholder="Rubro" matInput [(value)]="providerInEdition.tagsRubro">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 

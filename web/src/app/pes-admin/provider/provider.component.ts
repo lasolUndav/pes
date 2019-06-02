@@ -38,17 +38,16 @@ export class ProviderComponent implements OnInit {
         cuilCuit: '',
         tagsRubro: '',
         numeroCuenta: '',
-        contactoNombre: '',
-        contactoApellido: '',
-        contactoTelefono: '',
+        nombreContacto: '',
+        apellidoContacto: '',
+        telefonoContacto: '',
         mail: '',
-        informationAdicional: '',
+        informacionAdicional: '',
       })
     } else {
       this.isNew = false
       var scope = this
       this.serviceProvider.getProvider(this.key, function(data) {
-        console.log('vino el provider', data)
         scope.providerInEdition = new Provider(data)
       })
     }
@@ -57,6 +56,38 @@ export class ProviderComponent implements OnInit {
   onBack(): void {
     this.route.navigate(['/admin/proveedores'])
   }
+
+  setDataProvince(provincia) {
+    this.providerInEdition.provincia = provincia
+  }
+  setDataEmail(email) {
+    this.providerInEdition.mail = email
+  }
+  setDataLocality(locality) {
+    this.providerInEdition.localidad = locality
+  }
+  setDataContantName(contantName) {
+    this.providerInEdition.nombreContacto = contantName
+  }
+  setDataName(name) {
+    this.providerInEdition.nombre = name
+  }
+  setDataCuilCuit(cuilCuit) {
+    this.providerInEdition.cuilCuit = cuilCuit
+  }
+  setDataContactPhone(contactPhone) {
+    this.providerInEdition.telefonoContacto = contactPhone
+  }
+  setDataContactSurname(contactSurname) {
+    this.providerInEdition.apellidoContacto = contactSurname
+  }
+  setDataAdditionalInformation(additionalInformation) {
+    this.providerInEdition.informacionAdicional = additionalInformation
+  }
+  setDataNumberAccount(numAccount) {
+    this.providerInEdition.numeroCuenta = numAccount
+  }
+
   openDialog(provider) {
     const dialogRef = this.dialog.open(ConfirmUpdateProviderComponent, {
       width: '500px',
@@ -67,9 +98,11 @@ export class ProviderComponent implements OnInit {
         const jsonProvider = provider
         const keyout = 'key'
         delete jsonProvider[keyout]
-
-        console.log(jsonProvider)
-        this.service.updateProvider(this.key, jsonProvider)
+        if (this.isNew) {
+          this.service.createProvider(jsonProvider)
+        } else {
+          this.service.updateProvider(this.key, jsonProvider)
+        }
         this.onBack()
       }
     })
