@@ -87,6 +87,9 @@ export class ProviderComponent implements OnInit {
   setDataNumberAccount(numAccount) {
     this.providerInEdition.numeroCuenta = numAccount
   }
+  setDataItemsTags(tagsItems) {
+    this.providerInEdition.tagsRubro = tagsItems
+  }
 
   openDialog(provider) {
     const dialogRef = this.dialog.open(ConfirmUpdateProviderComponent, {

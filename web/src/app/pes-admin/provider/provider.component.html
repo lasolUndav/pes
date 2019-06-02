@@ -60,12 +60,13 @@
 
   <mat-form-field class="full-width">
     <input type="informacionAdicional" placeholder="Informacion adicional" matInput
-      [value]=providerInEdition.informacionAdicional (keyup)="setDataAdditionalInformation($event.target.value)">
+      (keyup)="setDataAdditionalInformation($event.target.value)">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="tagsRubro" placeholder="Rubro" matInput [(value)]="providerInEdition.tagsRubro">
+    <input type="tagsRubro" placeholder="Rubro" matInput [value]=providerInEdition.tagsRubro
+      (keyup)="setDataItemsTags($event.target.value)">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
