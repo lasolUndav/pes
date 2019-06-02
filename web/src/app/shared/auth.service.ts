@@ -22,7 +22,17 @@ export class AuthService {
     })
   }
 
+  loginGoogleUser() {
+    return new Promise((resolve, reject) => {
+      const user_login = new firebase.auth.GoogleAuthProvider()
+      this.firebaseAuth.auth
+        .signInWithPopup(user_login)
+        .then(userData => resolve(userData), err => reject(err))
+    })
+  }
+
   logout() {
     this.firebaseAuth.auth.signOut()
+    this.router.navigate(['login'])
   }
 }
