@@ -125,13 +125,6 @@ export class ProviderComponent implements OnInit {
       }
     })
   }
-
-  getItems(providerInEdition1) {
-    var retorno = JSON.stringify(providerInEdition1.tagsRubro)
-    console.log(retorno)
-    return [retorno]
-  }
-
   add(event: MatChipInputEvent): void {
     const input = event.input
     const value = event.value

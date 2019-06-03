@@ -72,12 +72,12 @@
 
   <mat-form-field>
     <mat-chip-list #chipList aria-label="Item selection">
-      <mat-chip *ngFor="let item of getItems(providerInEdition)" [selectable]="selectable" [removable]="removable"
-        (removed)="remove(item)">
-        {{item.name}}
+      <mat-chip *ngFor="let item of providerInEdition.tagsRubro.split(',')" [selectable]="selectable"
+        [removable]="removable" (removed)="remove(item)">
+        {{item}}
         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
       </mat-chip>
-      <input placeholder="Nuevo rubro..." [matChipInputFor]="chipList"
+      <input placeholder="Nueva mercadería" [matChipInputFor]="chipList"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
         (matChipInputTokenEnd)="add($event)">
     </mat-chip-list>
