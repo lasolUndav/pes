@@ -1,15 +1,12 @@
 import { ActivatedRoute, Router } from '@angular/router'
 import { COMMA, ENTER } from '@angular/cdk/keycodes'
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { MatChipInputEvent, MatDialog } from '@angular/material'
 
 import { ConfirmUpdateProviderComponent } from './confirm-update-provider/confirm-update-provider.component'
 import { Provider } from '../shared/provider'
 import { ServiceProvider } from '../shared/service-provider'
 
-export interface Item {
-  name: string
-}
 @Component({
   selector: 'app-provider',
   templateUrl: './provider.component.html',
@@ -21,11 +18,6 @@ export class ProviderComponent implements OnInit {
   removable = true
   addOnBlur = true
   readonly separatorKeysCodes: number[] = [ENTER, COMMA]
-  items: Item[] = [
-    { name: 'Queso' },
-    { name: 'Carne Vacuna' },
-    { name: 'Dulce de Leche' },
-  ]
 
   providerInEdition: Provider
   service: ServiceProvider
@@ -129,22 +121,40 @@ export class ProviderComponent implements OnInit {
     const input = event.input
     const value = event.value
 
-    // Add our fruit
     if ((value || '').trim()) {
-      this.items.push({ name: value.trim() })
+      if (this.providerInEdition.tagsRubro != '') {
+        this.providerInEdition.tagsRubro += ',' + value.trim()
+      } else {
+        this.providerInEdition.tagsRubro += value.trim()
+      }
     }
 
-    // Reset the input value
     if (input) {
       input.value = ''
     }
   }
 
-  remove(item: Item): void {
-    const index = this.items.indexOf(item)
+  getCustomTagSplit(tags: string) {
+    if (tags != '') {
+      return tags.split(',')
+    }
+  }
 
-    if (index >= 0) {
-      this.items.splice(index, 1)
+  remove(item: string): void {
+    const index = this.providerInEdition.tagsRubro.indexOf(item)
+    if (index > 0) {
+      this.providerInEdition.tagsRubro = this.providerInEdition.tagsRubro.replace(
+        ',' + item,
+        ''
+      )
+    }
+    if (item.length === this.providerInEdition.tagsRubro.length) {
+      this.providerInEdition.tagsRubro = ''
+    } else {
+      this.providerInEdition.tagsRubro = this.providerInEdition.tagsRubro.replace(
+        item + ',',
+        ''
+      )
     }
   }
 }
