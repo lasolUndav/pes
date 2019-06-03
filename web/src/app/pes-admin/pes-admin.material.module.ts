@@ -1,7 +1,9 @@
 import {
+  MatAutocompleteModule,
   MatButtonModule,
   MatCardModule,
   MatChipsModule,
+  MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -9,7 +11,6 @@ import {
   MatProgressSpinnerModule,
   MatSidenavModule,
   MatTooltipModule,
-  MatDialogModule,
 } from '@angular/material'
 
 import { FlexLayoutModule } from '@angular/flex-layout'
@@ -30,6 +31,7 @@ import { NgModule } from '@angular/core'
     MatDialogModule,
     MatSidenavModule,
     MatProgressSpinnerModule,
+    MatAutocompleteModule,
   ],
   exports: [
     MatButtonModule,
@@ -44,6 +46,7 @@ import { NgModule } from '@angular/core'
     MatDialogModule,
     MatSidenavModule,
     MatProgressSpinnerModule,
+    MatAutocompleteModule,
   ],
 })
 export class PesAdminMaterialModule {}
