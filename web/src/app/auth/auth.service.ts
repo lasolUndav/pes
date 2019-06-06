@@ -1,6 +1,6 @@
 import * as firebase from 'firebase/app'
 
-import { BehaviorSubject, Observable } from 'rxjs'
+import { BehaviorSubject, Observable, from } from 'rxjs'
 import { IAuthService, IAuthStatus, IServerAuthResponse } from './interfaces'
 
 import { AngularFireAuth } from 'angularfire2/auth'
@@ -19,8 +19,6 @@ export const defaultAuthStatus = {
 
 @Injectable()
 export class AuthService extends CacheService implements IAuthService {
-  user: Observable<firebase.User>
-  isLoggedIn = false
   redirectUrl: string
   private readonly authProvider: (
     email: string,
@@ -32,27 +30,26 @@ export class AuthService extends CacheService implements IAuthService {
   )
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
     super()
-    this.user = firebaseAuth.authState
   }
   login(email: string, pass: string): Observable<IAuthStatus> {
-    const loginResponse = this.authProvider(email, pass).pipe(
-      map(value => {
-        return value.authStatus as IAuthStatus
-      })
-    )
-    loginResponse.subscribe(
-      res => {
-        this.authStatus.next(res)
-      },
-      err => {
-        this.logout()
-      }
-    )
-
-    return loginResponse
+    return from(<Promise<any>>(
+      this.firebaseAuth.auth.signInWithEmailAndPassword(email, pass).then(
+        value => {
+          console.log(value)
+          this.setItem('authStatus', { isAuthenticated: true })
+          return { isAuthenticated: true } as IAuthStatus
+        },
+        err => this.onError(err)
+      )
+    ))
   }
 
   logout() {
     this.firebaseAuth.auth.signOut()
+  }
+
+  onError(err) {
+    console.log('fallo el login')
+    this.setItem('authStatus', { isAuthenticated: false })
   }
 }
