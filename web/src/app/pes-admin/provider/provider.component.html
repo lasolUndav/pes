@@ -1,66 +1,60 @@
 <div class="cabecera">
   <h1>Datos Proveedor</h1>
-  <button mat-raised-button (click)='onBack()' color="primary">Regresar</button>
 </div>
 <mat-spinner class="spinner" *ngIf="providerInEdition == null"></mat-spinner>
 <form class="form" *ngIf="providerInEdition != null">
-  <mat-form-field class=" full-width">
-    <input type="nombre" placeholder="Nombre" matInput [value]=providerInEdition.nombre
-      (keyup)="setDataName($event.target.value)">
+  <mat-form-field class="full-width">
+    <input type="text" name="nombre" placeholder="Nombre" matInput [(ngModel)]="providerInEdition.nombre">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="localidad" placeholder="Localidad " matInput [value]=providerInEdition.localidad
-      (keyup)="setDataLocality($event.target.value)">
+    <input type="text" name="localidad" placeholder="Localidad " matInput [(ngModel)]="providerInEdition.localidad">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="provincia" placeholder="Provincia" matInput [value]=providerInEdition.provincia
-      (keyup)="setDataProvince($event.target.value)">
+    <input type="text" name="provincia" placeholder="Provincia" matInput [(ngModel)]="providerInEdition.provincia">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="cuilCuit" placeholder="Cuit/Cuil" matInput [value]=providerInEdition.cuilCuit
-      (keyup)="setDataCuilCuit($event.target.value)">
+    <input type="text" name="cuitCuil" placeholder="Cuit/Cuil" matInput [(ngModel)]="providerInEdition.cuilCuit">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="numeroCuenta" placeholder="Numero de cuenta" matInput [value]=providerInEdition.numeroCuenta
-      (keyup)="setDataNumberAccount($event.target.value)">
+    <input type="text" name="numeroCuenta" placeholder="Numero de cuenta" matInput
+      [(ngModel)]="providerInEdition.numeroCuenta">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="nombreContacto" placeholder="Nombre de contacto" matInput [value]=providerInEdition.nombreContacto
-      (keyup)="setDataContantName($event.target.value)">
+    <input type="text" name="nombreContacto" placeholder="Nombre de contacto" matInput
+      [(ngModel)]="providerInEdition.nombreContacto">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="apellidoContacto" placeholder="Apellido de contacto" matInput
-      [value]=providerInEdition.apellidoContacto (keyup)="setDataContactSurname($event.target.value)">
+    <input type="text" name="apellidoContacto" placeholder="Apellido de contacto" matInput
+      [(ngModel)]="providerInEdition.apellidoContacto">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="telefonoContacto" placeholder="Telefono de contacto" matInput
-      [value]=providerInEdition.telefonoContacto (keyup)="setDataContactPhone($event.target.value)">
+    <input type="text" name="telefonoContacto" placeholder="Teléfono de contacto" matInput
+      [(ngModel)]="providerInEdition.telefonoContacto">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="mail" placeholder="Email de contacto " matInput [value]=providerInEdition.mail
-      (keyup)="setDataEmail($event.target.value)">
+    <input type="text" name="mail" placeholder="Email de contacto " matInput [(ngModel)]="providerInEdition.mail">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input type="informacionAdicional" placeholder="Informacion adicional" matInput
-      (keyup)="setDataAdditionalInformation($event.target.value)">
+    <input type="text" name="informacionAdicional" placeholder="Informacion adicional" matInput
+      [(ngModel)]="providerInEdition.informacionAdicional">
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
 
@@ -77,9 +71,17 @@
     </mat-chip-list>
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
-
   <div class="pie">
-    <button mat-raised-button (click)='openDialog(providerInEdition)' color="accent">Guardar</button>
+    <section>
+      <mat-checkbox [(ngModel)]="checkeado" [ngModelOptions]="{standalone: true}">Continuar</mat-checkbox>
+    </section>
+    &nbsp; &nbsp; &nbsp;
+    <button mat-raised-button color="accent" [disabled]="!checkeado"
+      (click)="saveProvider(providerInEdition)">Guardar</button>
+    &nbsp; &nbsp; &nbsp;
+    <button mat-raised-button (click)='onBack()' color="primary">Cancelar</button>
+    &nbsp; &nbsp; &nbsp;
   </div>
+
 
 </form>

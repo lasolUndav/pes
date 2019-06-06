@@ -15,7 +15,7 @@
     </div>
     <mat-list class='mat-typography' *ngIf="providersFiltrados!=null" class="content-list">
       <mat-list-item *ngFor="let provider of providersFiltrados">
-        <button class="buttonInfo" mat-mini-fab matTooltip="Más información">
+        <button class="buttonInfo" mat-mini-fab matTooltip="Más información" (click)="openInfo(provider)">
           <mat-icon>add</mat-icon>
         </button>
         &nbsp; &nbsp; &nbsp;

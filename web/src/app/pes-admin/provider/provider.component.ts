@@ -1,9 +1,8 @@
 import { ActivatedRoute, Router } from '@angular/router'
 import { COMMA, ENTER } from '@angular/cdk/keycodes'
 import { Component, OnInit } from '@angular/core'
-import { MatChipInputEvent, MatDialog } from '@angular/material'
 
-import { ConfirmUpdateProviderComponent } from './confirm-update-provider/confirm-update-provider.component'
+import { MatChipInputEvent } from '@angular/material'
 import { Provider } from '../shared/provider'
 import { ServiceProvider } from '../shared/service-provider'
 
@@ -13,6 +12,7 @@ import { ServiceProvider } from '../shared/service-provider'
   styleUrls: ['./provider.component.css'],
 })
 export class ProviderComponent implements OnInit {
+  checkeado = false
   visible = true
   selectable = true
   removable = true
@@ -22,10 +22,9 @@ export class ProviderComponent implements OnInit {
   providerInEdition: Provider
   service: ServiceProvider
   isNew: boolean
-  key: string
+  providerKey: string
 
   constructor(
-    public dialog: MatDialog,
     private route: Router,
     private ruteActive: ActivatedRoute,
     private serviceProvider: ServiceProvider
@@ -35,28 +34,11 @@ export class ProviderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.key = this.ruteActive.snapshot.paramMap.get('id')
-    if (this.key === 'null') {
-      this.isNew = true
-      this.providerInEdition = new Provider({
-        nombre: '',
-        localidad: '',
-        provincia: '',
-        cuilCuit: '',
-        tagsRubro: '',
-        numeroCuenta: '',
-        nombreContacto: '',
-        apellidoContacto: '',
-        telefonoContacto: '',
-        mail: '',
-        informacionAdicional: '',
-      })
+    this.providerKey = this.ruteActive.snapshot.paramMap.get('id')
+    if (this.providerKey === 'null') {
+      this.setupFormNewProvider()
     } else {
-      this.isNew = false
-      var scope = this
-      this.serviceProvider.getProvider(this.key, function(data) {
-        scope.providerInEdition = new Provider(data)
-      })
+      this.setupFormEditProvider()
     }
   }
 
@@ -64,62 +46,54 @@ export class ProviderComponent implements OnInit {
     this.route.navigate(['/admin/proveedores'])
   }
 
-  setDataProvince(provincia) {
-    this.providerInEdition.provincia = provincia
-  }
-  setDataEmail(email) {
-    this.providerInEdition.mail = email
-  }
-  setDataLocality(locality) {
-    this.providerInEdition.localidad = locality
-  }
-  setDataContantName(contantName) {
-    this.providerInEdition.nombreContacto = contantName
-  }
-  setDataName(name) {
-    this.providerInEdition.nombre = name
-  }
-  setDataCuilCuit(cuilCuit) {
-    this.providerInEdition.cuilCuit = cuilCuit
-  }
-  setDataContactPhone(contactPhone) {
-    this.providerInEdition.telefonoContacto = contactPhone
-  }
-  setDataContactSurname(contactSurname) {
-    this.providerInEdition.apellidoContacto = contactSurname
-  }
-  setDataAdditionalInformation(additionalInformation) {
-    this.providerInEdition.informacionAdicional = additionalInformation
-  }
-  setDataNumberAccount(numAccount) {
-    this.providerInEdition.numeroCuenta = numAccount
-  }
-  setDataItemsTags(tagsItems) {
-    this.providerInEdition.tagsRubro = tagsItems
+  setupFormEditProvider() {
+    this.isNew = false
+    var scope = this
+    this.serviceProvider.getProvider(this.providerKey, function(data) {
+      scope.providerInEdition = new Provider(data)
+    })
   }
 
-  openDialog(provider) {
-    const dialogRef = this.dialog.open(ConfirmUpdateProviderComponent, {
-      width: '500px',
-      data: provider.nombre,
+  setupFormNewProvider() {
+    this.isNew = true
+    this.providerInEdition = new Provider({
+      nombre: '',
+      localidad: '',
+      provincia: '',
+      cuilCuit: '',
+      tagsRubro: '',
+      numeroCuenta: '',
+      nombreContacto: '',
+      apellidoContacto: '',
+      telefonoContacto: '',
+      mail: '',
+      informacionAdicional: '',
     })
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === 'SI') {
-        const jsonProvider = provider
-        const keyout = 'key'
-        delete jsonProvider[keyout]
-        if (this.isNew) {
-          this.service.createProvider(jsonProvider)
-        } else {
-          this.service.updateProvider(this.key, jsonProvider)
-        }
-        this.onBack()
-      }
-    })
+  }
+
+  saveProvider(provider) {
+    this.mayusculasProvider(provider)
+    const jsonProvider = provider
+    const keyout = 'key'
+    delete jsonProvider[keyout]
+    if (this.isNew) {
+      this.service.createProvider(jsonProvider)
+    } else {
+      this.service.updateProvider(this.providerKey, jsonProvider)
+      console.log(provider)
+    }
+    this.onBack()
+  }
+  mayusculasProvider(provider: Provider) {
+    provider.nombre = this.mayusculaPrimera(provider.nombre)
+    provider.nombreContacto = this.mayusculaPrimera(provider.nombreContacto)
+    provider.apellidoContacto = this.mayusculaPrimera(provider.apellidoContacto)
+    provider.localidad = this.mayusculaPrimera(provider.localidad)
+    provider.provincia = this.mayusculaPrimera(provider.provincia)
   }
   add(event: MatChipInputEvent): void {
     const input = event.input
-    const value = event.value
+    const value = this.mayusculaPrimera(event.value)
 
     if ((value || '').trim()) {
       if (this.providerInEdition.tagsRubro != '') {
@@ -132,6 +106,11 @@ export class ProviderComponent implements OnInit {
     if (input) {
       input.value = ''
     }
+  }
+
+  mayusculaPrimera(string): string {
+    string.toLowerCase()
+    return string.charAt(0).toUpperCase() + string.slice(1)
   }
 
   getCustomTagSplit(tags: string) {

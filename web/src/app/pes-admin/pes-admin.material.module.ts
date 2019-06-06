@@ -2,6 +2,7 @@ import {
   MatAutocompleteModule,
   MatButtonModule,
   MatCardModule,
+  MatCheckboxModule,
   MatChipsModule,
   MatDialogModule,
   MatFormFieldModule,
@@ -32,6 +33,7 @@ import { NgModule } from '@angular/core'
     MatSidenavModule,
     MatProgressSpinnerModule,
     MatAutocompleteModule,
+    MatCheckboxModule,
   ],
   exports: [
     MatButtonModule,
@@ -47,6 +49,7 @@ import { NgModule } from '@angular/core'
     MatSidenavModule,
     MatProgressSpinnerModule,
     MatAutocompleteModule,
+    MatCheckboxModule,
   ],
 })
 export class PesAdminMaterialModule {}

@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { BrowserModule } from '@angular/platform-browser'
 import { CommonModule } from '@angular/common'
 import { ConfirmDeleteProviderComponent } from './providers/confirm-delete-provider/confirm-delete-provider.component'
-import { ConfirmUpdateProviderComponent } from './provider/confirm-update-provider/confirm-update-provider.component'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { NgModule } from '@angular/core'
 import { PesAdminComponent } from './pes-admin.component'
@@ -24,7 +23,6 @@ import { environment } from '../../environments/environment'
     ProviderComponent,
     PesAdminComponent,
     ConfirmDeleteProviderComponent,
-    ConfirmUpdateProviderComponent,
     ProviderDetailComponent,
   ],
   imports: [
@@ -40,10 +38,6 @@ import { environment } from '../../environments/environment'
     AngularFireDatabaseModule,
     FlexLayoutModule,
   ],
-  entryComponents: [
-    ConfirmDeleteProviderComponent,
-    ConfirmUpdateProviderComponent,
-    ProviderDetailComponent,
-  ],
+  entryComponents: [ConfirmDeleteProviderComponent, ProviderDetailComponent],
 })
 export class PesAdminModule {}
