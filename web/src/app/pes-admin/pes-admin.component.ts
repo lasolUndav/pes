@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 
-import { AuthService } from '../shared/auth.service'
-import { LoginComponent } from '../login/login.component'
+import { AuthService } from '../auth/auth.service'
 
 @Component({
   selector: 'app-pes-admin',
