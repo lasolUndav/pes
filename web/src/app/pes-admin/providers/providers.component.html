@@ -10,6 +10,10 @@
     </div>
     <mat-list class='mat-typography' *ngIf="providersFiltrados!=null" class="contenedor">
       <mat-list-item *ngFor="let provider of providersFiltrados">
+        <button class="buttonInfo" mat-mini-fab matTooltip="Más información" (click)="openInfo(provider)">
+          <mat-icon>add</mat-icon>
+        </button>
+        &nbsp; &nbsp; &nbsp;
         <button class="buttonEdit" disabled mat-mini-fab matTooltip="Editar">
           <mat-icon>edit</mat-icon>
         </button>
@@ -31,7 +35,7 @@
         <p *ngIf="provider.numAccount" mat-line>
           <mat-icon class="iconCenter">local_atm</mat-icon>
           <span class='mat-body-strong'>NroCuenta:</span> <span class='mat-body'>{{provider.numAccount}}</span>
-          <button mat-icon-button matTooltip="Copiar" (click)="copyText(provider.numAccount)">
+          <button mat-icon-button matTooltip="Copiar datos de cuenta" (click)="copyAccountData(provider)">
             <mat-icon class="iconCenter">file_copy</mat-icon>
           </button>
         </p>
