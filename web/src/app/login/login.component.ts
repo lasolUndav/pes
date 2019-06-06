@@ -1,6 +1,6 @@
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms'
 
-import { AuthService } from '../shared/auth.service'
+import { AuthService } from '../auth/auth.service'
 import { Component } from '@angular/core'
 import { ErrorStateMatcher } from '@angular/material/core'
 import { Router } from '@angular/router'
@@ -36,13 +36,14 @@ export class LoginComponent {
   constructor(public authService: AuthService, public router: Router) {}
 
   onLogin(): void {
-    this.authService
-      .loginEmailUser(this.email, this.password)
-      .then(res => {
-        this.onLoginRedirect()
-      })
-      .catch(err => this.onReload())
-    console.log('paso')
+    this.authService.login(this.email, this.password).subscribe(
+      authStatus => {
+        if (authStatus.isAuthenticated) {
+          this.onLoginRedirect()
+        }
+      },
+      err => this.onReload()
+    )
   }
 
   onLoginRedirect(): void {

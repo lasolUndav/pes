@@ -1,6 +1,6 @@
 import { RouterModule, Routes } from '@angular/router'
 
-import { AuthGuard } from './shared/auth.guard'
+import { AuthGuard } from './auth/auth-guard.service'
 import { LoginComponent } from './login/login.component'
 import { NgModule } from '@angular/core'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
@@ -8,8 +8,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 const routes: Routes = [
   {
     path: 'home',
-    redirectTo: 'admin/proveedores',
-    pathMatch: 'full',
+    loadChildren: 'app/pes-admin/pes-admin.module#PesAdminModule',
     canLoad: [AuthGuard],
   },
   { path: 'login', component: LoginComponent },

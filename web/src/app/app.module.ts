@@ -4,9 +4,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
 import { AngularFireModule } from 'angularfire2'
 import { AppComponent } from './app.component'
 import { AppRoutingModule } from './app-routing.module'
-
-import { AuthRoutingModule } from './shared/auth-routing.module'
-import { AuthService } from './shared/auth.service'
+import { AuthGuard } from './auth/auth-guard.service'
+import { AuthService } from './auth/auth.service'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { BrowserModule } from '@angular/platform-browser'
 import { CommonModule } from '@angular/common'
@@ -40,9 +39,8 @@ import { environment } from '../environments/environment'
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AuthRoutingModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
