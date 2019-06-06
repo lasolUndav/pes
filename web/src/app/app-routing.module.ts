@@ -8,8 +8,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: 'app/pes-admin/pes-admin.module#PesAdminModule',
-    canLoad: [AuthGuard],
+    redirectTo: 'admin/proveedores',
+    pathMatch: 'full',
   },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
