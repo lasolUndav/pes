@@ -1,55 +1,67 @@
 import * as firebase from 'firebase/app'
 
 import { BehaviorSubject, Observable, from } from 'rxjs'
-import { IAuthService, IAuthStatus, IServerAuthResponse } from './interfaces'
+import { IAuthService, IAuthStatus } from './interfaces'
 
 import { AngularFireAuth } from 'angularfire2/auth'
 import { CacheService } from './cache.service'
 import { Injectable } from '@angular/core'
 import { Role } from './role.enum'
-import { Router } from '@angular/router'
-import { auth } from 'firebase/app'
 import { map } from 'rxjs/operators'
 
-export const defaultAuthStatus = {
+export const defaultAuthStatus: IAuthStatus = {
   isAuthenticated: false,
   userRole: Role.None,
-  userId: null,
+  organizationName: '',
+}
+
+export const defaultOkAuthStatus: IAuthStatus = {
+  isAuthenticated: true,
+  userRole: Role.Admin,
+  organizationName: 'Los Pibes, Organización Social y Política',
 }
 
 @Injectable()
 export class AuthService extends CacheService implements IAuthService {
-  redirectUrl: string
-  private readonly authProvider: (
-    email: string,
-    password: string
-  ) => Observable<IServerAuthResponse>
-
   authStatus = new BehaviorSubject<IAuthStatus>(
     this.getItem('authStatus') || defaultAuthStatus
   )
-  constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
+  constructor(private firebaseAuth: AngularFireAuth) {
     super()
   }
   login(email: string, pass: string): Observable<IAuthStatus> {
     return from(<Promise<any>>(
-      this.firebaseAuth.auth.signInWithEmailAndPassword(email, pass).then(
-        value => {
-          console.log(value)
-          this.setItem('authStatus', { isAuthenticated: true })
-          return { isAuthenticated: true } as IAuthStatus
-        },
-        err => this.onError(err)
-      )
-    ))
+      this.firebaseAuth.auth
+        .signInWithEmailAndPassword(email, pass)
+        .then(
+          loginOkResponse => this.onFirebaseLoginSuccessfull(loginOkResponse),
+          loginErrorResponse => this.onFirebaseLoginFail(loginErrorResponse)
+        )
+    )).pipe(
+      map(() => {
+        return this.getItem('authStatus') as IAuthStatus
+      })
+    )
   }
 
   logout() {
-    this.firebaseAuth.auth.signOut()
+    this.firebaseAuth.auth.signOut().then(r => {
+      this.setItem('authStatus', defaultAuthStatus)
+    })
+  }
+
+  onFirebaseLoginSuccessfull(firebaseResponse) {
+    console.log('Login ok', firebaseResponse)
+    this.setItem('authStatus', defaultOkAuthStatus)
+  }
+
+  onFirebaseLoginFail(firebaseResponse) {
+    console.log('Login fail', firebaseResponse)
+    this.setItem('authStatus', defaultAuthStatus)
   }
 
   onError(err) {
-    console.log('fallo el login')
-    this.setItem('authStatus', { isAuthenticated: false })
+    console.log('Error al intentar autenticar credenciales en el servidor', err)
+    this.setItem('authStatus', defaultAuthStatus)
   }
 }

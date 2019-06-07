@@ -42,18 +42,16 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   protected checkLogin(route?: ActivatedRouteSnapshot) {
     let params: any
-    console.log('Chequeando Login')
     if (route) {
       params = { redirectUrl: route.pathFromRoot.map(r => r.url).join('/') }
     }
 
     if (!this.currentAuthStatus.isAuthenticated) {
       this.showAlert(this.currentAuthStatus.isAuthenticated)
-      console.log('No esta logeado!')
       this.router.navigate(['login'])
       return false
     }
-    console.log('Esta logeado!')
+
     return true
   }
 

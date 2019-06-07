@@ -1,58 +1,62 @@
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms'
+import { Component, OnInit } from '@angular/core'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 import { AuthService } from '../auth/auth.service'
-import { Component } from '@angular/core'
-import { ErrorStateMatcher } from '@angular/material/core'
 import { Router } from '@angular/router'
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(
-    control: FormControl | null,
-    form: FormGroupDirective | NgForm | null
-  ): boolean {
-    const isSubmitted = form && form.submitted
-    return !!(
-      control &&
-      control.invalid &&
-      (control.dirty || control.touched || isSubmitted)
-    )
-  }
-}
+export const OptionalTextValidation = [Validators.minLength(2), Validators.maxLength(50)]
+export const RequiredTextValidation = OptionalTextValidation.concat([Validators.required])
+export const EmailValidation = [Validators.required, Validators.email]
+export const PasswordValidation = [Validators.required]
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
-  hide = true
-  passFormControl = new FormControl('', [Validators.required])
-  emailFormControl = new FormControl('', [Validators.required, Validators.email])
-  matcherEmail = new MyErrorStateMatcher()
-  matcherPass = new MyErrorStateMatcher()
+export class LoginComponent implements OnInit {
+  loginForm: FormGroup
+  loginErrorMessage = ''
+  loginErrorHelpMessage = ''
 
-  password: string
-  email: string
+  constructor(
+    public authService: AuthService,
+    public router: Router,
+    private formBuilder: FormBuilder
+  ) {}
 
-  constructor(public authService: AuthService, public router: Router) {}
+  ngOnInit(): void {
+    this.buildLoginForm()
+  }
 
-  onLogin(): void {
-    this.authService.login(this.email, this.password).subscribe(
-      authStatus => {
-        if (authStatus.isAuthenticated) {
-          this.onLoginRedirect()
+  login(submittedForm: FormGroup): void {
+    this.authService
+      .login(submittedForm.value.email, submittedForm.value.password)
+      .subscribe(
+        authStatus => {
+          if (authStatus.isAuthenticated) {
+            this.router.navigate(['home'])
+          } else {
+            this.loginErrorMessage = `Credenciales no reconocidas :(`
+            this.loginErrorHelpMessage = `Intenta de nuevo`
+          }
+        },
+        err => {
+          console.log('error en el servidor', err)
+          this.loginErrorMessage = 'Error en el servidor'
+          this.loginErrorHelpMessage = `Podes contactarnos en lasol@undav.edu.ar`
         }
-      },
-      err => this.onReload()
-    )
+      )
   }
 
-  onLoginRedirect(): void {
-    this.router.navigate(['home'])
-  }
-  onReload(): void {
-    this.router.navigate(['login'])
-  }
   logout() {
     this.authService.logout()
+  }
+
+  buildLoginForm() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', EmailValidation],
+      password: ['', PasswordValidation],
+    })
   }
 }

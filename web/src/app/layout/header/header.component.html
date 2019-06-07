@@ -5,7 +5,7 @@
   <span class="fill-remaining-space"></span>
   <span *ngIf="authStatus.isAuthenticated" fxLayoutAlign='center center' fxShow fxHide.xs='true' fxShow.gt-xs='true'
     class='mat-display-1 titulo sombra'>
-    Los Pibes, Organización Social y Política
+    {{authStatus.organizationName}}
   </span>
   <span fxLayoutAlign='center center' fxShow fxHide.xs='false' fxShow.gt-xs='false' class='mat-title titulo sombra'>
     Los Pibes<br>
