@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router'
 
+import { AuthGuard } from '../auth/auth-guard.service'
 import { NgModule } from '@angular/core'
 import { PesAdminComponent } from './pes-admin.component'
 import { ProviderComponent } from './provider/provider.component'
@@ -10,18 +11,21 @@ const routes: Routes = [
     path: '',
     component: PesAdminComponent,
     children: [
-      { path: '', redirectTo: '/admin/proveedores', pathMatch: 'full' },
+      { path: '', redirectTo: 'admin/proveedores', pathMatch: 'full' },
       {
         path: 'admin/proveedores',
         component: ProvidersComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'admin/proveedor',
         component: ProviderComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'admin/proveedor/:id',
         component: ProviderComponent,
+        canActivate: [AuthGuard],
       },
     ],
   },
