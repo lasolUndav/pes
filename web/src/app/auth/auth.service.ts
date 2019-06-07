@@ -26,9 +26,12 @@ export class AuthService extends CacheService implements IAuthService {
   authStatus = new BehaviorSubject<IAuthStatus>(
     this.getItem('authStatus') || defaultAuthStatus
   )
+
   constructor(private firebaseAuth: AngularFireAuth) {
     super()
+    this.authStatus.subscribe(authStatus => this.setItem('authStatus', authStatus))
   }
+
   login(email: string, pass: string): Observable<IAuthStatus> {
     return from(<Promise<any>>(
       this.firebaseAuth.auth
@@ -46,22 +49,23 @@ export class AuthService extends CacheService implements IAuthService {
 
   logout() {
     this.firebaseAuth.auth.signOut().then(r => {
-      this.setItem('authStatus', defaultAuthStatus)
+      this.authStatus.next(defaultAuthStatus)
     })
   }
 
   onFirebaseLoginSuccessfull(firebaseResponse) {
     console.log('Login ok', firebaseResponse)
-    this.setItem('authStatus', defaultOkAuthStatus)
+    this.authStatus.next(defaultOkAuthStatus)
   }
 
   onFirebaseLoginFail(firebaseResponse) {
     console.log('Login fail', firebaseResponse)
-    this.setItem('authStatus', defaultAuthStatus)
+    this.authStatus.next(defaultAuthStatus)
   }
 
   onError(err) {
     console.log('Error al intentar autenticar credenciales en el servidor', err)
     this.setItem('authStatus', defaultAuthStatus)
+    this.authStatus.next(defaultAuthStatus)
   }
 }
