@@ -51,7 +51,9 @@ export class ProvidersComponent implements OnInit {
     selBox.style.top = '0'
     selBox.style.opacity = '0'
     selBox.value =
-      val.cuilCuit.length === 0 ? val.numAccount : `${val.cuilCuit}\n${val.numAccount}`
+      val.cuilCuit.length === 0
+        ? val.numeroCuenta
+        : `${val.cuilCuit}\n${val.numeroCuenta}`
     document.body.appendChild(selBox)
     selBox.focus()
     selBox.select()
@@ -62,7 +64,7 @@ export class ProvidersComponent implements OnInit {
   openDialog(provider) {
     const dialogRef = this.dialog.open(ConfirmDeleteProviderComponent, {
       width: '500px',
-      data: provider.name,
+      data: provider.nombre,
     })
     dialogRef.afterClosed().subscribe(result => {
       if (result == 'SI') {
@@ -80,9 +82,9 @@ export class ProvidersComponent implements OnInit {
 
   private filterProvider(provider: Provider, filterValue: string) {
     filterValue = filterValue.toLowerCase().trim()
-    const porNombre = provider.name.toLowerCase()
-    const porRubro = provider.tagsItem.toLowerCase()
-    const porContacto = provider.contactName.toLowerCase()
+    const porNombre = provider.nombre.toLowerCase()
+    const porRubro = provider.tagsRubro.toLowerCase()
+    const porContacto = provider.nombreContacto.toLowerCase()
     return (
       porNombre.indexOf(filterValue) >= 0 ||
       porRubro.indexOf(filterValue) >= 0 ||

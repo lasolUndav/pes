@@ -1,5 +1,4 @@
 .iconCenter {
-  vertical-align: middle;
   text-align: center;
   font-size: 18px;
 }
@@ -9,13 +8,19 @@
   width: 100%;
 }
 
-.contenedor {
+.head-content-card {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 
-.proveedores {
-  min-height: 300px;
+.content-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search-content {
+  width: 100%;
 }
 
 .mat-chip {
@@ -33,4 +38,11 @@
 
 .buttonEdit {
   margin-right: 3px;
+}
+
+.buttonAdd {
+  padding: 0px;
+  width: 110px;
+  height: 50px;
+  margin-top: auto;
 }

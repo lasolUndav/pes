@@ -22,6 +22,11 @@ const routes: Routes = [
         component: ProviderComponent,
         canActivate: [AuthGuard],
       },
+      {
+        path: 'admin/proveedor/:id',
+        component: ProviderComponent,
+        canActivate: [AuthGuard],
+      },
     ],
   },
 ]

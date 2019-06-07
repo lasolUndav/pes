@@ -8,7 +8,6 @@ import { map } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class ServiceProvider {
-  listProviders = Array<Provider>()
   providersRef: AngularFireList<Provider> = null
   providers: any
 
@@ -30,7 +29,12 @@ export class ServiceProvider {
         onProvidersLoaded(listProviders)
       }, this.handleError)
   }
-
+  getProvider(key: string, onLoaded) {
+    return this.db
+      .object(`proveedores/${key}`)
+      .snapshotChanges()
+      .subscribe(data => onLoaded(data.payload.val()))
+  }
   createProvider(provider: Provider): void {
     this.providersRef.push(provider)
   }
