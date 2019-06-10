@@ -51,7 +51,7 @@ export class AuthService extends CacheService implements IAuthService {
   }
   logout() {
     this.firebaseAuth.auth.signOut()
-    this.router.navigate(['login'])gi
+    this.router.navigate(['login'])
   }
   onError(err) {
     console.log('fallo el login')
