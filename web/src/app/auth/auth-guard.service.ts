@@ -54,6 +54,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
       return false
     }
     console.log('Esta logeado!')
+    this.router.navigate([''])
     return true
   }
 

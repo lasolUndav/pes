@@ -45,6 +45,7 @@ export class LoginComponent {
       if (authStatus.isAuthenticated) {
         this.onLoginRedirect()
       }
+      err => this.onReload()
     })
   }
 

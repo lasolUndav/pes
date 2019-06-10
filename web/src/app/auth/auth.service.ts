@@ -18,7 +18,6 @@ export const defaultAuthStatus = {
 
 @Injectable()
 export class AuthService extends CacheService implements IAuthService {
-  redirectUrl: string
   private readonly authProvider: (
     email: string,
     password: string
@@ -52,7 +51,7 @@ export class AuthService extends CacheService implements IAuthService {
   }
   logout() {
     this.firebaseAuth.auth.signOut()
-    this.router.navigate(['login'])
+    this.router.navigate(['login'])gi
   }
   onError(err) {
     console.log('fallo el login')
