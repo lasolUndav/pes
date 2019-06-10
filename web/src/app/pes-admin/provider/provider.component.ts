@@ -12,7 +12,7 @@ import { ServiceProvider } from '../shared/service-provider'
   styleUrls: ['./provider.component.css'],
 })
 export class ProviderComponent implements OnInit {
-  checkeado = false
+  continueAdding = false
   visible = true
   selectable = true
   removable = true
@@ -23,6 +23,8 @@ export class ProviderComponent implements OnInit {
   service: ServiceProvider
   isNew: boolean
   providerKey: string
+  ultimoProveedorCargado: string
+  formTitle: string
 
   constructor(
     private route: Router,
@@ -31,6 +33,7 @@ export class ProviderComponent implements OnInit {
   ) {
     this.service = serviceProvider
     this.providerInEdition = null
+    this.ultimoProveedorCargado = null
   }
 
   ngOnInit(): void {
@@ -41,21 +44,25 @@ export class ProviderComponent implements OnInit {
       this.setupFormEditProvider()
     }
   }
-
-  onBack(): void {
+  backToTheListProviders(): void {
     this.route.navigate(['/admin/proveedores'])
+  }
+  onContinuar(): void {
+    this.ngOnInit()
   }
 
   setupFormEditProvider() {
     this.isNew = false
-    var scope = this
-    this.serviceProvider.getProvider(this.providerKey, function(data) {
-      scope.providerInEdition = new Provider(data)
+    this.serviceProvider.getProvider(this.providerKey, data => {
+      this.providerInEdition = new Provider(data)
+      this.formTitle = `Editar proveedor ${this.providerInEdition.nombre}`
     })
   }
 
   setupFormNewProvider() {
     this.isNew = true
+    this.formTitle = 'Agregar nuevo proveedor'
+    this.continueAdding = false
     this.providerInEdition = new Provider({
       nombre: '',
       localidad: '',
@@ -77,13 +84,25 @@ export class ProviderComponent implements OnInit {
     const keyout = 'key'
     delete jsonProvider[keyout]
     if (this.isNew) {
-      this.service.createProvider(jsonProvider)
+      this.service.createProvider(jsonProvider, () => {
+        this.ultimoProveedorCargado = jsonProvider.nombre
+        if (this.continueAdding) {
+          this.setupFormNewProvider()
+          this.scroll()
+        } else {
+          this.onBack()
+        }
+      })
     } else {
       this.service.updateProvider(this.providerKey, jsonProvider)
       console.log(provider)
     }
-    this.onBack()
   }
+
+  scroll() {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   mayusculasProvider(provider: Provider) {
     provider.nombre = this.mayusculaPrimera(provider.nombre)
     provider.nombreContacto = this.mayusculaPrimera(provider.nombreContacto)

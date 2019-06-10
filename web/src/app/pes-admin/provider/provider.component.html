@@ -1,5 +1,6 @@
-<div class="cabecera">
-  <h1>Datos Proveedor</h1>
+<div class="head">
+  <h2>{{formTitle}}</h2>
+  <span class="lastProvider" *ngIf="ultimoProveedorCargado">{{ultimoProveedorCargado}} ha sido creado!</span>
 </div>
 <mat-spinner class="spinner" *ngIf="providerInEdition == null"></mat-spinner>
 <form class="form" *ngIf="providerInEdition != null">
@@ -71,15 +72,16 @@
     </mat-chip-list>
     <mat-icon matSuffix>mode_edit</mat-icon>
   </mat-form-field>
-  <div class="pie">
+  <div class="foot">
     <section>
-      <mat-checkbox [(ngModel)]="checkeado" [ngModelOptions]="{standalone: true}">Continuar</mat-checkbox>
+      <mat-checkbox *ngIf="isNew" [(ngModel)]="continueAdding" [ngModelOptions]="{standalone: true}">Continuar
+        agregando
+      </mat-checkbox>
     </section>
     &nbsp; &nbsp; &nbsp;
-    <button mat-raised-button color="accent" [disabled]="!checkeado"
-      (click)="saveProvider(providerInEdition)">Guardar</button>
+    <button mat-raised-button color="accent" (click)="saveProvider(providerInEdition)">Guardar</button>
     &nbsp; &nbsp; &nbsp;
-    <button mat-raised-button (click)='onBack()' color="primary">Cancelar</button>
+    <button mat-raised-button (click)='backToTheListProviders()' color="primary">Cancelar</button>
     &nbsp; &nbsp; &nbsp;
   </div>
 
