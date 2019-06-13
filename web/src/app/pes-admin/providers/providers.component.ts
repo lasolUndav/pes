@@ -91,4 +91,9 @@ export class ProvidersComponent implements OnInit {
       porContacto.indexOf(filterValue) >= 0
     )
   }
+  getCustomTagSplit(tags: string) {
+    if (tags != '') {
+      return tags.split(',')
+    }
+  }
 }

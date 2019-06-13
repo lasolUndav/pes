@@ -48,7 +48,7 @@
         </p>
         <p mat-line>
           <mat-chip-list class="no-wrap">
-            <mat-chip class="no-wrap" *ngFor="let tag of provider.tagsRubro.split(',')" color="accent" selected>
+            <mat-chip class="no-wrap" *ngFor="let tag of getCustomTagSplit(provider.tagsRubro)" color="accent" selected>
               {{tag}}
             </mat-chip>
           </mat-chip-list>
