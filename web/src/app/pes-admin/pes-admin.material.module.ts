@@ -5,6 +5,7 @@ import {
   MatCheckboxModule,
   MatChipsModule,
   MatDialogModule,
+  MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -34,6 +35,7 @@ import { NgModule } from '@angular/core'
     MatProgressSpinnerModule,
     MatAutocompleteModule,
     MatCheckboxModule,
+    MatExpansionModule,
   ],
   exports: [
     MatButtonModule,
@@ -50,6 +52,7 @@ import { NgModule } from '@angular/core'
     MatProgressSpinnerModule,
     MatAutocompleteModule,
     MatCheckboxModule,
+    MatExpansionModule,
   ],
 })
-export class PesAdminMaterialModule {}
+export class PesAdminMaterialModule { }

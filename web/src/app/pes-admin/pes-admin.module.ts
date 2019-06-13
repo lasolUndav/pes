@@ -1,5 +1,6 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
+import { AgreementComponent } from './agreement/agreement.component'
 import { AngularFireAuthModule } from 'angularfire2/auth'
 import { AngularFireDatabaseModule } from 'angularfire2/database'
 import { AngularFireModule } from 'angularfire2'
@@ -24,6 +25,7 @@ import { environment } from '../../environments/environment'
     PesAdminComponent,
     ConfirmDeleteProviderComponent,
     ProviderDetailComponent,
+    AgreementComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -36,8 +38,8 @@ import { environment } from '../../environments/environment'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    FlexLayoutModule,
+    FlexLayoutModule
   ],
   entryComponents: [ConfirmDeleteProviderComponent, ProviderDetailComponent],
 })
-export class PesAdminModule {}
+export class PesAdminModule { }
