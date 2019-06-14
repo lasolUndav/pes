@@ -16,7 +16,7 @@
     <mat-list class='mat-typography' *ngIf="providersFiltrados!=null" class="content-list">
       <mat-list-item *ngFor="let provider of providersFiltrados">
         <button class="buttonInfo" mat-mini-fab matTooltip="Más información" (click)="openInfo(provider)">
-          <mat-icon>search</mat-icon>
+          <mat-icon>info</mat-icon>
         </button>
         &nbsp; &nbsp; &nbsp;
         <button class="buttonEdit" mat-mini-fab matTooltip="Editar"
@@ -28,7 +28,15 @@
           <mat-icon>delete_outline</mat-icon>
         </button>
         <p mat-line>
-          <mat-icon class="iconCenter">home_outline</mat-icon><span class='mat-body-strong'>{{provider.nombre}}</span>
+          <mat-icon class="iconCenter">home_outline</mat-icon>
+          <span class='mat-body-strong'>{{provider.nombre}} </span>
+          <button mat-icon-button matTooltip="Copiar" [matMenuTriggerFor]="menu">
+            <mat-icon class="iconCenter">file_copy</mat-icon>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="copyDataProvider(provider)"> Copiar proveedor</button>
+              <button mat-menu-item (click)="copyAccountData(provider)">Copiar cuenta</button>
+            </mat-menu>
+          </button>
         </p>
         <p mat-line>
           <mat-icon class="iconCenter">contact_phone</mat-icon>
@@ -42,9 +50,6 @@
         <p *ngIf="provider.numeroCuenta" mat-line>
           <mat-icon class="iconCenter">local_atm</mat-icon>
           <span class='mat-body-strong'>NroCuenta:</span> <span class='mat-body'>{{provider.numeroCuenta}}</span>
-          <button mat-icon-button matTooltip="Copiar datos de cuenta" (click)="copyAccountData(provider)">
-            <mat-icon class="iconCenter">file_copy</mat-icon>
-          </button>
         </p>
         <p mat-line>
           <mat-chip-list class="no-wrap">
