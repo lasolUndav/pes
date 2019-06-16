@@ -12,46 +12,11 @@
         </mat-expansion-panel-header>
         <p mat-line>
           <span class='mat-body-strong'>Periodo: </span>
-          <span>agregar convenio</span>
+          <span>{{agreement.periodo}}</span>
         </p>
         <p mat-line>
           <span class='mat-body-strong'>Monto: </span>
-        </p>
-        <p mat-line>
-          <span class='mat-body-strong'>Convenio: </span>
-          <a routerLink="admin/convenio">pdf</a>
-        </p>
-      </mat-expansion-panel>
-      <mat-expansion-panel (opened)="panelOpenAgreement = true" (closed)="panelOpenAgreement = false">
-        <mat-expansion-panel-header style="font-weight: bold" class="mat-typography; bold">
-          <mat-panel-title>
-            Nombre convenio prueba 1
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p mat-line>
-          <span class='mat-body-strong'>Periodo: </span>
-          <span>agregar convenio</span>
-        </p>
-        <p mat-line>
-          <span class='mat-body-strong'>Monto: </span>
-        </p>
-        <p mat-line>
-          <span class='mat-body-strong'>Convenio: </span>
-          <a routerLink="admin/convenio">pdf</a>
-        </p>
-      </mat-expansion-panel>
-      <mat-expansion-panel (opened)="panelOpenAgreement = true" (closed)="panelOpenAgreement = false">
-        <mat-expansion-panel-header style="font-weight: bold" class="mat-typography; bold">
-          <mat-panel-title>
-            Nombre convenio prueba 2
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p mat-line>
-          <span class='mat-body-strong'>Periodo: </span>
-          <span>agregar convenio</span>
-        </p>
-        <p mat-line>
-          <span class='mat-body-strong'>Monto: </span>
+          <span>{{agreement.monto}}</span>
         </p>
         <p mat-line>
           <span class='mat-body-strong'>Convenio: </span>

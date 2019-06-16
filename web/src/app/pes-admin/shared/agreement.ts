@@ -7,7 +7,7 @@ export class Agreement {
   constructor(result) {
     this.key = result.key
     this.nombre = result.nombre
-    this.periodo = result.periodo
+    this.periodo = result.peridodo
     this.monto = result.monto
   }
 }
