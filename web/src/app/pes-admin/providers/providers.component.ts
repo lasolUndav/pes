@@ -116,7 +116,7 @@ export class ProvidersComponent implements OnInit {
     )
   }
   getCustomTagSplit(tags: string) {
-    if (tags != '') {
+    if (tags !== '') {
       return tags.split(',')
     }
   }
