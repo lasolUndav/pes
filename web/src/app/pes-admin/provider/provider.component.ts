@@ -13,7 +13,6 @@ import { ServiceProvider } from '../shared/service-provider'
 })
 export class ProviderComponent implements OnInit {
   continueAdding = false
-  visible = true
   selectable = true
   removable = true
   addOnBlur = true
@@ -44,11 +43,8 @@ export class ProviderComponent implements OnInit {
       this.setupFormEditProvider()
     }
   }
-  backToTheListProviders(): void {
+  backToProviders(): void {
     this.route.navigate(['/admin/proveedores'])
-  }
-  onContinuar(): void {
-    this.ngOnInit()
   }
 
   setupFormEditProvider() {
@@ -62,7 +58,6 @@ export class ProviderComponent implements OnInit {
   setupFormNewProvider() {
     this.isNew = true
     this.formTitle = 'Agregar nuevo proveedor'
-    this.continueAdding = false
     this.providerInEdition = new Provider({
       nombre: '',
       localidad: '',
@@ -88,9 +83,9 @@ export class ProviderComponent implements OnInit {
         this.ultimoProveedorCargado = jsonProvider.nombre
         if (this.continueAdding) {
           this.setupFormNewProvider()
-          this.scroll()
+          this.scrollToTop()
         } else {
-          this.onBack()
+          this.backToProviders()
         }
       })
     } else {
@@ -99,7 +94,7 @@ export class ProviderComponent implements OnInit {
     }
   }
 
-  scroll() {
+  scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
