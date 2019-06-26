@@ -67,9 +67,8 @@
           {{item}}
           <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
         </mat-chip>
-        <input placeholder="Nueva mercadería" [matChipInputFor]="chipList"
-          [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-          (matChipInputTokenEnd)="add($event)">
+        <input placeholder="Rubros" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
       </mat-chip-list>
       <mat-icon matSuffix>mode_edit</mat-icon>
     </mat-form-field>
@@ -80,9 +79,9 @@
         </mat-checkbox>
       </section>
       &nbsp; &nbsp; &nbsp;
-      <button mat-raised-button color="accent" (click)="saveProvider(providerInEdition)">Guardar</button>
+      <button mat-raised-button color="primary" (click)="saveProvider(providerInEdition)">Guardar</button>
       &nbsp; &nbsp; &nbsp;
-      <button mat-raised-button (click)='backToTheListProviders()' color="primary">Cancelar</button>
+      <button mat-raised-button (click)='backToProviders()' color="accent">Cancelar</button>
       &nbsp; &nbsp; &nbsp;
     </div>
 
