@@ -1,89 +1,91 @@
-<div class="head">
-  <h2>{{formTitle}}</h2>
-  <span class="lastProvider" *ngIf="ultimoProveedorCargado">{{ultimoProveedorCargado}} ha sido creado!</span>
-</div>
-<mat-spinner class="spinner" *ngIf="providerInEdition == null"></mat-spinner>
-<form class="form" *ngIf="providerInEdition != null">
-  <mat-form-field class="full-width">
-    <input type="text" name="nombre" placeholder="Nombre" matInput [(ngModel)]="providerInEdition.nombre">
-    <mat-icon matSuffix>mode_edit</mat-icon>
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input type="text" name="localidad" placeholder="Localidad " matInput [(ngModel)]="providerInEdition.localidad">
-    <mat-icon matSuffix>mode_edit</mat-icon>
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input type="text" name="provincia" placeholder="Provincia" matInput [(ngModel)]="providerInEdition.provincia">
-    <mat-icon matSuffix>mode_edit</mat-icon>
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input type="text" name="cuitCuil" placeholder="Cuit/Cuil" matInput [(ngModel)]="providerInEdition.cuilCuit">
-    <mat-icon matSuffix>mode_edit</mat-icon>
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input type="text" name="numeroCuenta" placeholder="Numero de cuenta" matInput
-      [(ngModel)]="providerInEdition.numeroCuenta">
-    <mat-icon matSuffix>mode_edit</mat-icon>
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input type="text" name="nombreContacto" placeholder="Nombre de contacto" matInput
-      [(ngModel)]="providerInEdition.nombreContacto">
-    <mat-icon matSuffix>mode_edit</mat-icon>
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input type="text" name="apellidoContacto" placeholder="Apellido de contacto" matInput
-      [(ngModel)]="providerInEdition.apellidoContacto">
-    <mat-icon matSuffix>mode_edit</mat-icon>
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input type="text" name="telefonoContacto" placeholder="Teléfono de contacto" matInput
-      [(ngModel)]="providerInEdition.telefonoContacto">
-    <mat-icon matSuffix>mode_edit</mat-icon>
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input type="text" name="mail" placeholder="Email de contacto " matInput [(ngModel)]="providerInEdition.mail">
-    <mat-icon matSuffix>mode_edit</mat-icon>
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input type="text" name="informacionAdicional" placeholder="Informacion adicional" matInput
-      [(ngModel)]="providerInEdition.informacionAdicional">
-    <mat-icon matSuffix>mode_edit</mat-icon>
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <mat-chip-list #chipList aria-label="Item selection">
-      <mat-chip *ngFor="let item of getCustomTagSplit(providerInEdition.tagsRubro)" [selectable]="selectable"
-        [removable]="removable" (removed)="remove(item)">
-        {{item}}
-        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-      </mat-chip>
-      <input placeholder="Nueva mercadería" [matChipInputFor]="chipList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-        (matChipInputTokenEnd)="add($event)">
-    </mat-chip-list>
-    <mat-icon matSuffix>mode_edit</mat-icon>
-  </mat-form-field>
-  <div class="foot">
-    <section>
-      <mat-checkbox *ngIf="isNew" [(ngModel)]="continueAdding" [ngModelOptions]="{standalone: true}">Continuar
-        agregando
-      </mat-checkbox>
-    </section>
-    &nbsp; &nbsp; &nbsp;
-    <button mat-raised-button color="accent" (click)="saveProvider(providerInEdition)">Guardar</button>
-    &nbsp; &nbsp; &nbsp;
-    <button mat-raised-button (click)='backToTheListProviders()' color="primary">Cancelar</button>
-    &nbsp; &nbsp; &nbsp;
+<mat-card>
+  <div class="head">
+    <h2>{{formTitle}}</h2>
+    <span class="lastProvider" *ngIf="ultimoProveedorCargado">{{ultimoProveedorCargado}} ha sido creado!</span>
   </div>
+  <mat-spinner class="spinner" *ngIf="providerInEdition == null"></mat-spinner>
+  <form class="form" *ngIf="providerInEdition != null">
+    <mat-form-field class="full-width">
+      <input type="text" name="nombre" placeholder="Nombre" matInput [(ngModel)]="providerInEdition.nombre">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
 
+    <mat-form-field class="full-width">
+      <input type="text" name="localidad" placeholder="Localidad " matInput [(ngModel)]="providerInEdition.localidad">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
 
-</form>
+    <mat-form-field class="full-width">
+      <input type="text" name="provincia" placeholder="Provincia" matInput [(ngModel)]="providerInEdition.provincia">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="text" name="cuitCuil" placeholder="Cuit/Cuil" matInput [(ngModel)]="providerInEdition.cuilCuit">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="text" name="numeroCuenta" placeholder="Numero de cuenta" matInput
+        [(ngModel)]="providerInEdition.numeroCuenta">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="text" name="nombreContacto" placeholder="Nombre de contacto" matInput
+        [(ngModel)]="providerInEdition.nombreContacto">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="text" name="apellidoContacto" placeholder="Apellido de contacto" matInput
+        [(ngModel)]="providerInEdition.apellidoContacto">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="text" name="telefonoContacto" placeholder="Teléfono de contacto" matInput
+        [(ngModel)]="providerInEdition.telefonoContacto">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="text" name="mail" placeholder="Email de contacto " matInput [(ngModel)]="providerInEdition.mail">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="text" name="informacionAdicional" placeholder="Informacion adicional" matInput
+        [(ngModel)]="providerInEdition.informacionAdicional">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-chip-list #chipList aria-label="Item selection">
+        <mat-chip *ngFor="let item of getCustomTagSplit(providerInEdition.tagsRubro)" [selectable]="selectable"
+          [removable]="removable" (removed)="remove(item)">
+          {{item}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="Nueva mercadería" [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+    <div class="foot">
+      <section>
+        <mat-checkbox *ngIf="isNew" [(ngModel)]="continueAdding" [ngModelOptions]="{standalone: true}">Continuar
+          agregando
+        </mat-checkbox>
+      </section>
+      &nbsp; &nbsp; &nbsp;
+      <button mat-raised-button color="accent" (click)="saveProvider(providerInEdition)">Guardar</button>
+      &nbsp; &nbsp; &nbsp;
+      <button mat-raised-button (click)='backToTheListProviders()' color="primary">Cancelar</button>
+      &nbsp; &nbsp; &nbsp;
+    </div>
+
+  </form>
+
+</mat-card>
