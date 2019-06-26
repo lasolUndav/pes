@@ -1,8 +1,8 @@
 <mat-sidenav-container class="container">
   <mat-sidenav #snav mode="side">
     <button mat-button>Proveedores</button>
-  <br>
-    <button mat-raised-button type="submit" color="primary" (click)="logout()">LOGOUT</button>
+    <br>
+    <button mat-stroked-button (click)="logout()">LOGOUT</button>
   </mat-sidenav>
   <mat-sidenav-content>
     <button mat-icon-button (click)="snav.toggle()">
