@@ -44,21 +44,45 @@ export class ProvidersComponent implements OnInit {
     }
   }
 
-  copyAccountData(val: Provider) {
+  copyAccountData(provider: Provider) {
+    this.copyData(this.getAccountInformation(provider))
+  }
+
+  copyData(data: string) {
     const selBox = document.createElement('textarea')
     selBox.style.position = 'fixed'
     selBox.style.left = '0'
     selBox.style.top = '0'
     selBox.style.opacity = '0'
-    selBox.value =
-      val.cuilCuit.length === 0
-        ? val.numeroCuenta
-        : `${val.cuilCuit}\n${val.numeroCuenta}`
+    selBox.value = data
     document.body.appendChild(selBox)
     selBox.focus()
     selBox.select()
     document.execCommand('copy')
     document.body.removeChild(selBox)
+  }
+
+  getAccountInformation(provider: Provider) {
+    const accountData = `Cuil\Cuit: ${
+      provider.cuilCuit.length === 0 ? '-' : provider.cuilCuit
+    }\nNro Cuenta: ${provider.numeroCuenta.length === 0 ? '-' : provider.numeroCuenta}`
+    return accountData
+  }
+
+  getContactData(provider: Provider) {
+    const contactData = `Nombre Contacto: ${
+      provider.nombreContacto.length === 0 ? '-' : provider.nombreContacto
+    }\nTelefono: ${
+      provider.telefonoContacto.length === 0 ? '-' : provider.telefonoContacto
+    }\nMail: ${provider.mail.length === 0 ? '-' : provider.mail}\n`
+    return contactData
+  }
+
+  copyDataProvider(provider: Provider) {
+    const providerData = `${provider.nombre}\n${this.getContactData(
+      provider
+    )}${this.getAccountInformation(provider)}`
+    this.copyData(providerData)
   }
 
   openDialog(provider) {
@@ -90,5 +114,10 @@ export class ProvidersComponent implements OnInit {
       porRubro.indexOf(filterValue) >= 0 ||
       porContacto.indexOf(filterValue) >= 0
     )
+  }
+  getCustomTagSplit(tags: string) {
+    if (tags != '') {
+      return tags.split(',')
+    }
   }
 }
