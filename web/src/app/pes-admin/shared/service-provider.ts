@@ -35,8 +35,8 @@ export class ServiceProvider {
       .snapshotChanges()
       .subscribe(data => onLoaded(data.payload.val()))
   }
-  createProvider(provider: Provider): void {
-    this.providersRef.push(provider)
+  createProvider(provider: Provider, onSaved): void {
+    this.providersRef.push(provider).then(onSaved)
   }
 
   updateProvider(key: string, value: any): void {
