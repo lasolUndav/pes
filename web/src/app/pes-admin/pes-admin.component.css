@@ -7,3 +7,14 @@
   align-content: center;
   align-items: center;
 }
+
+.menuItem {
+  margin: 5px;
+}
+
+.logoutMenuItem {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
