@@ -15,8 +15,8 @@
     </div>
     <div class='mat-typography' *ngIf="providersFiltrados!=null">
       <div *ngFor="let provider of providersFiltrados">
-        <mat-card-content class="box">
-          <div class="box1">
+        <mat-card-content class="box providerBoxItem">
+          <div class="box1" fxLayoutAlign="center center">
             <button class="buttonInfo" mat-mini-fab matTooltip="Más información" (click)="openInfo(provider)">
               <mat-icon>search</mat-icon>
             </button>
