@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 import { Agreement } from '../shared/agreement'
 import { ServiceAgreement } from '../shared/service-agreement'
@@ -6,10 +6,10 @@ import { ServiceAgreement } from '../shared/service-agreement'
 @Component({
   selector: 'app-agreement',
   templateUrl: './agreement.component.html',
-  styleUrls: ['./agreement.component.css']
+  styleUrls: ['./agreement.component.css'],
 })
 export class AgreementComponent implements OnInit {
-  panelOpenAgreement = false;
+  panelOpenAgreement = false
   service: ServiceAgreement
   agreements: Array<Agreement>
   constructor(serviceAgreement: ServiceAgreement) {
@@ -18,9 +18,8 @@ export class AgreementComponent implements OnInit {
 
   ngOnInit() {
     var scope = this
-    this.service.getAgreement(function (agreements) {
+    this.service.getAgreement(function(agreements) {
       scope.agreements = agreements
     })
   }
-
 }

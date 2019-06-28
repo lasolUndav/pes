@@ -38,8 +38,8 @@ import { environment } from '../../environments/environment'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
   entryComponents: [ConfirmDeleteProviderComponent, ProviderDetailComponent],
 })
-export class PesAdminModule { }
+export class PesAdminModule {}

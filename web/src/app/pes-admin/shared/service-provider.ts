@@ -23,7 +23,7 @@ export class ServiceProvider {
       )
       .subscribe(providers => {
         const listProviders = Array<Provider>()
-        providers.forEach(function (provider) {
+        providers.forEach(function(provider) {
           listProviders.push(new Provider(provider))
         })
         onProvidersLoaded(listProviders)
