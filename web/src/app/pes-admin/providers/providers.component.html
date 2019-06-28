@@ -34,6 +34,13 @@
             <p mat-line>
               <mat-icon class="iconCenter">home_outline</mat-icon><span
                 class='mat-body-strong'>{{provider.nombre}}</span>
+              <button mat-icon-button matTooltip="Copiar" [matMenuTriggerFor]="menu">
+                <mat-icon class="iconCenter">file_copy</mat-icon>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="copyDataProvider(provider)"> Copiar proveedor</button>
+                  <button mat-menu-item (click)="copyAccountData(provider)">Copiar cuenta</button>
+                </mat-menu>
+              </button>
             </p>
             <p mat-line>
               <mat-icon class="iconCenter">contact_phone</mat-icon>
@@ -47,9 +54,6 @@
             <p *ngIf="provider.numeroCuenta" mat-line>
               <mat-icon class="iconCenter">local_atm</mat-icon>
               <span class='mat-body-strong'>NroCuenta:</span> <span class='mat-body'>{{provider.numeroCuenta}}</span>
-              <button mat-icon-button matTooltip="Copiar datos de cuenta" (click)="copyAccountData(provider)">
-                <mat-icon class="iconCenter">file_copy</mat-icon>
-              </button>
             </p>
             <p mat-line>
               <mat-chip-list>

@@ -17,6 +17,7 @@ import { ProviderComponent } from './provider/provider.component'
 import { ProviderDetailComponent } from './providers/provider-detail/provider-detail.component'
 import { ProvidersComponent } from './providers/providers.component'
 import { environment } from '../../environments/environment'
+import { MatMenuModule } from '@angular/material'
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { environment } from '../../environments/environment'
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     FlexLayoutModule,
+    MatMenuModule,
   ],
   entryComponents: [ConfirmDeleteProviderComponent, ProviderDetailComponent],
 })
