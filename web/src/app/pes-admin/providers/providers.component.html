@@ -13,48 +13,54 @@
         <input class="search-content" matInput [formControl]="search" placeholder="Buscar a...">
       </mat-form-field>
     </div>
-    <mat-list class='mat-typography' *ngIf="providersFiltrados!=null" class="content-list">
-      <mat-list-item *ngFor="let provider of providersFiltrados">
-        <button class="buttonInfo" mat-mini-fab matTooltip="Más información" (click)="openInfo(provider)">
-          <mat-icon>search</mat-icon>
-        </button>
-        &nbsp; &nbsp; &nbsp;
-        <button class="buttonEdit" mat-mini-fab matTooltip="Editar"
-          [routerLink]="['/admin/proveedor',{id: provider.key} ]">
-          <mat-icon>edit</mat-icon>
-        </button>
-        &nbsp; &nbsp; &nbsp;
-        <button mat-mini-fab matTooltip="Eliminar" (click)="openDialog(provider)">
-          <mat-icon>delete_outline</mat-icon>
-        </button>
-        <p mat-line>
-          <mat-icon class="iconCenter">home_outline</mat-icon><span class='mat-body-strong'>{{provider.nombre}}</span>
-        </p>
-        <p mat-line>
-          <mat-icon class="iconCenter">contact_phone</mat-icon>
-          <span class='mat-body'>{{provider.nombreContacto}} &nbsp;{{provider.telefonoContacto}}</span>
-          <span> &nbsp;{{provider.mail}}</span>
-        </p>
-        <p *ngIf="provider.cuilCuit" mat-line>
-          <mat-icon class="iconCenter">person</mat-icon>
-          <span class='mat-body-strong'>Cuil/Cuit:</span> <span class='mat-body'>{{provider.cuilCuit}}</span>
-        </p>
-        <p *ngIf="provider.numeroCuenta" mat-line>
-          <mat-icon class="iconCenter">local_atm</mat-icon>
-          <span class='mat-body-strong'>NroCuenta:</span> <span class='mat-body'>{{provider.numeroCuenta}}</span>
-          <button mat-icon-button matTooltip="Copiar datos de cuenta" (click)="copyAccountData(provider)">
-            <mat-icon class="iconCenter">file_copy</mat-icon>
-          </button>
-        </p>
-        <p mat-line>
-          <mat-chip-list class="no-wrap">
-            <mat-chip class="no-wrap" *ngFor="let tag of provider.tagsRubro.split(',')" color="grey" selected>
-              {{tag}}
-            </mat-chip>
-          </mat-chip-list>
-        </p>
-        <mat-divider></mat-divider>
-      </mat-list-item>
-    </mat-list>
+    <div class='mat-typography' *ngIf="providersFiltrados!=null">
+      <div *ngFor="let provider of providersFiltrados">
+        <mat-card-content class="box">
+          <div class="box1">
+            <button class="buttonInfo" mat-mini-fab matTooltip="Más información" (click)="openInfo(provider)">
+              <mat-icon>search</mat-icon>
+            </button>
+            &nbsp; &nbsp; &nbsp;
+            <button class="buttonEdit" mat-mini-fab matTooltip="Editar"
+              [routerLink]="['/admin/proveedor',{id: provider.key} ]">
+              <mat-icon>edit</mat-icon>
+            </button>
+            &nbsp; &nbsp; &nbsp;
+            <button mat-mini-fab matTooltip="Eliminar" (click)="openDialog(provider)">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </div>
+          <div class="box2">
+            <p mat-line>
+              <mat-icon class="iconCenter">home_outline</mat-icon><span
+                class='mat-body-strong'>{{provider.nombre}}</span>
+            </p>
+            <p mat-line>
+              <mat-icon class="iconCenter">contact_phone</mat-icon>
+              <span class='mat-body'>{{provider.nombreContacto}} &nbsp;{{provider.telefonoContacto}}</span>
+              <span> &nbsp;{{provider.mail}}</span>
+            </p>
+            <p *ngIf="provider.cuilCuit" mat-line>
+              <mat-icon class="iconCenter">person</mat-icon>
+              <span class='mat-body-strong'>Cuil/Cuit:</span> <span class='mat-body'>{{provider.cuilCuit}}</span>
+            </p>
+            <p *ngIf="provider.numeroCuenta" mat-line>
+              <mat-icon class="iconCenter">local_atm</mat-icon>
+              <span class='mat-body-strong'>NroCuenta:</span> <span class='mat-body'>{{provider.numeroCuenta}}</span>
+              <button mat-icon-button matTooltip="Copiar datos de cuenta" (click)="copyAccountData(provider)">
+                <mat-icon class="iconCenter">file_copy</mat-icon>
+              </button>
+            </p>
+            <p mat-line>
+              <mat-chip-list>
+                <mat-chip *ngFor="let tag of provider.tagsRubro.split(',')" color="grey" selected>
+                  {{tag}}
+                </mat-chip>
+              </mat-chip-list>
+            </p>
+          </div>
+        </mat-card-content>
+      </div>
+    </div>
   </mat-card>
 </div>
