@@ -31,7 +31,6 @@
 }
 
 .box1 {
-  width: 20%;
   display: flex;
   flex-wrap: nowrap;
 }
