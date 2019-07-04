@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core'
 import { ConfirmDeleteProviderComponent } from './confirm-delete-provider/confirm-delete-provider.component'
 import { FormControl } from '@angular/forms'
 import { MatDialog } from '@angular/material'
-import { Provider } from '../shared/provider'
+import { Provider } from '../modal/provider'
 import { ProviderDetailComponent } from './provider-detail/provider-detail.component'
-import { ServiceProvider } from '../shared/service-provider'
+import { ServiceProvider } from '../service/service-provider'
 
 @Component({
   selector: 'app-providers',

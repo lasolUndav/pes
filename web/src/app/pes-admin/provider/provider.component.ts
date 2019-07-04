@@ -3,8 +3,8 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes'
 import { Component, OnInit } from '@angular/core'
 
 import { MatChipInputEvent } from '@angular/material'
-import { Provider } from '../shared/provider'
-import { ServiceProvider } from '../shared/service-provider'
+import { Provider } from '../modal/provider'
+import { ServiceProvider } from '../service/service-provider'
 
 @Component({
   selector: 'app-provider',
