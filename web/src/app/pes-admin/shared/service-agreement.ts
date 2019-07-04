@@ -22,7 +22,7 @@ export class ServiceAgreement {
       .subscribe(agreements => {
         const listAgreements = Array<Agreement>()
         agreements.forEach(function(agreement) {
-          listAgreements.push(new Agreement(agreement))
+          listAgreements.push(new Agreement(agreement.name))
         })
         onAgreementsLoaded(listAgreements)
       }, this.handleError)
