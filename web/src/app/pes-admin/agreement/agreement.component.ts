@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 
-import { Agreement } from '../shared/agreement'
-import { ServiceAgreement } from '../shared/service-agreement'
+import { Agreement } from '../model/agreement'
+import { ServiceAgreement } from '../service/service-agreement'
 
 @Component({
   selector: 'app-agreement',

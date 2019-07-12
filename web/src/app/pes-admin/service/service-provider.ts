@@ -1,7 +1,7 @@
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database'
 
 import { Injectable } from '@angular/core'
-import { Provider } from './provider'
+import { Provider } from '../model/provider'
 import { map } from 'rxjs/operators'
 
 @Injectable({

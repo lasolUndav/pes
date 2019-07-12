@@ -1,6 +1,6 @@
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database'
 
-import { Agreement } from './agreement'
+import { Agreement } from '../model/agreement'
 import { Injectable } from '@angular/core'
 import { map } from 'rxjs/operators'
 
@@ -22,7 +22,7 @@ export class ServiceAgreement {
       .subscribe(agreements => {
         const listAgreements = Array<Agreement>()
         agreements.forEach(function(agreement) {
-          listAgreements.push(new Agreement(agreement))
+          listAgreements.push(new Agreement(agreement.name))
         })
         onAgreementsLoaded(listAgreements)
       }, this.handleError)
