@@ -3,7 +3,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes'
 import { Component, OnInit } from '@angular/core'
 
 import { MatChipInputEvent } from '@angular/material'
-import { Provider } from '../modal/provider'
+import { Provider } from '../model/provider'
 import { ServiceProvider } from '../service/service-provider'
 
 @Component({

@@ -1,6 +1,6 @@
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database'
 
-import { Agreement } from '../modal/agreement'
+import { Agreement } from '../model/agreement'
 import { Injectable } from '@angular/core'
 import { map } from 'rxjs/operators'
 

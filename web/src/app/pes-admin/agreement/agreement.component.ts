@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 
-import { Agreement } from '../modal/agreement'
+import { Agreement } from '../model/agreement'
 import { ServiceAgreement } from '../service/service-agreement'
 
 @Component({
