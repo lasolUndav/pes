@@ -54,6 +54,7 @@ import { NgModule } from '@angular/core'
     MatAutocompleteModule,
     MatCheckboxModule,
     MatExpansionModule,
+    MatMenuModule,
   ],
 })
 export class PesAdminMaterialModule {}

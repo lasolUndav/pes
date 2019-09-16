@@ -7,16 +7,16 @@
       <mat-expansion-panel (opened)="panelOpenAgreement = true" (closed)="panelOpenAgreement = false">
         <mat-expansion-panel-header style="font-weight: bold" class="mat-typography; bold">
           <mat-panel-title>
-            {{agreement.nombre}}
+            {{agreement.name}}
           </mat-panel-title>
         </mat-expansion-panel-header>
         <p mat-line>
           <span class='mat-body-strong'>Periodo: </span>
-          <span>{{agreement.periodo}}</span>
+          <span>{{agreement.period}}</span>
         </p>
         <p mat-line>
           <span class='mat-body-strong'>Monto: </span>
-          <span>{{agreement.monto}}</span>
+          <span>{{agreement.amount}}</span>
         </p>
         <p mat-line>
           <span class='mat-body-strong'>Convenio: </span>
