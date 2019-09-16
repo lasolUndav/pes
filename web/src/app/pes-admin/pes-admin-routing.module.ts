@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router'
 
 import { AgreementComponent } from './agreement/agreement.component'
+import { AgreementsComponent } from './agreements/agreements.component'
 import { AuthGuard } from '../auth/auth-guard.service'
 import { NgModule } from '@angular/core'
 import { PesAdminComponent } from './pes-admin.component'
@@ -15,6 +16,11 @@ const routes: Routes = [
       { path: '', redirectTo: 'admin/proveedores', pathMatch: 'full' },
       {
         path: 'admin/convenios',
+        component: AgreementsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'admin/convenio',
         component: AgreementComponent,
         canActivate: [AuthGuard],
       },
@@ -33,6 +39,11 @@ const routes: Routes = [
         component: ProviderComponent,
         canActivate: [AuthGuard],
       },
+      {
+        path: 'admin/covenio/:id',
+        component: AgreementComponent,
+        canActivate: [AuthGuard],
+      },
     ],
   },
 ]
@@ -40,5 +51,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
+  declarations: [],
 })
 export class PesAdminRoutingModule {}

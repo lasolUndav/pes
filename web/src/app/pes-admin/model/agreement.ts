@@ -3,15 +3,15 @@ import { DatePeriod } from './date-period'
 
 export class Agreement {
   public key: string
-  public name: string
-  public period: string
-  public amount: number
-  public categories: Array<AgreementTransactionCategory>
+  public nombre: string
+  public periodo: string
+  public cuenta: number
+  public categorias: Array<AgreementTransactionCategory>
 
   constructor(result) {
-    this.name = result.nombre
-    this.categories = new Array<AgreementTransactionCategory>()
-    this.period = result.periodo
-    this.amount = result.monto
+    this.nombre = result.nombre
+    this.categorias = new Array<AgreementTransactionCategory>()
+    this.periodo = result.periodo
+    this.cuenta = result.monto
   }
 }

@@ -13,7 +13,7 @@ export class ServiceAgreement {
     this.agreementsRef = db.list('/convenios')
   }
 
-  getAgreement(onAgreementsLoaded) {
+  getAgreements(onAgreementsLoaded) {
     this.agreementsRef
       .snapshotChanges()
       .pipe(
@@ -26,6 +26,25 @@ export class ServiceAgreement {
         })
         onAgreementsLoaded(listAgreements)
       }, this.handleError)
+  }
+
+  getAgreement(key: string, onLoaded) {
+    return this.db
+      .object(`convenios/${key}`)
+      .snapshotChanges()
+      .subscribe(data => onLoaded(data.payload.val()))
+  }
+
+  createAgreement(agreement: Agreement, onSaved): void {
+    this.agreementsRef.push(agreement).then(onSaved)
+  }
+
+  updateAgreement(key: string, value: any): void {
+    this.agreementsRef.update(key, value).catch(error => this.handleError(error))
+  }
+
+  deleteAgreement(key: string): void {
+    this.agreementsRef.remove(key).catch(error => this.handleError(error))
   }
 
   private handleError(error) {

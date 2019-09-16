@@ -1,0 +1,30 @@
+<div>
+  <mat-card>
+    <div class="head-content-card">
+      <h2>Convenios</h2>
+      <button class="buttonAdd" mat-raised-button color="primary" [routerLink]="['/admin/convenio',{id: null} ]">Agregar
+        Nuevo</button>
+    </div>
+    <mat-accordion *ngFor="let agreement of agreements">
+      <mat-expansion-panel (opened)="panelOpenAgreement = true" (closed)="panelOpenAgreement = false">
+        <mat-expansion-panel-header style="font-weight: bold" class="mat-typography; bold">
+          <mat-panel-title>
+            {{agreement.nombre}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p mat-line>
+          <span class='mat-body-strong'>Periodo: </span>
+          <span>{{agreement.periodo}}</span>
+        </p>
+        <p mat-line>
+          <span class='mat-body-strong'>Monto: </span>
+          <span>{{agreement.cuenta}}</span>
+        </p>
+        <p mat-line>
+          <span class='mat-body-strong'>Convenio: </span>
+          <a routerLink="admin/convenio">pdf</a>
+        </p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card>
+</div>
