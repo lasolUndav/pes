@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router'
 
+import { AccountComponent } from './account/account.component'
 import { AgreementComponent } from './agreement/agreement.component'
 import { AgreementsComponent } from './agreements/agreements.component'
 import { AuthGuard } from '../auth/auth-guard.service'
@@ -42,6 +43,16 @@ const routes: Routes = [
       {
         path: 'admin/covenio/:id',
         component: AgreementComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'admin/cuenta',
+        component: AccountComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'admin/cuenta/:id',
+        component: AccountComponent,
         canActivate: [AuthGuard],
       },
     ],

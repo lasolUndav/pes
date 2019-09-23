@@ -19,7 +19,8 @@ import { ProviderComponent } from './provider/provider.component'
 import { ProviderDetailComponent } from './providers/provider-detail/provider-detail.component'
 import { ProvidersComponent } from './providers/providers.component'
 import { environment } from '../../environments/environment';
-import { AccountComponent } from './account/account.component'
+import { AccountComponent } from './account/account.component';
+import { AccoutsComponent } from './accouts/accouts.component'
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AccountComponent } from './account/account.component'
     AgreementsComponent,
     AgreementComponent,
     AccountComponent,
+    AccoutsComponent,
   ],
   imports: [
     BrowserAnimationsModule,
