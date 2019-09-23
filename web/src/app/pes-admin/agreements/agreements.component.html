@@ -6,6 +6,10 @@
         Nuevo</button>
     </div>
     <mat-accordion *ngFor="let agreement of agreements">
+      <button class="buttonEdit" mat-mini-fab matTooltip="Editar"
+        [routerLink]="['/admin/convenio',{id: agreement.key} ]">
+        <mat-icon>edit</mat-icon>
+      </button>
       <mat-expansion-panel (opened)="panelOpenAgreement = true" (closed)="panelOpenAgreement = false">
         <mat-expansion-panel-header style="font-weight: bold" class="mat-typography; bold">
           <mat-panel-title>
@@ -18,12 +22,13 @@
         </p>
         <p mat-line>
           <span class='mat-body-strong'>Monto: </span>
-          <span>{{agreement.cuenta}}</span>
+          <span>{{agreement.monto}}</span>
         </p>
         <p mat-line>
           <span class='mat-body-strong'>Convenio: </span>
           <a routerLink="admin/convenio">pdf</a>
         </p>
+
       </mat-expansion-panel>
     </mat-accordion>
   </mat-card>

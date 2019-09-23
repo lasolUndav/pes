@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core'
 
 import { Agreement } from '../model/agreement'
 import { ServiceAgreement } from '../service/service-agreement'
+import { disableBindings } from '@angular/core/src/render3'
 
 @Component({
   selector: 'app-agreement',
@@ -10,8 +11,8 @@ import { ServiceAgreement } from '../service/service-agreement'
   styleUrls: ['./agreement.component.css'],
 })
 export class AgreementComponent implements OnInit {
-  continueAdding = false
-
+  checkAccount = false
+  disabled = false
   agreementInEdition: Agreement
   service: ServiceAgreement
   isNew: boolean
@@ -66,16 +67,21 @@ export class AgreementComponent implements OnInit {
     if (this.isNew) {
       this.service.createAgreement(jsonAgreement, () => {
         this.lastAgreementLoaded = jsonAgreement.nombre
-        if (this.continueAdding) {
-          this.setupFormNewAgreement()
-          this.scrollToTop()
-        } else {
-          this.backToAgreements()
-        }
+        this.createAccount()
       })
     } else {
+      this.createAccount()
       this.service.updateAgreement(this.agreementKey, jsonAgreement)
-      console.log(agreement)
+    }
+    this.backToAgreements()
+  }
+
+  createAccount() {
+    if (this.checkAccount) {
+      //agregar el or para ver si la key de cuenta es undefined
+      this.disabled = true
+      console.log(this.checkAccount)
+      //CREA LA CUENTA
     }
   }
 

@@ -2,6 +2,7 @@ import { Transaction, TransactionState, TranstactionType } from './transaction'
 
 export class Account {
   public key: string
+  public nombre: string
   public transactions: Array<Transaction>
 
   constructor() {
