@@ -18,7 +18,8 @@ import { PesAdminRoutingModule } from './pes-admin-routing.module'
 import { ProviderComponent } from './provider/provider.component'
 import { ProviderDetailComponent } from './providers/provider-detail/provider-detail.component'
 import { ProvidersComponent } from './providers/providers.component'
-import { environment } from '../../environments/environment'
+import { environment } from '../../environments/environment';
+import { AccountComponent } from './account/account.component'
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { environment } from '../../environments/environment'
     ProviderDetailComponent,
     AgreementsComponent,
     AgreementComponent,
+    AccountComponent,
   ],
   imports: [
     BrowserAnimationsModule,
