@@ -12,6 +12,11 @@
       <mat-icon matSuffix>mode_edit</mat-icon>
     </mat-form-field>
 
+    <mat-form-field class="full-width">
+      <input type="text" name="transaccion" placeholder="transaccion " matInput
+        [(ngModel)]="accountInEdition.transactions">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
 
     <mat-checkbox *ngIf="isNew" [(ngModel)]="continueAdding" [ngModelOptions]="{standalone: true}">Continuar
       agregando
