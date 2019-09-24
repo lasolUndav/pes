@@ -3,7 +3,6 @@ import { Transaction, TransactionState, TranstactionType } from './transaction'
 export class Account {
   public key: string
   public transactions: Array<Transaction>
-  public id: string
   public name: string
   public monto: string
 

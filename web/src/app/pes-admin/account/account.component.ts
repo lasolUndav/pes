@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core'
 
 import { Account } from '../model/account'
 import { ServiceAccount } from '../service/service-account'
+import { Transaction } from '../model/transaction'
 
 @Component({
   selector: 'app-account',
@@ -54,7 +55,6 @@ export class AccountComponent implements OnInit {
     this.formTitle = 'Agregar nueva cuenta'
     this.accountInEdition = new Account({
       nombre: '',
-      id: '',
       monto: '',
       transaccion: '',
     })

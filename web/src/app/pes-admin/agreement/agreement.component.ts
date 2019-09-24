@@ -11,7 +11,6 @@ import { ServiceAgreement } from '../service/service-agreement'
 })
 export class AgreementComponent implements OnInit {
   continueAdding = false
-
   agreementInEdition: Agreement
   service: ServiceAgreement
   isNew: boolean

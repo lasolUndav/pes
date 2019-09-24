@@ -17,7 +17,7 @@ export class AgreementsComponent implements OnInit {
   }
 
   ngOnInit() {
-    var scope = this
+    const scope = this
     this.service.getAgreements(function(agreements) {
       scope.agreements = agreements
     })

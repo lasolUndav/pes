@@ -1,8 +1,8 @@
 <div>
   <mat-card>
     <div class="head-content-card">
-      <h2>Convenios</h2>
-      <button class="buttonAdd" mat-raised-button color="primary" [routerLink]="['/admin/convenio',{id: null} ]">Agregar
+      <h2>Cuentas</h2>
+      <button class="buttonAdd" mat-raised-button color="primary" [routerLink]="['/admin/cuentas',{id: null} ]">Agregar
         Nuevo</button>
     </div>
     <mat-accordion *ngFor="let account of accounts">
@@ -14,7 +14,11 @@
         </mat-expansion-panel-header>
         <p mat-line>
           <span class='mat-body-strong'>Monto: </span>
-          <span>{{account.id}}</span>
+          <span>{{account.monto}}</span>
+        </p>
+        <p mat-line>
+          <span class='mat-body-strong'>Monto: </span>
+          <span>{{account.transactions}}</span>
         </p>
         <p mat-line>
           <span class='mat-body-strong'>Cuenta: </span>

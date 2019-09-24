@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 
+import { Account } from '../model/account'
 import { ServiceAccount } from '../service/service-account'
 
 @Component({
@@ -16,7 +17,7 @@ export class AccoutsComponent implements OnInit {
   }
 
   ngOnInit() {
-    var scope = this
+    const scope = this
     this.service.getAccounts(function(accounts) {
       scope.accounts = accounts
     })
