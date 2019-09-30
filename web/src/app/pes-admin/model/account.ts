@@ -1,12 +1,14 @@
 import { Transaction, TransactionState, TranstactionType } from './transaction'
 
+import { Agreement } from './agreement'
+
 export class Account {
   public key: string
-  public transactions: Array<Transaction>
   public name: string
-  public monto: string
+  public transactions: Array<Transaction>
 
   constructor(result) {
+    this.name = result.nombreConvenio
     this.transactions = new Array<Transaction>()
   }
 
