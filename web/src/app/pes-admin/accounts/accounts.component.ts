@@ -4,11 +4,11 @@ import { Account } from '../model/account'
 import { ServiceAccount } from '../service/service-account'
 
 @Component({
-  selector: 'app-accouts',
-  templateUrl: './accouts.component.html',
-  styleUrls: ['./accouts.component.css'],
+  selector: 'app-accounts',
+  templateUrl: './accounts.component.html',
+  styleUrls: ['./accounts.component.css'],
 })
-export class AccoutsComponent implements OnInit {
+export class AccountsComponent implements OnInit {
   panelOpenAccount = false
   service: ServiceAccount
   accounts: Array<Account>

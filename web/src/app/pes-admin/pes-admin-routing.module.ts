@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from '@angular/router'
 
 import { AccountComponent } from './account/account.component'
-import { AccoutsComponent } from './accouts/accouts.component'
+import { AccountsComponent } from './accounts/accounts.component'
 import { AgreementComponent } from './agreement/agreement.component'
 import { AgreementsComponent } from './agreements/agreements.component'
 import { AuthGuard } from '../auth/auth-guard.service'
@@ -48,7 +48,7 @@ const routes: Routes = [
       },
       {
         path: 'admin/cuentas',
-        component: AccoutsComponent,
+        component: AccountsComponent,
         canActivate: [AuthGuard],
       },
       {
