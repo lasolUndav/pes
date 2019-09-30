@@ -3,25 +3,16 @@
 
   <form class="form" *ngIf="accountInEdition != null">
     <mat-form-field class="full-width">
-      <input type="text" name="nombre" placeholder="Nombre" matInput [(ngModel)]="accountInEdition.name">
+      <input type="text" name="nombre" placeholder="Nombre de la cuenta" matInput
+        [(ngModel)]="accountInEdition.nameAccount">
       <mat-icon matSuffix>mode_edit</mat-icon>
     </mat-form-field>
-
     <mat-form-field class="full-width">
-      <input type="text" name="monto" placeholder="monto " matInput [(ngModel)]="accountInEdition.monto">
+      <input type="text" name="nombre" placeholder="Nombre del convenio" matInput
+        [(ngModel)]="accountInEdition.nameAgreement">
       <mat-icon matSuffix>mode_edit</mat-icon>
     </mat-form-field>
 
-    <mat-form-field class="full-width">
-      <input type="text" name="transaccion" placeholder="transaccion " matInput
-        [(ngModel)]="accountInEdition.transactions">
-      <mat-icon matSuffix>mode_edit</mat-icon>
-    </mat-form-field>
-
-    <mat-checkbox *ngIf="isNew" [(ngModel)]="continueAdding" [ngModelOptions]="{standalone: true}">Continuar
-      agregando
-    </mat-checkbox>
-    &nbsp; &nbsp; &nbsp;
     <button mat-raised-button color="primary" (click)="saveAccount(accountInEdition)">Guardar</button>
     &nbsp; &nbsp; &nbsp;
     <button mat-raised-button (click)='backToAccounts()' color="accent">Cancelar</button>

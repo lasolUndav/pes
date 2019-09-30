@@ -2,20 +2,39 @@
   <mat-card>
     <div class="head-content-card">
       <h2>Cuentas</h2>
-      <button class="buttonAdd" mat-raised-button color="primary" [routerLink]="['/admin/cuentas',{id: null} ]">Agregar
-        Nuevo</button>
+
     </div>
     <mat-accordion *ngFor="let account of accounts">
+
       <mat-expansion-panel (opened)="panelOpenAccount = true" (closed)="panelOpenAccount = false">
         <mat-expansion-panel-header style="font-weight: bold" class="mat-typography; bold">
           <mat-panel-title>
-            {{account.name}}
+            {{account.nameAccount}}
           </mat-panel-title>
         </mat-expansion-panel-header>
         <p mat-line>
-          <span class='mat-body-strong'>Cuenta: </span>
-          <a routerLink="admin/cuentas">pdf</a>
+          <span class='mat-body-strong'>Convenio: </span>
+          <span>{{account.nameAgreement}}</span>
         </p>
+        <mat-card-content class="box transactionBoxItem">
+          <div class="box1">
+            <button class="buttonAdd" mat-mini-fab matTooltip="Añadir Transacción" [matMenuTriggerFor]="menu">
+              <mat-icon>add</mat-icon>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item [routerLink]="['/admin/cuenta', {id: null}]"> Entrada</button>
+                <button mat-menu-item [routerLink]="['/admin']"> Salida</button>
+              </mat-menu>
+            </button>
+
+          </div>
+          <div class="box2">
+            {{account.transactions.toString}}
+            <p mat-line>
+              <span class='mat-body-strong'>Cuenta: </span>
+              <a routerLink="admin/cuentas">pdf</a>
+            </p>
+          </div>
+        </mat-card-content>
       </mat-expansion-panel>
     </mat-accordion>
   </mat-card>

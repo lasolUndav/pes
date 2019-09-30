@@ -12,6 +12,7 @@ export class AccountsComponent implements OnInit {
   panelOpenAccount = false
   service: ServiceAccount
   accounts: Array<Account>
+
   constructor(serviceAccount: ServiceAccount) {
     this.service = serviceAccount
   }
@@ -22,4 +23,7 @@ export class AccountsComponent implements OnInit {
       scope.accounts = accounts
     })
   }
+
+  createTransactionInput(account: Account) {}
+  createTransactionOutput(account: Account) {}
 }
