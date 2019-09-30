@@ -4,8 +4,10 @@ export class Account {
   public key: string
   public nombre: string
   public transactions: Array<Transaction>
+  public name: string
+  public monto: string
 
-  constructor() {
+  constructor(result) {
     this.transactions = new Array<Transaction>()
   }
 
