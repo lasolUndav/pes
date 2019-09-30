@@ -1,13 +1,17 @@
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database'
 
+import { Account } from '../model/account'
 import { Agreement } from '../model/agreement'
 import { Injectable } from '@angular/core'
+import { ServiceAccount } from '../service/service-account'
 import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServiceAgreement {
+  serviceAccount: ServiceAccount
+  lastAccountLoaded: string
   agreementsRef: AngularFireList<Agreement> = null
   constructor(private db: AngularFireDatabase) {
     this.agreementsRef = db.list('/convenios')
@@ -37,6 +41,13 @@ export class ServiceAgreement {
 
   createAgreement(agreement: Agreement, onSaved): void {
     this.agreementsRef.push(agreement).then(onSaved)
+  }
+
+  createAccountAgreement(account: Account) {
+    this.serviceAccount.createAccount(account, () => {
+      this.lastAccountLoaded = Object.keys(snapshot.val())[0]
+    })
+    console.log('consol4')
   }
 
   updateAgreement(key: string, value: any): void {

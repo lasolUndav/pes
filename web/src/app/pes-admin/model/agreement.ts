@@ -6,7 +6,6 @@ export class Agreement {
   public nombre: string
   public periodo: string
   public monto: number
-  // public cuenta: string
   public keyCuenta: string
   public categorias: Array<AgreementTransactionCategory>
 
@@ -16,7 +15,6 @@ export class Agreement {
     this.categorias = new Array<AgreementTransactionCategory>()
     this.periodo = result.periodo
     this.monto = result.monto
-    //  this.cuenta = result.cuenta
     this.keyCuenta = result.keyCuenta
   }
 }

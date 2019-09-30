@@ -1,6 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router'
 import { Component, OnInit } from '@angular/core'
 
+import { Account } from '../model/account'
 import { Agreement } from '../model/agreement'
 import { ServiceAgreement } from '../service/service-agreement'
 import { disableBindings } from '@angular/core/src/render3'
@@ -44,6 +45,9 @@ export class AgreementComponent implements OnInit {
 
   setupFormEditAgreement() {
     this.isNew = false
+    if (this.checkAccount) {
+      this.disabled = true
+    }
     this.serviceAgreement.getAgreement(this.agreementKey, data => {
       this.agreementInEdition = new Agreement(data)
       this.formTitle = `Editar convenio ${this.agreementInEdition.nombre}`
@@ -65,9 +69,9 @@ export class AgreementComponent implements OnInit {
     const keyout = 'key'
     delete jsonAgreement[keyout]
     if (this.isNew) {
+      this.createAccount()
       this.service.createAgreement(jsonAgreement, () => {
         this.lastAgreementLoaded = jsonAgreement.nombre
-        this.createAccount()
       })
     } else {
       this.createAccount()
@@ -78,10 +82,12 @@ export class AgreementComponent implements OnInit {
 
   createAccount() {
     if (this.checkAccount) {
-      //agregar el or para ver si la key de cuenta es undefined
-      this.disabled = true
-      console.log(this.checkAccount)
-      //CREA LA CUENTA
+      const account = new Account({
+        nombre: this.agreementInEdition.nombre,
+        transaccion: '',
+      })
+      this.service.createAccountAgreement(account)
+      this.agreementInEdition.keyCuenta = account.getkey
     }
   }
 

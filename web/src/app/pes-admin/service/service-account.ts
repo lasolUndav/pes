@@ -35,7 +35,9 @@ export class ServiceAccount {
   }
 
   createAccount(account: Account, onSaved): void {
+    console.log('consol2')
     this.accountsRef.push(account).then(onSaved)
+    console.log('consol3')
   }
 
   updateAccount(key: string, value: any): void {
