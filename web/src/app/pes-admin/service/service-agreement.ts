@@ -45,7 +45,7 @@ export class ServiceAgreement {
 
   createAccountAgreement(account: Account) {
     this.serviceAccount.createAccount(account, () => {
-      this.lastAccountLoaded = Object.keys(snapshot.val())[0]
+      this.lastAccountLoaded = account.key
     })
     console.log('consol4')
   }

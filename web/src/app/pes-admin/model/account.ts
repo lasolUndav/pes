@@ -2,23 +2,23 @@ import { Transaction, TransactionState, TranstactionType } from './transaction'
 
 export class Account {
   public key: string
-  public transactions: Array<Transaction>
-  public name: string
+  public transacciones: Array<Transaction>
+  public nombreConvenio: string
 
   constructor(result) {
-    this.name = result.nombreConvenio
-    this.transactions = new Array<Transaction>()
+    this.nombreConvenio = result.nombreConvenio
+    this.transacciones = new Array<Transaction>()
   }
 
   private getTotalOutputAmount(state: TransactionState) {
-    const total = this.transactions
+    const total = this.transacciones
       .filter(trx => trx.state === state && trx.type === TranstactionType.Output)
       .reduce((sum, trx) => sum + trx.amount, 0)
     return total
   }
 
   getTotalInputAmount() {
-    const total = this.transactions
+    const total = this.transacciones
       .filter(trx => trx.type === TranstactionType.Input)
       .reduce((sum, trx) => sum + trx.amount, 0)
     return total
