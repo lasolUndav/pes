@@ -55,7 +55,6 @@ export class AccountComponent implements OnInit {
     this.formTitle = 'Agregar nueva cuenta'
     this.accountInEdition = new Account({
       nombre: '',
-      monto: '',
       transaccion: '',
     })
   }

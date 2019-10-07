@@ -5,13 +5,16 @@ export class Agreement {
   public key: string
   public nombre: string
   public periodo: string
-  public cuenta: number
+  public monto: number
+  public keyCuenta: string
   public categorias: Array<AgreementTransactionCategory>
 
   constructor(result) {
+    this.key = result.key
     this.nombre = result.nombre
     this.categorias = new Array<AgreementTransactionCategory>()
     this.periodo = result.periodo
-    this.cuenta = result.monto
+    this.monto = result.monto
+    this.keyCuenta = result.keyCuenta
   }
 }

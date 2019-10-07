@@ -1,8 +1,12 @@
 import { ActivatedRoute, Router } from '@angular/router'
 import { Component, OnInit } from '@angular/core'
 
+import { Account } from '../model/account'
 import { Agreement } from '../model/agreement'
 import { ServiceAgreement } from '../service/service-agreement'
+import { disableBindings } from '@angular/core/src/render3'
+import { ServiceAccount } from '../service/service-account'
+import { Transaction } from '../model/transaction'
 
 @Component({
   selector: 'app-agreement',
@@ -10,22 +14,28 @@ import { ServiceAgreement } from '../service/service-agreement'
   styleUrls: ['./agreement.component.css'],
 })
 export class AgreementComponent implements OnInit {
-  continueAdding = false
+  checkAccount = false
+  disabled = false
   agreementInEdition: Agreement
   service: ServiceAgreement
+  serviceAccountAgreement: ServiceAccount
   isNew: boolean
   agreementKey: string
   lastAgreementLoaded: string
   formTitle: string
+  lastAccountLoaded: string
 
   constructor(
     private route: Router,
     private ruteActive: ActivatedRoute,
-    private serviceAgreement: ServiceAgreement
+    private serviceAgreement: ServiceAgreement,
+    private serviceAccount: ServiceAccount
   ) {
     this.service = serviceAgreement
+    this.serviceAccountAgreement = serviceAccount
     this.agreementInEdition = null
     this.lastAgreementLoaded = null
+    this.lastAccountLoaded = null
   }
 
   ngOnInit(): void {
@@ -34,6 +44,9 @@ export class AgreementComponent implements OnInit {
       this.setupFormNewAgreement()
     } else {
       this.setupFormEditAgreement()
+      if (this.agreementInEdition.keyCuenta === '') {
+        this.disabled = true
+      }
     }
   }
   backToAgreements(): void {
@@ -42,7 +55,7 @@ export class AgreementComponent implements OnInit {
 
   setupFormEditAgreement() {
     this.isNew = false
-    this.serviceAgreement.getAgreement(this.agreementKey, data => {
+    this.service.getAgreement(this.agreementKey, data => {
       this.agreementInEdition = new Agreement(data)
       this.formTitle = `Editar convenio ${this.agreementInEdition.nombre}`
     })
@@ -55,6 +68,7 @@ export class AgreementComponent implements OnInit {
       nombre: '',
       periodo: '',
       monto: '',
+      keyCuenta: '',
     })
   }
 
@@ -63,19 +77,30 @@ export class AgreementComponent implements OnInit {
     const keyout = 'key'
     delete jsonAgreement[keyout]
     if (this.isNew) {
+      this.saveAccount()
       this.service.createAgreement(jsonAgreement, () => {
         this.lastAgreementLoaded = jsonAgreement.nombre
-        if (this.continueAdding) {
-          this.setupFormNewAgreement()
-          this.scrollToTop()
-        } else {
-          this.backToAgreements()
-        }
       })
     } else {
+      this.saveAccount()
       this.service.updateAgreement(this.agreementKey, jsonAgreement)
-      console.log(agreement)
     }
+    this.backToAgreements()
+  }
+
+  saveAccount() {
+    if (this.checkAccount) {
+      const account = new Account({
+        nombreConvenio: this.agreementInEdition.nombre,
+        transacciones: null,
+      })
+      const keyout = 'key'
+      delete account[keyout]
+      this.serviceAccountAgreement.createAccount(account, () => {
+        this.lastAccountLoaded = account.key
+      })
+    }
+    this.disabled = true
   }
 
   scrollToTop() {

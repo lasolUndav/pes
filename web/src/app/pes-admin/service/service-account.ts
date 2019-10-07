@@ -20,7 +20,7 @@ export class ServiceAccount {
       )
       .subscribe(accounts => {
         const listAccounts = Array<Account>()
-        accounts.forEach(function(account) {
+        accounts.forEach(function (account) {
           listAccounts.push(new Account(account))
         })
         onAccountsLoaded(listAccounts)

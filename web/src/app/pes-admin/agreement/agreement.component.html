@@ -8,7 +8,7 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input type="text" name="monto" placeholder="monto " matInput [(ngModel)]="agreementInEdition.cuenta">
+      <input type="text" name="monto" placeholder="monto " matInput [(ngModel)]="agreementInEdition.monto">
       <mat-icon matSuffix>mode_edit</mat-icon>
     </mat-form-field>
 
@@ -17,9 +17,8 @@
       <mat-icon matSuffix>mode_edit</mat-icon>
     </mat-form-field>
 
-    <mat-checkbox *ngIf="isNew" [(ngModel)]="continueAdding" [ngModelOptions]="{standalone: true}">Continuar
-      agregando
-    </mat-checkbox>
+    <mat-checkbox [(ngModel)]="checkAccount" [disabled]="disabled" [ngModelOptions]="{standalone: true}">
+      Crear una cuenta </mat-checkbox>
     &nbsp; &nbsp; &nbsp;
     <button mat-raised-button color="primary" (click)="saveAgreement(agreementInEdition)">Guardar</button>
     &nbsp; &nbsp; &nbsp;

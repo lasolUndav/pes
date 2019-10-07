@@ -1,29 +1,24 @@
 import { Transaction, TransactionState, TranstactionType } from './transaction'
 
-import { Agreement } from './agreement'
-import { transition } from '@angular/animations'
-
 export class Account {
   public key: string
-  public nameAgreement: string
-  public nameAccount: string
-  public transactions: Array<Transaction>
+  public transacciones: Array<Transaction>
+  public nombreConvenio: string
 
   constructor(result) {
-    this.nameAccount = result.nombreCuenta
-    this.nameAgreement = result.nombreConvenio
-    this.transactions = result.transacciones
+    this.nombreConvenio = result.nombreConvenio
+    this.transacciones = new Array<Transaction>()
   }
 
   private getTotalOutputAmount(state: TransactionState) {
-    const total = this.transactions
+    const total = this.transacciones
       .filter(trx => trx.state === state && trx.type === TranstactionType.Output)
       .reduce((sum, trx) => sum + trx.amount, 0)
     return total
   }
 
   getTotalInputAmount() {
-    const total = this.transactions
+    const total = this.transacciones
       .filter(trx => trx.type === TranstactionType.Input)
       .reduce((sum, trx) => sum + trx.amount, 0)
     return total
@@ -40,7 +35,7 @@ export class Account {
     return totalOuputPending
   }
   getTransactionData() {
-    this.transactions.forEach(transaction => {
+    this.transacciones.forEach(transaction => {
       console.log(transition)
     })
   }

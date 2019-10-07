@@ -13,8 +13,12 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <p mat-line>
-          <span class='mat-body-strong'>Convenio: </span>
-          <span>{{account.nameAgreement}}</span>
+          <span class='mat-body-strong'>Transaccion: </span>
+          <span>{{account.transactions}}</span>
+        </p>
+        <p mat-line>
+          <span class='mat-body-strong'>Cuenta: </span>
+          <a routerLink="admin/cuentas">pdf</a>
         </p>
         <mat-card-content class="box transactionBoxItem">
           <div class="box1">
