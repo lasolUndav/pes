@@ -9,7 +9,6 @@ import { NgModule } from '@angular/core'
 import { PesAdminComponent } from './pes-admin.component'
 import { ProviderComponent } from './provider/provider.component'
 import { ProvidersComponent } from './providers/providers.component'
-import { TransactionComponent } from './transaction/transaction.component'
 
 const routes: Routes = [
   {
@@ -69,6 +68,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  declarations: [TransactionComponent],
+  declarations: [],
 })
 export class PesAdminRoutingModule {}
