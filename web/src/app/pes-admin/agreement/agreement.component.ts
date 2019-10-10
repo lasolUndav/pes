@@ -40,13 +40,11 @@ export class AgreementComponent implements OnInit {
 
   ngOnInit(): void {
     this.agreementKey = this.ruteActive.snapshot.paramMap.get('id')
+    this.serviceAccountAgreement.getKeyAccount()
     if (this.agreementKey === 'null') {
       this.setupFormNewAgreement()
     } else {
       this.setupFormEditAgreement()
-      if (this.agreementInEdition.keyCuenta === '') {
-        this.disabled = true
-      }
     }
   }
   backToAgreements(): void {
@@ -58,7 +56,12 @@ export class AgreementComponent implements OnInit {
     this.service.getAgreement(this.agreementKey, data => {
       this.agreementInEdition = new Agreement(data)
       this.formTitle = `Editar convenio ${this.agreementInEdition.nombre}`
+      if (this.agreementInEdition.keyCuenta !== '') {
+        this.disabled = true
+      }
     })
+
+
   }
 
   setupFormNewAgreement() {

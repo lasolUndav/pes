@@ -38,6 +38,20 @@ export class ServiceAccount {
     this.accountsRef.push(account).then(onSaved)
   }
 
+  getKeyAccount() {
+    /*this.accountsRef
+      .snapshotChanges()
+      .pipe(
+        map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))
+      )
+      .subscribe(accounts => {
+        const listAccounts = Array<Account>()
+        accounts.find(function (account) {
+          listAccounts.push(new Account(account))
+        })
+      }, this.handleError)*/
+  }
+
   updateAccount(key: string, value: any): void {
     this.accountsRef.update(key, value).catch(error => this.handleError(error))
   }
