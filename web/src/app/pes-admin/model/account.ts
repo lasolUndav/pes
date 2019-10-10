@@ -2,23 +2,23 @@ import { Transaction, TransactionState, TranstactionType } from './transaction'
 
 export class Account {
   public key: string
-  public transacciones: Array<Transaction>
-  public nombreConvenio: string
+  public transactions: Array<Transaction>
+  public name: string
 
   constructor(result) {
-    this.nombreConvenio = result.nombreConvenio
-    this.transacciones = new Array<Transaction>()
+    this.name = result.nombreConvenio
+    this.transactions = result.transacciones
   }
 
   private getTotalOutputAmount(state: TransactionState) {
-    const total = this.transacciones
+    const total = this.transactions
       .filter(trx => trx.state === state && trx.type === TranstactionType.Output)
       .reduce((sum, trx) => sum + trx.amount, 0)
     return total
   }
 
   getTotalInputAmount() {
-    const total = this.transacciones
+    const total = this.transactions
       .filter(trx => trx.type === TranstactionType.Input)
       .reduce((sum, trx) => sum + trx.amount, 0)
     return total
@@ -35,8 +35,8 @@ export class Account {
     return totalOuputPending
   }
   getTransactionData() {
-    this.transacciones.forEach(transaction => {
-      console.log(transition)
+    Object.entries(this.transactions).forEach(([, value]) => {
+      console.log(value)
     })
   }
 }

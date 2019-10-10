@@ -3,13 +3,7 @@
 
   <form class="form" *ngIf="accountInEdition != null">
     <mat-form-field class="full-width">
-      <input type="text" name="nombre" placeholder="Nombre de la cuenta" matInput
-        [(ngModel)]="accountInEdition.nameAccount">
-      <mat-icon matSuffix>mode_edit</mat-icon>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <input type="text" name="nombre" placeholder="Nombre del convenio" matInput
-        [(ngModel)]="accountInEdition.nameAgreement">
+      <input type="text" name="nombre" placeholder="Nombre de la cuenta" matInput [(ngModel)]="accountInEdition.name">
       <mat-icon matSuffix>mode_edit</mat-icon>
     </mat-form-field>
 

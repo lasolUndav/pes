@@ -3,10 +3,8 @@ import { Component, OnInit } from '@angular/core'
 
 import { Account } from '../model/account'
 import { Agreement } from '../model/agreement'
-import { ServiceAgreement } from '../service/service-agreement'
-import { disableBindings } from '@angular/core/src/render3'
 import { ServiceAccount } from '../service/service-account'
-import { Transaction } from '../model/transaction'
+import { ServiceAgreement } from '../service/service-agreement'
 
 @Component({
   selector: 'app-agreement',

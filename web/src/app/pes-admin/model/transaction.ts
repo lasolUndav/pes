@@ -20,44 +20,22 @@ export class Transaction {
   public category: AgreementTransactionCategory
   public provider: Provider
 
-  constructor(
-    amount: number,
-    type: TranstactionType,
-    description: String,
-    state: TransactionState
-  ) {
+  constructor(result) {
     this.dateTime = new Date()
-    this.state = state
+    this.state = result.estado
     this.provider = null
     this.category = null
-    this.type = type
-    this.amount = amount
-    this.description = description
+    this.type = result.tipo
+    this.amount = result.monto
+    this.description = result.descripcion
   }
-
-  static createInputTransaction(
-    amount: number,
-    description: String,
-    state: TransactionState = TransactionState.Done
-  ): Transaction {
-    return new Transaction(amount, TranstactionType.Input, description, state)
+  getType() {
+    return this.type
   }
-
-  static createOutputTransaction(
-    amount: number,
-    provider: Provider,
-    category: AgreementTransactionCategory,
-    description: String,
-    state: TransactionState = TransactionState.Done
-  ): Transaction {
-    const transaction = new Transaction(
-      amount,
-      TranstactionType.Output,
-      description,
-      state
-    )
-    transaction.provider = provider
-    transaction.category = category
-    return transaction
+  getState() {
+    return this.state
+  }
+  getAmount() {
+    return this.amount
   }
 }
