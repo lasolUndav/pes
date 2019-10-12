@@ -29,12 +29,14 @@ export class ServiceProvider {
         onProvidersLoaded(listProviders)
       }, this.handleError)
   }
+
   getProvider(key: string, onLoaded) {
     return this.db
       .object(`proveedores/${key}`)
       .snapshotChanges()
       .subscribe(data => onLoaded(data.payload.val()))
   }
+
   createProvider(provider: Provider, onSaved): void {
     this.providersRef.push(provider).then(onSaved)
   }

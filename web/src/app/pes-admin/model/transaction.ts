@@ -29,13 +29,4 @@ export class Transaction {
     this.amount = result.monto
     this.description = result.descripcion
   }
-  getType() {
-    return this.type
-  }
-  getState() {
-    return this.state
-  }
-  getAmount() {
-    return this.amount
-  }
 }

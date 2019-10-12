@@ -2,7 +2,6 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database'
 
 import { Account } from '../model/account'
 import { Injectable } from '@angular/core'
-import { ServiceTransaction } from './service-transaction'
 import { Transaction } from '../model/transaction'
 import { map } from 'rxjs/operators'
 
@@ -10,7 +9,6 @@ import { map } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class ServiceAccount {
-  serviceTransaction: ServiceTransaction
   lastTransactionLoaded: string
   accountsRef: AngularFireList<Account> = null
   constructor(private db: AngularFireDatabase) {
@@ -37,12 +35,7 @@ export class ServiceAccount {
       .snapshotChanges()
       .subscribe(data => onLoaded(data.payload.val()))
   }
-  createTransactionAccount(transaction: Transaction) {
-    this.serviceTransaction.createTransaction(transaction, () => {
-      this.lastTransactionLoaded = transaction.toString()
-    })
-    console.log('consol4')
-  }
+
   createAccount(account: Account, onSaved): void {
     this.accountsRef.push(account).then(onSaved)
   }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core'
 
 import { Account } from '../model/account'
 import { ServiceAccount } from '../service/service-account'
-import { Transaction } from '../model/transaction'
 
 @Component({
   selector: 'app-accounts',

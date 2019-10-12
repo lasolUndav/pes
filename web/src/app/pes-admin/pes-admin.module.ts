@@ -1,5 +1,6 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
+import { AccountsComponent } from './accounts/accounts.component'
 import { AgreementComponent } from './agreement/agreement.component'
 import { AgreementsComponent } from './agreements/agreements.component'
 import { AngularFireAuthModule } from 'angularfire2/auth'
@@ -16,11 +17,10 @@ import { PesAdminComponent } from './pes-admin.component'
 import { PesAdminMaterialModule } from './pes-admin.material.module'
 import { PesAdminRoutingModule } from './pes-admin-routing.module'
 import { ProviderComponent } from './provider/provider.component'
+// tslint:disable-next-line: max-line-length
 import { ProviderDetailComponent } from './providers/provider-detail/provider-detail.component'
 import { ProvidersComponent } from './providers/providers.component'
 import { environment } from '../../environments/environment'
-import { AccountComponent } from './account/account.component'
-import { AccountsComponent } from './accounts/accounts.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +31,6 @@ import { AccountsComponent } from './accounts/accounts.component'
     ProviderDetailComponent,
     AgreementsComponent,
     AgreementComponent,
-    AccountComponent,
     AccountsComponent,
   ],
   imports: [

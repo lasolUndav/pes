@@ -1,6 +1,5 @@
 import { RouterModule, Routes } from '@angular/router'
 
-import { AccountComponent } from './account/account.component'
 import { AccountsComponent } from './accounts/accounts.component'
 import { AgreementComponent } from './agreement/agreement.component'
 import { AgreementsComponent } from './agreements/agreements.component'
@@ -52,13 +51,8 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
-        path: 'admin/cuenta',
-        component: AccountComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'admin/cuenta/:id',
-        component: AccountComponent,
+        path: 'admin/cuentas/:id',
+        component: AccountsComponent,
         canActivate: [AuthGuard],
       },
     ],
