@@ -39,12 +39,13 @@ export class Account {
   }
   getTransactionData() {
     this.dataTransactions = ''
+    let data = ''
     Object.entries(this.transactions).forEach(([keyTransaction, transaction]) => {
-      this.dataTransactions += keyTransaction
-      this.dataTransactions += '\n'
+      data += keyTransaction + ','
       for (const [key, value] of Object.entries(transaction)) {
-        this.dataTransactions += '\n' + key + ': ' + value + '\n'
+        data += key + ' : ' + value + ','
       }
+      this.dataTransactions = data.slice(0, -1)
     })
 
     return this.dataTransactions

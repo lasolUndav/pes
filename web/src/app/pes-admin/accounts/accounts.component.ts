@@ -22,4 +22,9 @@ export class AccountsComponent implements OnInit {
       scope.accounts = accounts
     })
   }
+  getCustomTagSplit(tags: string) {
+    if (tags !== '') {
+      return tags.split(',')
+    }
+  }
 }
