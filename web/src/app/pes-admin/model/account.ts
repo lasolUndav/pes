@@ -1,12 +1,10 @@
 import { Transaction, TransactionState, TranstactionType } from './transaction'
 
-import { noUndefined } from '@angular/compiler/src/util'
-
 export class Account {
   public key: string
   public transactions: Array<Transaction>
   public name: string
-  public dataTransactions: String
+  public dataTransactions = []
 
   constructor(result) {
     this.name = result.nombreConvenio
@@ -38,16 +36,12 @@ export class Account {
     return totalOuputPending
   }
   getTransactionData() {
-    this.dataTransactions = ''
-    let data = ''
     Object.entries(this.transactions).forEach(([keyTransaction, transaction]) => {
-      data += keyTransaction + ','
+      this.dataTransactions.push(keyTransaction)
       for (const [key, value] of Object.entries(transaction)) {
-        data += key + ' : ' + value + ','
+        this.dataTransactions.push([key, ' : ', value])
       }
-      this.dataTransactions = data.slice(0, -1)
     })
-
-    return this.dataTransactions
+    console.log(this.dataTransactions)
   }
 }
