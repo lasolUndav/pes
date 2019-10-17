@@ -26,8 +26,8 @@
           </div>
           <div class=" box2">
             <span class='mat-body-strong' (canplay)="account.getTransactionData()">Transaccion: </span>
-            <div *ngFor="let key of  account.dataTransactions">
-              <p mat-line>{{key.split(',')}} </p>
+            <div *ngFor="let transaction of  account.dataTransactions">
+              <p mat-line>{{transaction}} </p>
             </div>
             <p mat-line>
               <span class='mat-body-strong'>Cuenta: </span>
