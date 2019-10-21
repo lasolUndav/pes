@@ -12,9 +12,18 @@
       <mat-icon matSuffix>mode_edit</mat-icon>
     </mat-form-field>
 
-    <mat-form-field class="full-width">
-      <input type="text" name="periodo" placeholder="Periodo" matInput [(ngModel)]="agreementInEdition.periodo">
-      <mat-icon matSuffix>mode_edit</mat-icon>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker1" placeholder="Periodo inicio"
+        [(ngModel)]="agreementInEdition.periodoInicio" name="PeriodoInicio">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker2" placeholder="Periodo fin" [(ngModel)]="agreementInEdition.periodoFin"
+        name="PeriodoFin">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
     </mat-form-field>
 
     <mat-checkbox [(ngModel)]="checkAccount" [disabled]="disabled" [ngModelOptions]="{standalone: true}">

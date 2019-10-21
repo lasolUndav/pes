@@ -1,10 +1,10 @@
 import { AgreementTransactionCategory } from './agreement-transaction-category'
-import { DatePeriod } from './date-period'
 
 export class Agreement {
   public key: string
   public nombre: string
-  public periodo: string
+  public periodoInicio: Date
+  public periodoFin: Date
   public monto: number
   public keyCuenta: string
   public categorias: Array<AgreementTransactionCategory>
@@ -13,7 +13,8 @@ export class Agreement {
     this.key = result.key
     this.nombre = result.nombre
     this.categorias = new Array<AgreementTransactionCategory>()
-    this.periodo = result.periodo
+    this.periodoInicio = result.periodoInicio
+    this.periodoFin = result.periodoFin
     this.monto = result.monto
     this.keyCuenta = result.keyCuenta
   }
