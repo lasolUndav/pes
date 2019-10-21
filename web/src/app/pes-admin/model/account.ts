@@ -37,27 +37,10 @@ export class Account {
   }
   getTransactionData() {
     Object.entries(this.transactions).forEach(([keyTransaction, transaction]) => {
-      this.dataTransactions.push(keyTransaction.toUpperCase())
-      for (const [key, value] of Object.entries(transaction)) {
-        let data = key.charAt(0).toUpperCase() + key.substr(1).toLowerCase() + ' : '
-        if (key === 'estado') {
-          if (value === 0) {
-            data += 'Realizado'
-          } else {
-            data += 'Pendiente'
-          }
-        } else if (key === 'tipo') {
-          if (value === 0) {
-            data += 'Ingreso'
-          } else {
-            data += 'Salida'
-          }
-        } else {
-          data += value
-        }
-
-        this.dataTransactions.push(data)
-      }
+      this.dataTransactions.push(transaction)
     })
+    console.log(this.dataTransactions)
+
+    return this.dataTransactions
   }
 }

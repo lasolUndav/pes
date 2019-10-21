@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core'
 import { PesAdminComponent } from './pes-admin.component'
 import { ProviderComponent } from './provider/provider.component'
 import { ProvidersComponent } from './providers/providers.component'
+import { ViewsTransactionsComponent } from './views-transactions/views-transactions.component'
 
 const routes: Routes = [
   {
@@ -53,6 +54,11 @@ const routes: Routes = [
       {
         path: 'admin/cuentas/:id',
         component: AccountsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'admin/transacciones',
+        component: ViewsTransactionsComponent,
         canActivate: [AuthGuard],
       },
     ],

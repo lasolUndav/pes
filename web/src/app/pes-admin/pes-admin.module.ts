@@ -21,6 +21,7 @@ import { ProviderComponent } from './provider/provider.component'
 import { ProviderDetailComponent } from './providers/provider-detail/provider-detail.component'
 import { ProvidersComponent } from './providers/providers.component'
 import { environment } from '../../environments/environment'
+import { ViewsTransactionsComponent } from './views-transactions/views-transactions.component'
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { environment } from '../../environments/environment'
     AgreementsComponent,
     AgreementComponent,
     AccountsComponent,
+    ViewsTransactionsComponent,
   ],
   imports: [
     BrowserAnimationsModule,
