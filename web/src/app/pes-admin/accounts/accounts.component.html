@@ -22,7 +22,7 @@
                 <button mat-menu-item> Salida</button>
               </mat-menu>
             </button>
-            <button [routerLink]="['/admin/transacciones', {id: null}]" class="buttonAdd" mat-mini-fab
+            <button [routerLink]="['/admin/transacciones', {id: account.key}]" class="buttonAdd" mat-mini-fab
               matTooltip="Ver transacciones" [matMenuTriggerFor]="menu">
               <mat-icon>search</mat-icon>
             </button>

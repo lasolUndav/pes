@@ -7,6 +7,7 @@ export class Account {
   public dataTransactions = []
 
   constructor(result) {
+    this.key = result.key
     this.name = result.nombreConvenio
     this.transactions = result.transacciones
   }
@@ -35,6 +36,7 @@ export class Account {
     const totalOuputPending = this.getTotalOutputAmount(TransactionState.Pending)
     return totalOuputPending
   }
+
   getTransactionData() {
     Object.entries(this.transactions).forEach(([keyTransaction, transaction]) => {
       this.dataTransactions.push(transaction)
