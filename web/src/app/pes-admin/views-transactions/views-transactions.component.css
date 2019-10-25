@@ -6,6 +6,10 @@
   border-radius: 5px;
 }
 
+.buttonAdd {
+  margin-right: 3px;
+}
+
 .box {
   width: 100%;
 

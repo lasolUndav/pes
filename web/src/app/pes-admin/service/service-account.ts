@@ -2,7 +2,6 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database'
 
 import { Account } from '../model/account'
 import { Injectable } from '@angular/core'
-import { Transaction } from '../model/transaction'
 import { map } from 'rxjs/operators'
 
 @Injectable({
@@ -35,7 +34,12 @@ export class ServiceAccount {
       .snapshotChanges()
       .subscribe(data => onLoaded(data.payload.val()))
   }
-
+  getTransactions(key: string, onLoaded) {
+    return this.db
+      .object(`cuentas/${key}/transacciones`)
+      .snapshotChanges()
+      .subscribe(data => onLoaded(data.payload.val()))
+  }
   createAccount(account: Account, onSaved): void {
     this.accountsRef.push(account).then(onSaved)
     //agregar y guardar en variabble un push(account).key y luego hacer updateAccount(key, key)

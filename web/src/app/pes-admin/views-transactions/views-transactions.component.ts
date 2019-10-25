@@ -12,7 +12,8 @@ import { Transaction } from '../model/transaction'
 })
 export class ViewsTransactionsComponent implements OnInit {
   accountKey: string
-  account1: Account
+  account: Account
+  transactions: Array<Transaction>
   service: ServiceAccount
   transactionsOutput: Array<Transaction>
   transactionsInput: Array<Transaction>
@@ -23,31 +24,32 @@ export class ViewsTransactionsComponent implements OnInit {
     private serviceAccount: ServiceAccount
   ) {
     this.service = serviceAccount
-    this.account1 = null
+    this.account = null
+    this.accountKey = this.ruteActive.snapshot.paramMap.get('id')
+    this.transactions = new Array<Transaction>()
     this.transactionsInput = new Array<Transaction>()
     this.transactionsOutput = new Array<Transaction>()
   }
 
   ngOnInit(): void {
-    this.accountKey = this.ruteActive.snapshot.paramMap.get('id')
     this.loadAccount()
+    console.log(this.transactionsInput)
   }
   backToAccounts(): void {
     this.route.navigate(['/admin/cuentas'])
   }
   loadAccount() {
     this.serviceAccount.getAccount(this.accountKey, data => {
-      this.account1 = new Account(data)
-      this.loadTransactions(this.account1)
-      console.log(this.transactionsInput)
+      this.account = new Account(data)
+      this.loadTransaction(this.account)
     })
   }
-  loadTransactions(account: Account) {
+  loadTransaction(account: Account) {
     Object.entries(account.transactions).forEach(([_, transaction]) => {
       if (transaction.type === 1) {
-        this.transactionsOutput.push(transaction)
+        this.transactionsOutput.push(new Transaction(transaction))
       } else {
-        this.transactionsInput.push(transaction)
+        this.transactionsInput.push(new Transaction(transaction))
       }
     })
   }

@@ -1,5 +1,5 @@
 import { AgreementTransactionCategory } from './agreement-transaction-category'
-import { Provider } from './provider'
+import { Provider } from '@angular/core'
 
 export enum TransactionState {
   Pending = 0,
@@ -28,5 +28,17 @@ export class Transaction {
     this.type = result.tipo
     this.amount = result.monto
     this.description = result.descripcion
+  }
+  getDateFormat(): string {
+    return (
+      this.dateTime.getDay() +
+      '/' +
+      this.dateTime.getMonth() +
+      '/' +
+      this.dateTime.getFullYear()
+    )
+  }
+  getTimeFormat(): string {
+    return this.dateTime.getHours() + ':' + this.dateTime.getMinutes() + ' hs'
   }
 }

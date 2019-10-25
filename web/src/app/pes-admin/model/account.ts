@@ -40,6 +40,7 @@ export class Account {
   getTransactionData() {
     Object.entries(this.transactions).forEach(([keyTransaction, transaction]) => {
       this.dataTransactions.push(transaction)
+      console.log(transaction.dateTime)
     })
     console.log(this.dataTransactions)
 
