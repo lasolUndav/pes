@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core'
-import { ServiceAccount } from '../service/service-account'
 import { ActivatedRoute, Router } from '@angular/router'
+import { Component, OnInit } from '@angular/core'
+
 import { Account } from '../model/account'
+import { ServiceAccount } from '../service/service-account'
 import { Transaction } from '../model/transaction'
 
 @Component({
@@ -15,7 +16,7 @@ export class ViewsTransactionsComponent implements OnInit {
   service: ServiceAccount
   transactionsOutput: Array<Transaction>
   transactionsInput: Array<Transaction>
-  panelOpenAccount = false
+  panelOpenTransaction = false
   constructor(
     private route: Router,
     private ruteActive: ActivatedRoute,

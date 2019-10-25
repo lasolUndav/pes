@@ -9,12 +9,16 @@
       </mat-tab>
       <mat-tab label="Entrada">
         <mat-accordion *ngFor="let transaction of transactionsInput">
-          <mat-expansion-panel (opened)="panelOpenTransaction = true" (closed)="panelOpenTrnasction=false">
+          <mat-expansion-panel (opened)="panelOpenTransaction = true" (closed)="panelOpenTranasction=false">
             <mat-expansion-panel-header style="font-weight: bold" class="mat-typography; bold">
               <mat-card-content class="box transactionBoxItem">
                 <mat-panel-title>
                   <div class="box2">
-                    {{transaction.descripcion}}
+                   <mat-icon color=primary *ngIf="transaction.estado == 0" class="icon" matTooltip="Pendiente">
+                     schedule</mat-icon>
+                   <mat-icon color=primary *ngIf="transaction.estado == 1" class="icon" matTooltip="Realizado"> check
+                   </mat-icon>
+                   {{transaction.descripcion}}
                   </div>
                   <div class=" box1">
                     $ {{transaction.monto}}
