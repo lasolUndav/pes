@@ -16,6 +16,7 @@ export class Transaction {
   public state: TransactionState
   public amount: number
   public dateTime: Date
+  public tituleOperation: String
   public description: String
   public category: AgreementTransactionCategory
   public provider: Provider
@@ -27,6 +28,7 @@ export class Transaction {
     this.category = null
     this.type = result.tipo
     this.amount = result.monto
+    this.tituleOperation = result.titulo
     this.description = result.descripcion
   }
   getDateFormat(): string {

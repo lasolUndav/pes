@@ -36,4 +36,4 @@ import { NgModule } from '@angular/core'
     MatDatepickerModule,
   ],
 })
-export class MaterialModule { }
+export class MaterialModule {}

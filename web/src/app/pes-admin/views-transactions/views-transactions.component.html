@@ -24,7 +24,7 @@
                     <mat-icon color=primary *ngIf="transactionOutput.state == 1" class="icon" matTooltip="Realizado">
                       check
                     </mat-icon>
-                    {{transactionOutput.description}}
+                    {{transactionOutput.tituleOperation}}
                   </div>
                   <div class=" box1">
                     $ {{transactionOutput.amount}}
@@ -35,37 +35,39 @@
             <mat-card-content>
               <p mat-line *ngIf="transactionOutput.state == 0">Estado: Pendiente</p>
               <p mat-line *ngIf="transactionOutput.state == 1">Estado: Realizado</p>
-              <p mat-line>Fecha:{{transactionOutput.getDateFormat()}}</p>
-              <p mat-line>Hora:{{transactionOutput.getTimeFormat()}}</p>
+              <p mat-line>Fecha: {{transactionOutput.getDateFormat()}}</p>
+              <p mat-line>Hora: {{transactionOutput.getTimeFormat()}}</p>
+              <p mat-line>Descripcion: {{transactionOutput.description}}</p>
             </mat-card-content>
           </mat-expansion-panel>
         </mat-accordion>
       </mat-tab>
       <mat-tab label="Entrada">
-        <mat-accordion *ngFor="let transaction of transactionsInput">
+        <mat-accordion *ngFor="let transactionInput of transactionsInput">
           <mat-expansion-panel (opened)="panelOpenTransaction = true" (closed)="panelOpenTranasction=false">
             <mat-expansion-panel-header style="font-weight: bold" class="mat-typography; bold">
               <mat-card-content class="box transactionBoxItem">
                 <mat-panel-title>
                   <div class="box2">
-                    <mat-icon color=primary *ngIf="transaction.state == 0" class="icon" matTooltip="Pendiente">
+                    <mat-icon color=primary *ngIf="transactionInput.state == 0" class="icon" matTooltip="Pendiente">
                       schedule</mat-icon>
-                    <mat-icon color=primary *ngIf="transaction.state == 1" class="icon" matTooltip="Realizado"> check
+                    <mat-icon color=primary *ngIf="transactionInput.state == 1" class="icon" matTooltip="Realizado">
+                      check
                     </mat-icon>
-                    {{transaction.description}}
+                    {{transactionInput.tituleOperation}}
                   </div>
                   <div class=" box1">
-                    $ {{transaction.amount}}
+                    $ {{transactionInput.amount}}
                   </div>
                 </mat-panel-title>
               </mat-card-content>
             </mat-expansion-panel-header>
             <mat-card-content>
-              <p mat-line *ngIf="transaction.state == 0">Estado: Pendiente</p>
-              <p mat-line *ngIf="transaction.state == 1">Estado: Realizado</p>
-              <p mat-line>Fecha:{{transaction.getDateFormat()}}</p>
-              <p mat-line>Hora:{{transaction.getTimeFormat()}}</p>
-              <p mat-line>Descripcion:</p>
+              <p mat-line *ngIf="transactionInput.state == 0">Estado: Pendiente</p>
+              <p mat-line *ngIf="transactionInput.state == 1">Estado: Realizado</p>
+              <p mat-line>Fecha: {{transactionInput.getDateFormat()}}</p>
+              <p mat-line>Hora: {{transactionInput.getTimeFormat()}}</p>
+              <p mat-line>Descripcion: {{transactionInput.description}}</p>
             </mat-card-content>
           </mat-expansion-panel>
         </mat-accordion>
