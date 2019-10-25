@@ -1,14 +1,11 @@
 import {
   MatButtonModule,
   MatCardModule,
+  MatDatepickerModule,
   MatFormFieldModule,
   MatIconModule,
-  MatToolbarModule,
-<<<<<<< HEAD
   MatTabsModule,
-=======
-  MatDatepickerModule,
->>>>>>> origin/pes-48
+  MatToolbarModule,
 } from '@angular/material'
 
 import { CommonModule } from '@angular/common'
@@ -35,11 +32,8 @@ import { NgModule } from '@angular/core'
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
-<<<<<<< HEAD
     MatTabsModule,
-=======
     MatDatepickerModule,
->>>>>>> origin/pes-48
   ],
 })
 export class MaterialModule { }
