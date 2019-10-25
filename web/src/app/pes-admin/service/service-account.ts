@@ -41,8 +41,8 @@ export class ServiceAccount {
       .subscribe(data => onLoaded(data.payload.val()))
   }
   createAccount(account: Account, onSaved): void {
-    this.accountsRef.push(account).then(onSaved)
-    //agregar y guardar en variabble un push(account).key y luego hacer updateAccount(key, key)
+    const key = this.accountsRef.push(account).key
+    onSaved(key)
   }
 
   updateAccount(key: string, value: any): void {

@@ -10,10 +10,9 @@ import { map } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class ServiceAgreement {
-  serviceAccount: ServiceAccount
   lastAccountLoaded: string
   agreementsRef: AngularFireList<Agreement> = null
-  constructor(private db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase, private serviceAccount: ServiceAccount) {
     this.agreementsRef = db.list('/convenios')
   }
 
@@ -40,14 +39,15 @@ export class ServiceAgreement {
   }
 
   createAgreement(agreement: Agreement, onSaved): void {
-    this.agreementsRef.push(agreement).then(onSaved)
+    const agreementKey = this.agreementsRef.push(agreement).key
+    onSaved(agreementKey)
   }
 
-  createAccountAgreement(account: Account) {
-    this.serviceAccount.createAccount(account, () => {
-      this.lastAccountLoaded = account.key
+  addAccount(agreement: Agreement, account: Account) {
+    this.serviceAccount.createAccount(account, accountKey => {
+      agreement.keyCuenta = accountKey
+      this.updateAgreement(agreement.key, agreement)
     })
-    console.log('consol4')
   }
 
   updateAgreement(key: string, value: any): void {

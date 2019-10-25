@@ -4,6 +4,7 @@ import {
   MatCardModule,
   MatCheckboxModule,
   MatChipsModule,
+  MatDatepickerModule,
   MatDialogModule,
   MatExpansionModule,
   MatFormFieldModule,
@@ -11,10 +12,11 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
+  MatNativeDateModule,
   MatProgressSpinnerModule,
   MatSidenavModule,
-  MatTooltipModule,
   MatTabsModule,
+  MatTooltipModule,
 } from '@angular/material'
 
 import { FlexLayoutModule } from '@angular/flex-layout'
@@ -39,6 +41,8 @@ import { NgModule } from '@angular/core'
     MatCheckboxModule,
     MatMenuModule,
     MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   exports: [
     MatButtonModule,
@@ -57,6 +61,8 @@ import { NgModule } from '@angular/core'
     MatCheckboxModule,
     MatExpansionModule,
     MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatTabsModule,
   ],
 })
