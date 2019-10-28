@@ -1,6 +1,7 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AgreementComponent } from './agreement/agreement.component'
+import { AgreementsComponent } from './agreements/agreements.component'
 import { AngularFireAuthModule } from 'angularfire2/auth'
 import { AngularFireDatabaseModule } from 'angularfire2/database'
 import { AngularFireModule } from 'angularfire2'
@@ -9,6 +10,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { CommonModule } from '@angular/common'
 import { ConfirmDeleteProviderComponent } from './providers/confirm-delete-provider/confirm-delete-provider.component'
 import { FlexLayoutModule } from '@angular/flex-layout'
+import { MatMenuModule } from '@angular/material'
 import { NgModule } from '@angular/core'
 import { PesAdminComponent } from './pes-admin.component'
 import { PesAdminMaterialModule } from './pes-admin.material.module'
@@ -17,7 +19,8 @@ import { ProviderComponent } from './provider/provider.component'
 import { ProviderDetailComponent } from './providers/provider-detail/provider-detail.component'
 import { ProvidersComponent } from './providers/providers.component'
 import { environment } from '../../environments/environment'
-import { MatMenuModule } from '@angular/material'
+import { AccountComponent } from './account/account.component'
+import { AccountsComponent } from './accounts/accounts.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { MatMenuModule } from '@angular/material'
     PesAdminComponent,
     ConfirmDeleteProviderComponent,
     ProviderDetailComponent,
+    AgreementsComponent,
     AgreementComponent,
+    AccountComponent,
+    AccountsComponent,
   ],
   imports: [
     BrowserAnimationsModule,

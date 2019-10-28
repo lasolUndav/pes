@@ -3,9 +3,16 @@
     <div class="menuItem">
       <button mat-button [routerLink]="['/admin/proveedores']">Proveedores</button>
     </div>
+    <div class="menuItem">
+      <button mat-button [routerLink]="['/admin/convenios']">Convenios</button>
+    </div>
+    <div class="menuItem">
+      <button mat-button [routerLink]="['/admin/cuentas']">Cuentas</button>
+    </div>
     <div class="menuItem logoutMenuItem">
       <button mat-stroked-button (click)="logout()">LOGOUT</button>
     </div>
+
   </mat-sidenav>
   <mat-sidenav-content>
     <button mat-icon-button (click)="snav.toggle()">

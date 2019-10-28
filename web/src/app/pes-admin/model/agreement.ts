@@ -1,17 +1,49 @@
 import { AgreementTransactionCategory } from './agreement-transaction-category'
-import { DatePeriod } from './date-period'
 
 export class Agreement {
   public key: string
-  public name: string
-  public period: DatePeriod
-  public amount: number
-  public categories: Array<AgreementTransactionCategory>
+  public nombre: string
+  public periodoInicio: Date
+  public periodoFin: Date
+  public monto: number
+  public keyCuenta: string
+  public categorias: Array<AgreementTransactionCategory>
 
-  constructor(name: string, amount: number = 0) {
-    this.name = name
-    this.categories = new Array<AgreementTransactionCategory>()
-    this.period = null
-    this.amount = amount
+  constructor(dto) {
+    this.nombre = dto.nombre
+    this.categorias = new Array<AgreementTransactionCategory>()
+    this.periodoInicio = dto.periodoInicio
+    this.periodoFin = dto.periodoFin
+    this.monto = dto.monto
+    if ('key' in dto) {
+      this.key = dto.key
+    } else {
+      this.key = null
+    }
+
+    if ('keyCuenta' in dto) {
+      this.keyCuenta = dto.keyCuenta
+    } else {
+      this.keyCuenta = null
+    }
+  }
+
+  public toDto() {
+    let dto = {
+      nombre: this.nombre,
+      periodoInicio: this.periodoInicio,
+      periodoFin: this.periodoFin,
+      monto: this.monto,
+    }
+
+    if (this.key != null) {
+      dto['key'] = this.key
+    }
+
+    if (this.keyCuenta != null) {
+      dto['keyCuenta'] = this.keyCuenta
+    }
+
+    return dto
   }
 }

@@ -1,7 +1,18 @@
-.nombreConvenio {
-  font-weight: bold;
+.field-form-box {
+  width: 95%;
+  margin-left: 2%;
 }
 
-.informacionConvenio {
-  font-weight: bold;
+.add-account-box {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 3%
+}
+
+.form-buttons-box {
+  margin-left: 2%;
+}
+
+.form-buttons-box #cancel {
+  margin-left: 2%
 }

@@ -1,28 +1,46 @@
-<div>
-  <mat-card>
-    <div class="head-content-card">
-      <h2>Convenios</h2>
+<mat-card>
+  <mat-spinner class="spinner" *ngIf="agreementInEdition == null"></mat-spinner>
+  <h1>{{formTitle}}</h1>
+  <form class="form" *ngIf="agreementInEdition != null">
+    <mat-form-field class="field-form-box">
+      <input type="text" name="nombre" placeholder="Nombre del convenio" matInput
+        [(ngModel)]="agreementInEdition.nombre">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+    <mat-form-field class="field-form-box">
+      <input type="text" name="monto" placeholder="Monto asignado al convenio" matInput
+        [(ngModel)]="agreementInEdition.monto">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+    <mat-form-field class="field-form-box">
+      <input matInput [matDatepicker]="picker1" placeholder="Fecha inicio del convenio"
+        [(ngModel)]="agreementInEdition.periodoInicio" name="PeriodoInicio">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="field-form-box">
+      <input matInput [matDatepicker]="picker2" placeholder="Fecha fin del convenio"
+        [(ngModel)]="agreementInEdition.periodoFin" name="PeriodoFin">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <mat-card class="add-account-box" *ngIf="enableAccountCreation">
+      <mat-card-subtitle>
+        Desea asociar una nueva cuenta a este convenio?
+      </mat-card-subtitle>
+      <mat-card-content>
+        <mat-checkbox [(ngModel)]="checkAccount" [ngModelOptions]="{standalone: true}">
+          Si </mat-checkbox>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="add-account-box" *ngIf="!enableAccountCreation">
+      <mat-card-subtitle>
+        Este convenio tiene una cuenta asociada
+      </mat-card-subtitle>
+    </mat-card>
+    <div class="form-buttons-box">
+      <button id="save" mat-raised-button color="primary" (click)="saveAgreement(agreementInEdition)">Guardar</button>
+      <button id="cancel" mat-raised-button (click)='backToAgreements()' color="accent">Cancelar</button>
     </div>
-    <mat-accordion *ngFor="let agreement of agreements">
-      <mat-expansion-panel (opened)="panelOpenAgreement = true" (closed)="panelOpenAgreement = false">
-        <mat-expansion-panel-header style="font-weight: bold" class="mat-typography; bold">
-          <mat-panel-title>
-            {{agreement.nombre}}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p mat-line>
-          <span class='mat-body-strong'>Periodo: </span>
-          <span>{{agreement.periodo}}</span>
-        </p>
-        <p mat-line>
-          <span class='mat-body-strong'>Monto: </span>
-          <span>{{agreement.monto}}</span>
-        </p>
-        <p mat-line>
-          <span class='mat-body-strong'>Convenio: </span>
-          <a routerLink="admin/convenio">pdf</a>
-        </p>
-      </mat-expansion-panel>
-    </mat-accordion>
-  </mat-card>
-</div>
+  </form>
+</mat-card>
