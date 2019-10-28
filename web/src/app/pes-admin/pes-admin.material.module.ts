@@ -14,6 +14,7 @@ import {
   MatMenuModule,
   MatNativeDateModule,
   MatProgressSpinnerModule,
+  MatSelectModule,
   MatSidenavModule,
   MatTabsModule,
   MatTooltipModule,
@@ -43,6 +44,7 @@ import { NgModule } from '@angular/core'
     MatTabsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSelectModule,
   ],
   exports: [
     MatButtonModule,
@@ -64,6 +66,7 @@ import { NgModule } from '@angular/core'
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
+    MatSelectModule,
   ],
 })
 export class PesAdminMaterialModule {}

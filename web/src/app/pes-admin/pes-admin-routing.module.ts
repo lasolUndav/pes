@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router'
 
 import { AccountsComponent } from './accounts/accounts.component'
+import { AddTransactionComponent } from './add-transaction/add-transaction.component'
 import { AgreementComponent } from './agreement/agreement.component'
 import { AgreementsComponent } from './agreements/agreements.component'
 import { AuthGuard } from '../auth/auth-guard.service'
@@ -59,6 +60,11 @@ const routes: Routes = [
       {
         path: 'admin/transacciones',
         component: ViewsTransactionsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'admin/transaccion',
+        component: AddTransactionComponent,
         canActivate: [AuthGuard],
       },
     ],

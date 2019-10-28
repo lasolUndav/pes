@@ -2,6 +2,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database'
 
 import { Account } from '../model/account'
 import { Injectable } from '@angular/core'
+import { Transaction } from '../model/transaction'
 import { map } from 'rxjs/operators'
 
 @Injectable({
@@ -43,6 +44,14 @@ export class ServiceAccount {
   createAccount(account: Account, onSaved): void {
     const key = this.accountsRef.push(account).key
     onSaved(key)
+  }
+
+  addTransaction(account: Account, transaction: Transaction) {
+    console.log(account)
+
+    account.transactions.push(transaction)
+    console.log(account)
+    this.updateAccount(account.key, account)
   }
 
   updateAccount(key: string, value: any): void {

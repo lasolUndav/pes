@@ -15,13 +15,16 @@
 
         <mat-card-content class="box transactionBoxItem">
           <div class="box1">
-            <button class="buttonAdd" mat-mini-fab matTooltip="Añadir Transacción" [matMenuTriggerFor]="menu">
+            <button mat-mini-fab matTooltip="Añadir Transacción" [matMenuTriggerFor]="menu">
               <mat-icon>add</mat-icon>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item [routerLink]="['/admin/cuenta', {id: null}]"> Entrada</button>
-                <button mat-menu-item> Salida</button>
+                <button mat-menu-item [routerLink]="['/admin/transaccion', {id: account.key, type: 0}]">
+                  Entrada</button>
+                <button mat-menu-item [routerLink]="['/admin/transaccion', {id: account.key, type: 1}]">
+                  Salida</button>
               </mat-menu>
             </button>
+            &nbsp; &nbsp; &nbsp;
             <button [routerLink]="['/admin/transacciones', {id: account.key}]" class="buttonAdd" mat-mini-fab
               matTooltip="Ver transacciones" [matMenuTriggerFor]="menu">
               <mat-icon>search</mat-icon>

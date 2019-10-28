@@ -1,6 +1,7 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AccountsComponent } from './accounts/accounts.component'
+import { AddTransactionComponent } from './add-transaction/add-transaction.component'
 import { AgreementComponent } from './agreement/agreement.component'
 import { AgreementsComponent } from './agreements/agreements.component'
 import { AngularFireAuthModule } from 'angularfire2/auth'
@@ -20,8 +21,8 @@ import { ProviderComponent } from './provider/provider.component'
 // tslint:disable-next-line: max-line-length
 import { ProviderDetailComponent } from './providers/provider-detail/provider-detail.component'
 import { ProvidersComponent } from './providers/providers.component'
-import { environment } from '../../environments/environment'
 import { ViewsTransactionsComponent } from './views-transactions/views-transactions.component'
+import { environment } from '../../environments/environment'
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ViewsTransactionsComponent } from './views-transactions/views-transacti
     AgreementComponent,
     AccountsComponent,
     ViewsTransactionsComponent,
+    AddTransactionComponent,
   ],
   imports: [
     BrowserAnimationsModule,

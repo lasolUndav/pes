@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-spinner class="spinner" *ngIf="transactionInEdition == null"></mat-spinner>
+
+  <form class="form" *ngIf="transactionInEdition != null">
+    <mat-form-field class="full-width">
+      <input type="text" name="titulo" placeholder="Titulo" matInput [(ngModel)]="transactionInEdition.tituleOperation">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="text" name="monto" placeholder="Monto" matInput [(ngModel)]="transactionInEdition.amount">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Estado</mat-label>
+      <mat-select [(value)]="selected" [formControl]="stateControl" required>
+        <mat-option>--</mat-option>
+        <mat-option value="{{transactionInEdition.state}}">Pendiente</mat-option>
+        <mat-option value="transactionInEdition.state">Realizada</mat-option>
+      </mat-select>
+      <mat-error *ngIf="stateControl.hasError('required')">Seleccione estado</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="text" name="descripcion" placeholder="Descripcion" matInput
+        [(ngModel)]="transactionInEdition.description">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="saveTransaction(transactionInEdition)">Guardar</button>
+    &nbsp; &nbsp; &nbsp;
+    <button mat-raised-button (click)='backToAccounts()' color="accent">Cancelar</button>
+    &nbsp; &nbsp; &nbsp;
+
+  </form>
+</mat-card>
