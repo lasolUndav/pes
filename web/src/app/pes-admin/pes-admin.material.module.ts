@@ -63,4 +63,4 @@ import { NgModule } from '@angular/core'
     MatNativeDateModule,
   ],
 })
-export class PesAdminMaterialModule { }
+export class PesAdminMaterialModule {}

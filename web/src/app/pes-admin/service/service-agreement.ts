@@ -24,7 +24,7 @@ export class ServiceAgreement {
       )
       .subscribe(agreements => {
         const listAgreements = Array<Agreement>()
-        agreements.forEach(function (agreement) {
+        agreements.forEach(function(agreement) {
           listAgreements.push(new Agreement(agreement))
         })
         onAgreementsLoaded(listAgreements)
@@ -39,14 +39,15 @@ export class ServiceAgreement {
   }
 
   createAgreement(agreement: Agreement, onSaved): void {
+    console.log(agreement)
     var agreementKey = this.agreementsRef.push(agreement).key
-    onSaved(agreementKey);
+    onSaved(agreementKey)
   }
 
   addAccount(agreement: Agreement, account: Account) {
     this.serviceAccount.createAccount(account, accountKey => {
-      agreement.keyCuenta = accountKey;
-      this.updateAgreement(agreement.key, agreement);
+      agreement.keyCuenta = accountKey
+      this.updateAgreement(agreement.key, agreement)
     })
   }
 

@@ -20,7 +20,7 @@ export class ServiceAccount {
       )
       .subscribe(accounts => {
         const listAccounts = Array<Account>()
-        accounts.forEach(function (account) {
+        accounts.forEach(function(account) {
           listAccounts.push(new Account(account))
         })
         onAccountsLoaded(listAccounts)
@@ -35,8 +35,8 @@ export class ServiceAccount {
   }
 
   createAccount(account: Account, onSaved): void {
-    var key = this.accountsRef.push(account).key;
-    onSaved(key);
+    var key = this.accountsRef.push(account).key
+    onSaved(key)
   }
 
   updateAccount(key: string, value: any): void {
