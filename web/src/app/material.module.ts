@@ -1,10 +1,11 @@
 import {
   MatButtonModule,
   MatCardModule,
+  MatDatepickerModule,
   MatFormFieldModule,
   MatIconModule,
+  MatTabsModule,
   MatToolbarModule,
-  MatDatepickerModule,
 } from '@angular/material'
 
 import { CommonModule } from '@angular/common'
@@ -21,6 +22,7 @@ import { NgModule } from '@angular/core'
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
+    MatTabsModule,
     MatDatepickerModule,
   ],
   exports: [
@@ -30,6 +32,7 @@ import { NgModule } from '@angular/core'
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
+    MatTabsModule,
     MatDatepickerModule,
   ],
 })

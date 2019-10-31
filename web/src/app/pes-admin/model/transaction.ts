@@ -1,5 +1,5 @@
 import { AgreementTransactionCategory } from './agreement-transaction-category'
-import { Provider } from './provider'
+import { Provider } from '@angular/core'
 
 export enum TransactionState {
   Pending = 0,
@@ -16,48 +16,31 @@ export class Transaction {
   public state: TransactionState
   public amount: number
   public dateTime: Date
+  public tituleOperation: String
   public description: String
   public category: AgreementTransactionCategory
   public provider: Provider
 
-  constructor(
-    amount: number,
-    type: TranstactionType,
-    description: String,
-    state: TransactionState
-  ) {
+  constructor(result) {
     this.dateTime = new Date()
-    this.state = state
+    this.state = result.estado
     this.provider = null
     this.category = null
-    this.type = type
-    this.amount = amount
-    this.description = description
+    this.type = result.tipo
+    this.amount = result.monto
+    this.tituleOperation = result.titulo
+    this.description = result.descripcion
   }
-
-  static createInputTransaction(
-    amount: number,
-    description: String,
-    state: TransactionState = TransactionState.Done
-  ): Transaction {
-    return new Transaction(amount, TranstactionType.Input, description, state)
-  }
-
-  static createOutputTransaction(
-    amount: number,
-    provider: Provider,
-    category: AgreementTransactionCategory,
-    description: String,
-    state: TransactionState = TransactionState.Done
-  ): Transaction {
-    const transaction = new Transaction(
-      amount,
-      TranstactionType.Output,
-      description,
-      state
+  getDateFormat(): string {
+    return (
+      this.dateTime.getDay() +
+      '/' +
+      this.dateTime.getMonth() +
+      '/' +
+      this.dateTime.getFullYear()
     )
-    transaction.provider = provider
-    transaction.category = category
-    return transaction
+  }
+  getTimeFormat(): string {
+    return this.dateTime.getHours() + ':' + this.dateTime.getMinutes() + ' hs'
   }
 }

@@ -34,7 +34,6 @@ export class AgreementComponent implements OnInit {
       this.setupFormEditAgreement()
     }
   }
-
   backToAgreements(): void {
     this.route.navigate(['/admin/convenios'])
   }

@@ -4,6 +4,7 @@ import {
   MatCardModule,
   MatCheckboxModule,
   MatChipsModule,
+  MatDatepickerModule,
   MatDialogModule,
   MatExpansionModule,
   MatFormFieldModule,
@@ -11,11 +12,12 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatProgressSpinnerModule,
-  MatSidenavModule,
-  MatTooltipModule,
-  MatDatepickerModule,
   MatNativeDateModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatTabsModule,
+  MatTooltipModule,
 } from '@angular/material'
 
 import { FlexLayoutModule } from '@angular/flex-layout'
@@ -39,8 +41,10 @@ import { NgModule } from '@angular/core'
     MatAutocompleteModule,
     MatCheckboxModule,
     MatMenuModule,
+    MatTabsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSelectModule,
   ],
   exports: [
     MatButtonModule,
@@ -61,6 +65,8 @@ import { NgModule } from '@angular/core'
     MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTabsModule,
+    MatSelectModule,
   ],
 })
 export class PesAdminMaterialModule {}

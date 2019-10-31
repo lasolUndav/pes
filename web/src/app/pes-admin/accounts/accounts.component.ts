@@ -12,10 +12,10 @@ export class AccountsComponent implements OnInit {
   panelOpenAccount = false
   service: ServiceAccount
   accounts: Array<Account>
+
   constructor(serviceAccount: ServiceAccount) {
     this.service = serviceAccount
   }
-
   ngOnInit() {
     const scope = this
     this.service.getAccounts(function(accounts) {

@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from '@angular/router'
 
-import { AccountComponent } from './account/account.component'
 import { AccountsComponent } from './accounts/accounts.component'
+import { AddTransactionComponent } from './add-transaction/add-transaction.component'
 import { AgreementComponent } from './agreement/agreement.component'
 import { AgreementsComponent } from './agreements/agreements.component'
 import { AuthGuard } from '../auth/auth-guard.service'
@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core'
 import { PesAdminComponent } from './pes-admin.component'
 import { ProviderComponent } from './provider/provider.component'
 import { ProvidersComponent } from './providers/providers.component'
+import { ViewsTransactionsComponent } from './views-transactions/views-transactions.component'
 
 const routes: Routes = [
   {
@@ -52,13 +53,18 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
-        path: 'admin/cuenta',
-        component: AccountComponent,
+        path: 'admin/cuentas/:id',
+        component: AccountsComponent,
         canActivate: [AuthGuard],
       },
       {
-        path: 'admin/cuenta/:id',
-        component: AccountComponent,
+        path: 'admin/transacciones',
+        component: ViewsTransactionsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'admin/transaccion',
+        component: AddTransactionComponent,
         canActivate: [AuthGuard],
       },
     ],
