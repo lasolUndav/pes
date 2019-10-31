@@ -9,7 +9,6 @@ import { map } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class ServiceAccount {
-  lastTransactionLoaded: string
   accountsRef: AngularFireList<Account> = null
   constructor(private db: AngularFireDatabase) {
     this.accountsRef = db.list('/cuentas')
@@ -41,17 +40,15 @@ export class ServiceAccount {
       .snapshotChanges()
       .subscribe(data => onLoaded(data.payload.val()))
   }
-  createAccount(account: Account, onSaved): void {
-    const key = this.accountsRef.push(account).key
-    onSaved(key)
-  }
 
   addTransaction(account: Account, transaction: Transaction) {
-    console.log(account)
-
     account.transactions.push(transaction)
-    console.log(account)
     this.updateAccount(account.key, account)
+  }
+
+  createAccount(account: Account, onSaved): void {
+    var key = this.accountsRef.push(account).key
+    onSaved(key)
   }
 
   updateAccount(key: string, value: any): void {

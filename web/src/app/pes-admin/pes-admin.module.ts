@@ -18,11 +18,12 @@ import { PesAdminComponent } from './pes-admin.component'
 import { PesAdminMaterialModule } from './pes-admin.material.module'
 import { PesAdminRoutingModule } from './pes-admin-routing.module'
 import { ProviderComponent } from './provider/provider.component'
-// tslint:disable-next-line: max-line-length
 import { ProviderDetailComponent } from './providers/provider-detail/provider-detail.component'
 import { ProvidersComponent } from './providers/providers.component'
 import { ViewsTransactionsComponent } from './views-transactions/views-transactions.component'
 import { environment } from '../../environments/environment'
+
+// tslint:disable-next-line: max-line-length
 
 @NgModule({
   declarations: [

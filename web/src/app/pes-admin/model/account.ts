@@ -12,6 +12,18 @@ export class Account {
     this.transactions = result.transacciones
   }
 
+  public toDto() {
+    let dto = {
+      nombre: this.name,
+    }
+
+    if (this.key != null) {
+      dto['key'] = this.key
+    }
+
+    return dto
+  }
+
   private getTotalOutputAmount(state: TransactionState) {
     const total = this.transactions
       .filter(trx => trx.state === state && trx.type === TranstactionType.Output)
