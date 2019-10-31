@@ -8,10 +8,14 @@
     <mat-accordion *ngFor="let agreement of agreements">
       <div>
         <mat-expansion-panel (opened)="panelOpenAgreement = true" (closed)="panelOpenAgreement = false">
-          <mat-expansion-panel-header style="font-weight: bold" class="mat-typography; bold">
+          <mat-expansion-panel-header class="mat-typography">
             <mat-panel-title>
               {{agreement.nombre}}
             </mat-panel-title>
+            <button class="buttonEdit" mat-mini-fab matTooltip="Editar"
+              [routerLink]="['/admin/convenio',{id: agreement.key} ]">
+              <mat-icon>edit</mat-icon>
+            </button>
           </mat-expansion-panel-header>
           <p mat-line>
             <span class='mat-body-strong'>Periodo: </span>
@@ -26,10 +30,7 @@
             <span class='mat-body-strong'>Convenio: </span>
             <a routerLink="admin/convenio">pdf</a>
           </p>
-          <button class="buttonEdit" mat-mini-fab matTooltip="Editar"
-            [routerLink]="['/admin/convenio',{id: agreement.key} ]">
-            <mat-icon>edit</mat-icon>
-          </button>
+
         </mat-expansion-panel>
       </div>
     </mat-accordion>
