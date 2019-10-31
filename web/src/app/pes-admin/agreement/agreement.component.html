@@ -1,38 +1,46 @@
 <mat-card>
   <mat-spinner class="spinner" *ngIf="agreementInEdition == null"></mat-spinner>
-
+  <h1>{{formTitle}}</h1>
   <form class="form" *ngIf="agreementInEdition != null">
-    <mat-form-field class="full-width">
-      <input type="text" name="nombre" placeholder="Nombre" matInput [(ngModel)]="agreementInEdition.nombre">
+    <mat-form-field class="field-form-box">
+      <input type="text" name="nombre" placeholder="Nombre del convenio" matInput
+        [(ngModel)]="agreementInEdition.nombre">
       <mat-icon matSuffix>mode_edit</mat-icon>
     </mat-form-field>
-
-    <mat-form-field class="full-width">
-      <input type="text" name="monto" placeholder="monto " matInput [(ngModel)]="agreementInEdition.monto">
+    <mat-form-field class="field-form-box">
+      <input type="text" name="monto" placeholder="Monto asignado al convenio" matInput
+        [(ngModel)]="agreementInEdition.monto">
       <mat-icon matSuffix>mode_edit</mat-icon>
     </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker1" placeholder="Periodo inicio"
+    <mat-form-field class="field-form-box">
+      <input matInput [matDatepicker]="picker1" placeholder="Fecha inicio del convenio"
         [(ngModel)]="agreementInEdition.periodoInicio" name="PeriodoInicio">
       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
-
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker2" placeholder="Periodo fin" [(ngModel)]="agreementInEdition.periodoFin"
-        name="PeriodoFin">
+    <mat-form-field class="field-form-box">
+      <input matInput [matDatepicker]="picker2" placeholder="Fecha fin del convenio"
+        [(ngModel)]="agreementInEdition.periodoFin" name="PeriodoFin">
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2></mat-datepicker>
     </mat-form-field>
-
-    <mat-checkbox [(ngModel)]="checkAccount" [disabled]="disabled" [ngModelOptions]="{standalone: true}">
-      Crear una cuenta </mat-checkbox>
-    &nbsp; &nbsp; &nbsp;
-    <button mat-raised-button color="primary" (click)="saveAgreement(agreementInEdition)">Guardar</button>
-    &nbsp; &nbsp; &nbsp;
-    <button mat-raised-button (click)='backToAgreements()' color="accent">Cancelar</button>
-    &nbsp; &nbsp; &nbsp;
-
+    <mat-card class="add-account-box" *ngIf="enableAccountCreation">
+      <mat-card-subtitle>
+        Desea asociar una nueva cuenta a este convenio?
+      </mat-card-subtitle>
+      <mat-card-content>
+        <mat-checkbox [(ngModel)]="checkAccount" [ngModelOptions]="{standalone: true}">
+          Si </mat-checkbox>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="add-account-box" *ngIf="!enableAccountCreation">
+      <mat-card-subtitle>
+        Este convenio tiene una cuenta asociada
+      </mat-card-subtitle>
+    </mat-card>
+    <div class="form-buttons-box">
+      <button id="save" mat-raised-button color="primary" (click)="saveAgreement(agreementInEdition)">Guardar</button>
+      <button id="cancel" mat-raised-button (click)='backToAgreements()' color="accent">Cancelar</button>
+    </div>
   </form>
 </mat-card>

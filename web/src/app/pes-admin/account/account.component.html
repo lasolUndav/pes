@@ -1,0 +1,31 @@
+<mat-card>
+  <mat-spinner class="spinner" *ngIf="accountInEdition == null"></mat-spinner>
+
+  <form class="form" *ngIf="accountInEdition != null">
+    <mat-form-field class="full-width">
+      <input type="text" name="nombre" placeholder="Nombre" matInput [(ngModel)]="accountInEdition.name">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="text" name="monto" placeholder="monto " matInput [(ngModel)]="accountInEdition.monto">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="text" name="transaccion" placeholder="transaccion " matInput
+        [(ngModel)]="accountInEdition.transactions">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-checkbox *ngIf="isNew" [(ngModel)]="continueAdding" [ngModelOptions]="{standalone: true}">Continuar
+      agregando
+    </mat-checkbox>
+    &nbsp; &nbsp; &nbsp;
+    <button mat-raised-button color="primary" (click)="saveAccount(accountInEdition)">Guardar</button>
+    &nbsp; &nbsp; &nbsp;
+    <button mat-raised-button (click)='backToAccounts()' color="accent">Cancelar</button>
+    &nbsp; &nbsp; &nbsp;
+
+  </form>
+</mat-card>

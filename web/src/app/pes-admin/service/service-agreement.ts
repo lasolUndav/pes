@@ -39,14 +39,14 @@ export class ServiceAgreement {
   }
 
   createAgreement(agreement: Agreement, onSaved): void {
-    const agreementKey = this.agreementsRef.push(agreement).key
+    var agreementKey = this.agreementsRef.push(agreement).key
     onSaved(agreementKey)
   }
 
   addAccount(agreement: Agreement, account: Account) {
-    this.serviceAccount.createAccount(account, accountKey => {
+    this.serviceAccount.createAccount(account.toDto(), accountKey => {
       agreement.keyCuenta = accountKey
-      this.updateAgreement(agreement.key, agreement)
+      this.updateAgreement(agreement.key, agreement.toDto())
     })
   }
 

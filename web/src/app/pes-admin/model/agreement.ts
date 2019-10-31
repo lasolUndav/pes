@@ -9,13 +9,41 @@ export class Agreement {
   public keyCuenta: string
   public categorias: Array<AgreementTransactionCategory>
 
-  constructor(result) {
-    this.key = result.key
-    this.nombre = result.nombre
+  constructor(dto) {
+    this.nombre = dto.nombre
     this.categorias = new Array<AgreementTransactionCategory>()
-    this.periodoInicio = result.periodoInicio
-    this.periodoFin = result.periodoFin
-    this.monto = result.monto
-    this.keyCuenta = result.keyCuenta
+    this.periodoInicio = dto.periodoInicio
+    this.periodoFin = dto.periodoFin
+    this.monto = dto.monto
+    if ('key' in dto) {
+      this.key = dto.key
+    } else {
+      this.key = null
+    }
+
+    if ('keyCuenta' in dto) {
+      this.keyCuenta = dto.keyCuenta
+    } else {
+      this.keyCuenta = null
+    }
+  }
+
+  public toDto() {
+    let dto = {
+      nombre: this.nombre,
+      periodoInicio: this.periodoInicio,
+      periodoFin: this.periodoFin,
+      monto: this.monto,
+    }
+
+    if (this.key != null) {
+      dto['key'] = this.key
+    }
+
+    if (this.keyCuenta != null) {
+      dto['keyCuenta'] = this.keyCuenta
+    }
+
+    return dto
   }
 }

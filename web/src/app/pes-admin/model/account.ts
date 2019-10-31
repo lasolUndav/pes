@@ -6,10 +6,22 @@ export class Account {
   public name: string
   public dataTransactions = []
 
-  constructor(result) {
-    this.key = result.key
-    this.name = result.nombreConvenio
-    this.transactions = result.transacciones
+  constructor(dto) {
+    this.key = dto.key
+    this.name = dto.nombre
+    this.transactions = dto.transacciones
+  }
+
+  public toDto() {
+    let dto = {
+      nombre: this.name,
+    }
+
+    if (this.key != null) {
+      dto['key'] = this.key
+    }
+
+    return dto
   }
 
   private getTotalOutputAmount(state: TransactionState) {

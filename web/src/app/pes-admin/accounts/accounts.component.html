@@ -2,7 +2,6 @@
   <mat-card>
     <div class="head-content-card">
       <h2>Cuentas</h2>
-
     </div>
     <mat-accordion *ngFor="let account of accounts">
 
@@ -29,14 +28,6 @@
               matTooltip="Ver transacciones" [matMenuTriggerFor]="menu">
               <mat-icon>search</mat-icon>
             </button>
-
-          </div>
-          <div class=" box2">
-
-            <p mat-line>
-              <span class='mat-body-strong'>Cuenta: </span>
-              <a routerLink="admin/cuentas">pdf</a>
-            </p>
 
           </div>
         </mat-card-content>

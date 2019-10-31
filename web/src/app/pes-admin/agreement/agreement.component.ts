@@ -12,13 +12,11 @@ import { ServiceAgreement } from '../service/service-agreement'
 })
 export class AgreementComponent implements OnInit {
   checkAccount = false
-  disabled = false
+  enableAccountCreation = false
   agreementInEdition: Agreement
   isNew: boolean
   agreementKey: string
-  lastAgreementLoaded: string
   formTitle: string
-  lastAccountLoaded: string
 
   constructor(
     private route: Router,
@@ -26,8 +24,6 @@ export class AgreementComponent implements OnInit {
     private serviceAgreement: ServiceAgreement
   ) {
     this.agreementInEdition = null
-    this.lastAgreementLoaded = null
-    this.lastAccountLoaded = null
   }
 
   ngOnInit(): void {
@@ -44,39 +40,34 @@ export class AgreementComponent implements OnInit {
 
   setupFormEditAgreement() {
     this.isNew = false
-    this.serviceAgreement.getAgreement(this.agreementKey, data => {
-      this.agreementInEdition = new Agreement(data)
+    this.serviceAgreement.getAgreement(this.agreementKey, dto => {
+      this.agreementInEdition = new Agreement(dto)
       this.formTitle = `Editar convenio ${this.agreementInEdition.nombre}`
-      if (this.agreementInEdition.keyCuenta !== '') {
-        this.disabled = true
-      }
+      this.enableAccountCreation = this.agreementInEdition.keyCuenta == null
     })
   }
 
   setupFormNewAgreement() {
     this.isNew = true
-    this.formTitle = 'Agregar nuevo proveedor'
+    this.enableAccountCreation = true
+    this.formTitle = 'Agregar nuevo convenio'
     this.agreementInEdition = new Agreement({
-      key: '',
       nombre: '',
       periodoInicio: new Date(),
       periodoFin: new Date(),
       monto: '',
-      keyCuenta: '',
     })
   }
 
   saveAgreement(agreement) {
-    const jsonAgreement = agreement
     if (this.isNew) {
-      this.serviceAgreement.createAgreement(jsonAgreement, agreementKey => {
-        this.lastAgreementLoaded = jsonAgreement.nombre
+      this.serviceAgreement.createAgreement(agreement.toDto(), agreementKey => {
         agreement.key = agreementKey
-        this.serviceAgreement.updateAgreement(agreementKey, agreement)
+        this.serviceAgreement.updateAgreement(agreementKey, agreement.toDto())
         this.saveAccount(agreement)
       })
     } else {
-      this.serviceAgreement.updateAgreement(this.agreementKey, jsonAgreement)
+      this.serviceAgreement.updateAgreement(this.agreementKey, agreement.toDto())
       this.saveAccount(agreement)
     }
     this.backToAgreements()
@@ -87,15 +78,10 @@ export class AgreementComponent implements OnInit {
       this.serviceAgreement.addAccount(
         agreement,
         new Account({
-          nombreConvenio: this.agreementInEdition.nombre,
+          nombre: this.agreementInEdition.nombre,
           transacciones: null,
         })
       )
     }
-    this.disabled = true
-  }
-
-  scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 }
