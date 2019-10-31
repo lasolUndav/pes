@@ -12,6 +12,7 @@ export enum TranstactionType {
 }
 
 export class Transaction {
+  public key: string
   public type: TranstactionType
   public state: TransactionState
   public amount: number
@@ -21,15 +22,32 @@ export class Transaction {
   public category: AgreementTransactionCategory
   public provider: Provider
 
-  constructor(result) {
+  constructor(dto) {
+    this.key = dto.key
     this.dateTime = new Date()
-    this.state = result.estado
+    this.state = dto.estado
     this.provider = null
     this.category = null
-    this.type = result.tipo
-    this.amount = result.monto
-    this.tituleOperation = result.titulo
-    this.description = result.descripcion
+    this.type = dto.tipo
+    this.amount = dto.monto
+    this.tituleOperation = dto.titulo
+    this.description = dto.descripcion
+  }
+  public toDto() {
+    let dto = {
+      titulo: this.tituleOperation,
+      monto: this.amount,
+      tipo: this.type,
+      estado: this.state,
+      descripcion: this.description,
+      fecha: this.dateTime,
+    }
+
+    if (this.key != null) {
+      dto['key'] = this.key
+    }
+
+    return dto
   }
   getDateFormat(): string {
     return (

@@ -17,10 +17,8 @@ export class AddTransactionComponent implements OnInit {
   accountKey: string
   type: string
   isNew: boolean
-  selected: string
   lastAccountLoaded: string
-  stateControl = new FormControl('', [Validators.required])
-  selectFormControl = new FormControl('', Validators.required)
+  selected = 'transactionInEdition.state'
   constructor(
     private route: Router,
     private ruteActive: ActivatedRoute,
