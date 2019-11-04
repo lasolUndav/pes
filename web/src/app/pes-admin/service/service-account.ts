@@ -41,9 +41,9 @@ export class ServiceAccount {
       .subscribe(data => onLoaded(data.payload.val()))
   }
 
-  addTransaction(account: Account, transaction: Transaction) {
-    account.transactions.push(transaction)
-    this.updateAccount(account.key, account)
+  addTransaction(accountKey: string, transaction: Transaction) {
+    const transactionsRef = this.db.list(`/cuentas/${accountKey}/transacciones`)
+    transactionsRef.push(transaction.toDto())
   }
 
   createAccount(account: any, onSaved): void {

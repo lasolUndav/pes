@@ -1,9 +1,24 @@
 <mat-card>
-  <mat-spinner class="spinner" *ngIf="transactionInEdition == null"></mat-spinner>
+  <h1>{{formTitle}}</h1>
+  <mat-spinner class="spinner" *ngIf="transactionInEdition == null || providers == null"></mat-spinner>
+  <form class="form" *ngIf="transactionInEdition != null && providers != null">
 
-  <form class="form" *ngIf="transactionInEdition != null">
+    <mat-form-field *ngIf="type == 2" class="full-width">
+      <mat-label>Proveedor</mat-label>
+      <mat-select [(value)]="transactionInEdition.provider">
+        <mat-option *ngFor="let provider of providers" [(value)]="provider">{{provider.nombre}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="type != 2" class="full-width">
+      <input type="text" name="titulo" placeholder="Descripcion corta de la transaccion" matInput
+        [(ngModel)]="transactionInEdition.shortDescription">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
     <mat-form-field class="full-width">
-      <input type="text" name="titulo" placeholder="Titulo" matInput [(ngModel)]="transactionInEdition.tituleOperation">
+      <input type="text" name="descripcion" placeholder="Descripcion detallada de la transaccion" matInput
+        [(ngModel)]="transactionInEdition.description">
       <mat-icon matSuffix>mode_edit</mat-icon>
     </mat-form-field>
 
@@ -14,22 +29,15 @@
 
     <mat-form-field class="full-width">
       <mat-label>Estado</mat-label>
-      <mat-select [(value)]="selected">
-        <mat-option value="transactionInEdition.state">Pendiente</mat-option>
-        <mat-option value="transactionInEdition.state">Realizada</mat-option>
+      <mat-select [(value)]="transactionInEdition.state">
+        <mat-option value="Pending">Pendiente</mat-option>
+        <mat-option value="Done">Realizada</mat-option>
       </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="full-width">
-      <input type="text" name="descripcion" placeholder="Descripcion" matInput
-        [(ngModel)]="transactionInEdition.description">
-      <mat-icon matSuffix>mode_edit</mat-icon>
     </mat-form-field>
 
     <button mat-raised-button color="primary" (click)="saveTransaction(transactionInEdition)">Guardar</button>
     &nbsp; &nbsp; &nbsp;
     <button mat-raised-button (click)='backToAccounts()' color="accent">Cancelar</button>
     &nbsp; &nbsp; &nbsp;
-
   </form>
 </mat-card>

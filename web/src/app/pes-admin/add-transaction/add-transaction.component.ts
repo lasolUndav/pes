@@ -1,10 +1,13 @@
 import { ActivatedRoute, Router } from '@angular/router'
 import { Component, OnInit } from '@angular/core'
 import { FormControl, Validators } from '@angular/forms'
+import { Transaction, TranstactionType } from '../model/transaction'
 
 import { Account } from '../model/account'
+import { AddTransactionType } from '../model/add-transaction-type'
+import { Provider } from '../model/provider'
 import { ServiceAccount } from '../service/service-account'
-import { Transaction } from '../model/transaction'
+import { ServiceProvider } from '../service/service-provider'
 
 @Component({
   selector: 'app-add-transaction',
@@ -12,76 +15,66 @@ import { Transaction } from '../model/transaction'
   styleUrls: ['./add-transaction.component.css'],
 })
 export class AddTransactionComponent implements OnInit {
+  providers: Array<Provider>
   transactionInEdition: Transaction
   formTitle: string
   accountKey: string
-  type: string
-  isNew: boolean
-  lastAccountLoaded: string
-  selected = 'transactionInEdition.state'
+  type: AddTransactionType
   constructor(
     private route: Router,
     private ruteActive: ActivatedRoute,
-    private serviceAccount: ServiceAccount
+    private serviceAccount: ServiceAccount,
+    private serviceProvider: ServiceProvider
   ) {
     this.accountKey = this.ruteActive.snapshot.paramMap.get('id')
-    this.type = this.ruteActive.snapshot.paramMap.get('type')
+    // Casteo de string a enum
+    this.type = AddTransactionType[this.ruteActive.snapshot.paramMap.get('type')]
     this.transactionInEdition = null
-    this.lastAccountLoaded = null
+    this.providers = null
   }
 
   ngOnInit(): void {
-    if (this.accountKey === 'null') {
-      this.setupFormNewTransaction()
-    } else {
-      this.setupFormEditTansaction()
-    }
+    this.setupFormNewTransaction()
+    var scope = this
+    this.serviceProvider.getProviders(function(providers) {
+      scope.providers = providers
+    })
   }
   backToAccounts(): void {
     this.route.navigate(['/admin/cuentas'])
   }
-  setupFormEditTansaction() {
-    this.isNew = false
-    this.serviceAccount.getAccount(this.accountKey, data => {
-      this.transactionInEdition = new Transaction(data)
-      this.formTitle = `Editar transaccion ${this.transactionInEdition.type}`
-    })
-  }
   setupFormNewTransaction() {
-    this.isNew = true
-    this.formTitle = 'Agregar nueva transaccion'
-    this.transactionInEdition = new Transaction({
-      key: '',
-      tipo: this.type,
-      estado: '',
-      monto: '',
-      titulo: '',
-      descripcion: '',
-    })
-  }
-  saveAccount(account) {
-    const jsonAccount = account
-    if (this.isNew) {
-      this.serviceAccount.createAccount(jsonAccount, accountKey => {
-        this.lastAccountLoaded = jsonAccount
-        account.key = accountKey
-        this.serviceAccount.updateAccount(accountKey, account)
-        this.saveAccount(account)
-      })
-    } else {
-      this.serviceAccount.updateAccount(this.accountKey, jsonAccount)
-      this.saveTransaction(account)
+    switch (+this.type) {
+      case AddTransactionType.NormalInput:
+        this.formTitle = 'Alta de ingreso'
+        this.transactionInEdition = new Transaction({
+          tipo: TranstactionType.Input,
+        })
+        break
+      case AddTransactionType.ProviderPayOutput:
+        this.formTitle = 'Alta de pago a proveedor'
+        this.transactionInEdition = new Transaction({
+          tipo: TranstactionType.Output,
+        })
+        break
+      case AddTransactionType.NormalOutput:
+        this.formTitle = 'Alta de pago general'
+        this.transactionInEdition = new Transaction({
+          tipo: TranstactionType.Output,
+        })
+        break
+      default:
+        this.formTitle = 'Error!!!'
+        break
     }
-    this.backToAccounts()
   }
 
   saveTransaction(account: Account) {
-    console.log(this.transactionInEdition.state)
-    this.serviceAccount.addTransaction(
-      account,
-      new Transaction({
-        transacciones: this.transactionInEdition,
-      })
-    )
+    if (this.type === AddTransactionType.ProviderPayOutput) {
+      this.transactionInEdition.shortDescription = `Pago a proveedor [${
+        this.transactionInEdition.provider.nombre
+      }]`
+    }
+    this.serviceAccount.addTransaction(this.accountKey, this.transactionInEdition)
   }
 }
