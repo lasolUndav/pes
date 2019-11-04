@@ -84,4 +84,5 @@ export class AgreementComponent implements OnInit {
       )
     }
   }
+
 }

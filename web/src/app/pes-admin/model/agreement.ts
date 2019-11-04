@@ -11,9 +11,9 @@ export class Agreement {
 
   constructor(dto) {
     this.nombre = dto.nombre
+    this.periodoInicio = new Date()
+    this.periodoFin = new Date()
     this.categorias = new Array<AgreementTransactionCategory>()
-    this.periodoInicio = dto.periodoInicio
-    this.periodoFin = dto.periodoFin
     this.monto = dto.monto
     if ('key' in dto) {
       this.key = dto.key
@@ -46,4 +46,21 @@ export class Agreement {
 
     return dto
   }
+
+  getPeriodFormat(): string {
+    return (
+      this.periodoInicio.getDay() +
+      '/' +
+      this.periodoInicio.getMonth() +
+      '/' +
+      this.periodoInicio.getFullYear() +
+      ' - ' +
+      this.periodoFin.getDay() +
+      '/' +
+      this.periodoFin.getMonth() +
+      '/' +
+      this.periodoFin.getFullYear()
+    )
+  }
+
 }
