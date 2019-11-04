@@ -11,8 +11,8 @@ export class Agreement {
 
   constructor(dto) {
     this.nombre = dto.nombre
-    this.periodoInicio = new Date()
-    this.periodoFin = new Date()
+    this.periodoInicio = new Date(dto.periodoInicio)
+    this.periodoFin = new Date(dto.periodoFin)
     this.categorias = new Array<AgreementTransactionCategory>()
     this.monto = dto.monto
     if ('key' in dto) {
@@ -31,8 +31,8 @@ export class Agreement {
   public toDto() {
     let dto = {
       nombre: this.nombre,
-      periodoInicio: this.periodoInicio,
-      periodoFin: this.periodoFin,
+      periodoInicio: this.periodoInicio.valueOf(),
+      periodoFin: this.periodoFin.valueOf(),
       monto: this.monto,
     }
 
@@ -45,22 +45,6 @@ export class Agreement {
     }
 
     return dto
-  }
-
-  getPeriodFormat(): string {
-    return (
-      this.periodoInicio.getDay() +
-      '/' +
-      this.periodoInicio.getMonth() +
-      '/' +
-      this.periodoInicio.getFullYear() +
-      ' - ' +
-      this.periodoFin.getDay() +
-      '/' +
-      this.periodoFin.getMonth() +
-      '/' +
-      this.periodoFin.getFullYear()
-    )
   }
 
 }

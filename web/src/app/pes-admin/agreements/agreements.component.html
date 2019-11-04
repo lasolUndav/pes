@@ -20,7 +20,8 @@
             </button>
             <p mat-line>
               <span class='mat-body-strong'>Periodo: </span>
-              <span>{{agreement.getPeriodFormat()}}</span>
+              <span>{{agreement.periodoInicio |date:"mediumDate" }} - </span>
+              <span>{{agreement.periodoFin|date:"mediumDate" }}</span>
             </p>
             <p mat-line>
               <span class='mat-body-strong'>Monto: </span>
