@@ -4,7 +4,6 @@ export class Account {
   public key: string
   public transactions: Array<Transaction>
   public name: string
-  public dataTransactions = []
 
   constructor(dto) {
     this.key = dto.key
@@ -49,13 +48,5 @@ export class Account {
     return totalOuputPending
   }
 
-  getTransactionData() {
-    Object.entries(this.transactions).forEach(([keyTransaction, transaction]) => {
-      this.dataTransactions.push(transaction)
-      console.log(transaction.dateTime)
-    })
-    console.log(this.dataTransactions)
 
-    return this.dataTransactions
-  }
 }

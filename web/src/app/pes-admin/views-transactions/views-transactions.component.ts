@@ -13,10 +13,9 @@ import { Transaction } from '../model/transaction'
 export class ViewsTransactionsComponent implements OnInit {
   accountKey: string
   account: Account
-  transactions: Array<Transaction>
   service: ServiceAccount
-  transactionsOutput: Array<Transaction>
-  transactionsInput: Array<Transaction>
+  transactionsOutput = []
+  transactionsInput = []
   panelOpenTransaction = false
   constructor(
     private route: Router,
@@ -26,14 +25,10 @@ export class ViewsTransactionsComponent implements OnInit {
     this.service = serviceAccount
     this.account = null
     this.accountKey = this.ruteActive.snapshot.paramMap.get('id')
-    this.transactions = new Array<Transaction>()
-    this.transactionsInput = new Array<Transaction>()
-    this.transactionsOutput = new Array<Transaction>()
   }
 
   ngOnInit(): void {
     this.loadAccount()
-    console.log(this.transactionsInput)
   }
   backToAccounts(): void {
     this.route.navigate(['/admin/cuentas'])
@@ -44,9 +39,10 @@ export class ViewsTransactionsComponent implements OnInit {
       this.loadTransaction(this.account)
     })
   }
+
   loadTransaction(account: Account) {
     Object.entries(account.transactions).forEach(([_, transaction]) => {
-      if (transaction.type === 1) {
+      if (transaction.tipo == 1) {
         this.transactionsOutput.push(new Transaction(transaction))
       } else {
         this.transactionsInput.push(new Transaction(transaction))

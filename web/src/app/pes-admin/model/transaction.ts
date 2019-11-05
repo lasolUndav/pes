@@ -53,13 +53,13 @@ export class Transaction {
       this.amount = 0
     }
 
-    if ('shortDescription' in dto) {
+    if ('titulo' in dto) {
       this.shortDescription = dto.titulo
     } else {
       this.shortDescription = ''
     }
 
-    if ('description' in dto) {
+    if ('descripcion' in dto) {
       this.description = dto.descripcion
     } else {
       this.description = ''
