@@ -1,5 +1,6 @@
 import { AgreementTransactionCategory } from './agreement-transaction-category'
 import { Provider } from './provider'
+import { ServiceProvider } from '../service/service-provider'
 
 export enum TransactionState {
   Pending = 0,
@@ -12,6 +13,7 @@ export enum TranstactionType {
 }
 
 export class Transaction {
+  private serviceProvider: ServiceProvider
   public key: string
   public shortDescription: string
   public description: string
@@ -21,6 +23,7 @@ export class Transaction {
   public dateTime: Date
   public category: AgreementTransactionCategory
   public provider: Provider
+  public keyProvider: string
 
   constructor(dto) {
     if ('key' in dto) {
@@ -42,8 +45,9 @@ export class Transaction {
     }
 
     if ('keyProveedor' in dto) {
-      this.provider = new Provider(dto.proveedores[dto.keyProveedor])
+      this.keyProvider = dto.keyProveedor
     } else {
+      this.keyProvider = null
       this.provider = null
     }
 

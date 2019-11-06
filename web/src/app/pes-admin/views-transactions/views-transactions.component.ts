@@ -41,8 +41,10 @@ export class ViewsTransactionsComponent implements OnInit {
   }
 
   loadTransaction(account: Account) {
+    var tipo
     Object.entries(account.transactions).forEach(([_, transaction]) => {
-      if (transaction.tipo == 1) {
+      tipo= transaction['tipo']
+      if (tipo === 1) {
         this.transactionsOutput.push(new Transaction(transaction))
       } else {
         this.transactionsInput.push(new Transaction(transaction))
