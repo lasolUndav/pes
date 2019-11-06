@@ -26,7 +26,12 @@
       <input type="text" name="monto" placeholder="Monto" matInput [(ngModel)]="transactionInEdition.amount">
       <mat-icon matSuffix>mode_edit</mat-icon>
     </mat-form-field>
-
+    <mat-form-field class="full-width">
+      <input matInput [matDatepicker]="picker1" placeholder="Fecha de la transaccion"
+        [(ngModel)]="transactionInEdition.dateTime" name="Fecha">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
     <mat-form-field class="full-width">
       <mat-label>Estado</mat-label>
       <mat-select [(value)]="transactionInEdition.state">
@@ -35,9 +40,9 @@
       </mat-select>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="saveTransaction(transactionInEdition)">Guardar</button>
+    <button id="save" mat-raised-button color="primary" (click)="saveTransaction(transactionInEdition)">Guardar</button>
     &nbsp; &nbsp; &nbsp;
-    <button mat-raised-button (click)='backToAccounts()' color="accent">Cancelar</button>
+    <button id="cancel" mat-raised-button (click)='backToAccounts()' color="accent">Cancelar</button>
     &nbsp; &nbsp; &nbsp;
   </form>
 </mat-card>

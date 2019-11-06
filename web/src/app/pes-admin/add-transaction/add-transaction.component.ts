@@ -44,11 +44,12 @@ export class AddTransactionComponent implements OnInit {
     this.route.navigate(['/admin/cuentas'])
   }
   setupFormNewTransaction() {
-    switch (+this.type) {
+    switch (this.type) {
       case AddTransactionType.NormalInput:
         this.formTitle = 'Alta de ingreso'
         this.transactionInEdition = new Transaction({
           tipo: TranstactionType.Input,
+
         })
         break
       case AddTransactionType.ProviderPayOutput:
@@ -76,5 +77,6 @@ export class AddTransactionComponent implements OnInit {
       }]`
     }
     this.serviceAccount.addTransaction(this.accountKey, this.transactionInEdition)
+    this.backToAccounts()
   }
 }

@@ -8,12 +8,22 @@ export class Account {
   constructor(dto) {
     this.key = dto.key
     this.name = dto.nombre
-    this.transactions = dto.transacciones
+    this.transactions = []
+    if ('transacciones' in dto) {
+      Object.entries(dto.transacciones).forEach(([key, transaction]) => {
+        let t = new Transaction(transaction)
+        t.key = key
+        this.transactions.push(t)
+      })
+    } else {
+      this.transactions = null
+    }
   }
 
   public toDto() {
     let dto = {
       nombre: this.name,
+      transacciones: this.transactions,
     }
 
     if (this.key != null) {
@@ -47,6 +57,4 @@ export class Account {
     const totalOuputPending = this.getTotalOutputAmount(TransactionState.Pending)
     return totalOuputPending
   }
-
-
 }
