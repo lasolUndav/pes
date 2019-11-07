@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+
 import { AuthService } from '../auth/auth.service'
 import { Router } from '@angular/router'
 
@@ -8,7 +9,14 @@ import { Router } from '@angular/router'
   styleUrls: ['./pes-admin.component.css'],
 })
 export class PesAdminComponent implements OnInit {
-  constructor(public authService: AuthService, public router: Router) {}
+  siteMapLabel: string
+  constructor(public authService: AuthService, public router: Router) {
+    this.siteMapLabel = 'Administración/proveedores'
+  }
+
+  changeSiteMapLabel(page) {
+    this.siteMapLabel = `Administración/${page}`
+  }
 
   ngOnInit() {}
   logout() {

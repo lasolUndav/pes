@@ -1,5 +1,10 @@
 .container {
   background: #eee;
+  min-height: 200px;
+}
+
+.adminContent {
+  min-height: 300px;
 }
 
 .subMenu {
