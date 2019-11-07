@@ -44,8 +44,7 @@ export class ServiceAgreement {
   }
 
   addAccount(agreement: Agreement, account: Account) {
-    this.serviceAccount.createAccount(account, accountKey => {
-      console.log('Cuenta agregada con key:', accountKey)
+    this.serviceAccount.createAccount(account.toDto(), accountKey => {
       agreement.keyCuenta = accountKey
       this.updateAgreement(agreement.key, agreement.toDto())
     })

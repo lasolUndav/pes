@@ -17,10 +17,13 @@
             <button mat-mini-fab matTooltip="Añadir Transacción" [matMenuTriggerFor]="menu">
               <mat-icon>add</mat-icon>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item [routerLink]="['/admin/transaccion', {id: account.key, type: 0}]">
-                  Entrada</button>
-                <button mat-menu-item [routerLink]="['/admin/transaccion', {id: account.key, type: 1}]">
-                  Salida</button>
+                <button mat-menu-item [routerLink]="['/admin/transaccion', {id: account.key, type: 'NormalInput'}]">
+                  Ingresos</button>
+                <button mat-menu-item
+                  [routerLink]="['/admin/transaccion', {id: account.key, type: 'ProviderPayOutput'}]">
+                  Pago a proveedor</button>
+                <button mat-menu-item [routerLink]="['/admin/transaccion', {id: account.key, type: 'NormalOutput'}]">
+                  Otros pagos</button>
               </mat-menu>
             </button>
             &nbsp; &nbsp; &nbsp;

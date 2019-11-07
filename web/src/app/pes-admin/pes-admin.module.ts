@@ -23,8 +23,6 @@ import { ProvidersComponent } from './providers/providers.component'
 import { ViewsTransactionsComponent } from './views-transactions/views-transactions.component'
 import { environment } from '../../environments/environment'
 
-// tslint:disable-next-line: max-line-length
-
 @NgModule({
   declarations: [
     ProvidersComponent,

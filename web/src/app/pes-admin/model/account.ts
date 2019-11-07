@@ -4,17 +4,26 @@ export class Account {
   public key: string
   public transactions: Array<Transaction>
   public name: string
-  public dataTransactions = []
 
   constructor(dto) {
     this.key = dto.key
     this.name = dto.nombre
-    this.transactions = dto.transacciones
+    this.transactions = []
+    if ('transacciones' in dto) {
+      Object.entries(dto.transacciones).forEach(([key, transaction]) => {
+        let t = new Transaction(transaction)
+        t.key = key
+        this.transactions.push(t)
+      })
+    } else {
+      this.transactions = null
+    }
   }
 
   public toDto() {
     let dto = {
       nombre: this.name,
+      transacciones: this.transactions,
     }
 
     if (this.key != null) {
@@ -47,15 +56,5 @@ export class Account {
   getTotalAmountPending() {
     const totalOuputPending = this.getTotalOutputAmount(TransactionState.Pending)
     return totalOuputPending
-  }
-
-  getTransactionData() {
-    Object.entries(this.transactions).forEach(([keyTransaction, transaction]) => {
-      this.dataTransactions.push(transaction)
-      console.log(transaction.dateTime)
-    })
-    console.log(this.dataTransactions)
-
-    return this.dataTransactions
   }
 }

@@ -90,7 +90,6 @@ export class ProviderComponent implements OnInit {
       })
     } else {
       this.service.updateProvider(this.providerKey, jsonProvider)
-      console.log(provider)
     }
   }
 

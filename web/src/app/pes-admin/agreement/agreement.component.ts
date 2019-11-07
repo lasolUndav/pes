@@ -78,7 +78,7 @@ export class AgreementComponent implements OnInit {
       this.serviceAgreement.addAccount(
         agreement,
         new Account({
-          nombreConvenio: this.agreementInEdition.nombre,
+          nombre: this.agreementInEdition.nombre,
           transacciones: null,
         })
       )
