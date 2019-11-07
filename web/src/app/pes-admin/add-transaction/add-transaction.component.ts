@@ -49,7 +49,6 @@ export class AddTransactionComponent implements OnInit {
         this.formTitle = 'Alta de ingreso'
         this.transactionInEdition = new Transaction({
           tipo: TranstactionType.Input,
-
         })
         break
       case AddTransactionType.ProviderPayOutput:

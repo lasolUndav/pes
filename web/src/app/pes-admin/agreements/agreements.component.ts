@@ -14,6 +14,7 @@ export class AgreementsComponent implements OnInit {
   agreements: Array<Agreement>
   constructor(serviceAgreement: ServiceAgreement) {
     this.service = serviceAgreement
+    this.agreements = null
   }
 
   ngOnInit() {
