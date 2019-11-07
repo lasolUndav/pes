@@ -3,8 +3,15 @@
     <div class="head-content-card">
       <h2>Cuentas</h2>
     </div>
+    <mat-spinner class="spinner" *ngIf="accounts == null"></mat-spinner>
+    <div *ngIf="accounts != null">
+      <mat-card *ngIf="accounts.length==0">
+        <mat-card-subtitle>
+          No hay cuentas creadas. Puede crear cuentas en la edición de convenios
+        </mat-card-subtitle>
+      </mat-card>
+    </div>
     <mat-accordion *ngFor="let account of accounts">
-
       <mat-expansion-panel (opened)="panelOpenAccount = true" (closed)="panelOpenAccount=false">
         <mat-expansion-panel-header style="font-weight: bold" class="mat-typography; bold">
           <mat-panel-title>

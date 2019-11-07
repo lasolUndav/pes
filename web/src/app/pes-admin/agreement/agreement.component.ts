@@ -79,7 +79,6 @@ export class AgreementComponent implements OnInit {
         agreement,
         new Account({
           nombre: this.agreementInEdition.nombre,
-          transacciones: null,
         })
       )
     }

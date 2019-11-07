@@ -15,6 +15,7 @@ export class AccountsComponent implements OnInit {
 
   constructor(serviceAccount: ServiceAccount) {
     this.service = serviceAccount
+    this.accounts = null
   }
   ngOnInit() {
     const scope = this
