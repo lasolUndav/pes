@@ -5,6 +5,7 @@ import { AddTransactionComponent } from './add-transaction/add-transaction.compo
 import { AgreementComponent } from './agreement/agreement.component'
 import { AgreementsComponent } from './agreements/agreements.component'
 import { AuthGuard } from '../auth/auth-guard.service'
+import { EditTransactionComponent } from './edit-transaction/edit-transaction.component'
 import { NgModule } from '@angular/core'
 import { PesAdminComponent } from './pes-admin.component'
 import { ProviderComponent } from './provider/provider.component'
@@ -65,6 +66,11 @@ const routes: Routes = [
       {
         path: 'admin/transaccion',
         component: AddTransactionComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'admin/editarTransaccion',
+        component: EditTransactionComponent,
         canActivate: [AuthGuard],
       },
     ],

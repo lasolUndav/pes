@@ -31,7 +31,8 @@
               </mat-expansion-panel-header>
               <mat-card-content class="box3">
                 <div>
-                  <button class="buttonEdit" mat-mini-fab matTooltip="Editar">
+                  <button class="buttonEdit" mat-mini-fab matTooltip="Editar" [routerLink]="['/admin/editarTransaccion', {idAccount: accountKey, id: transactionOutput.key, type:
+                    transactionOutput.type}]">
                     <mat-icon>edit</mat-icon>
                   </button>
                 </div>
@@ -70,7 +71,8 @@
               </mat-expansion-panel-header>
               <mat-card-content class="box3">
                 <div>
-                  <button class="buttonEdit" mat-mini-fab matTooltip="Editar">
+                  <button class="buttonEdit" mat-mini-fab matTooltip="Editar" [routerLink]="['/admin/editarTransaccion', {idAccount: accountKey, id: transactionInput.key, type:
+                    transactionInput.type}]">
                     <mat-icon>edit</mat-icon>
                   </button>
                 </div>

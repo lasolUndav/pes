@@ -28,6 +28,7 @@ export class ViewsTransactionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.accountKey = this.ruteActive.snapshot.paramMap.get('id')
     this.loadAccount()
   }
   backToAccounts(): void {
