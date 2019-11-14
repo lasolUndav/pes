@@ -11,7 +11,7 @@ export class Agreement {
 
   constructor(dto) {
     this.nombre = dto.nombre
-    this.categorias = new Array<AgreementTransactionCategory>()
+    this.categorias = dto.categorias
     this.periodoInicio = dto.periodoInicio
     this.periodoFin = dto.periodoFin
     this.monto = dto.monto
@@ -46,4 +46,18 @@ export class Agreement {
 
     return dto
   }
+
+  /*public separateCategorys(categorias: Array<AgreementTransactionCategory>) {
+    let vuelta: number
+    vuelta = 0
+    for (const categoria of categorias) {
+      if (vuelta == 0) {
+        this.categorias += categoria.name
+      }
+      else {
+        this.categorias += ',' + categoria.name
+      }
+    }
+  }
+  */
 }
