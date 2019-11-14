@@ -88,6 +88,8 @@ export class Transaction {
 
     if (this.provider != null) {
       dto['keyProveedor'] = this.provider.key
+    } else if (this.keyProvider != null) {
+      dto['keyProveedor'] = this.keyProvider
     }
 
     return dto

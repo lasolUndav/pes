@@ -1,8 +1,8 @@
 import { ActivatedRoute, Router } from '@angular/router'
-import { Component, OnInit, Provider } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 
 import { AddTransactionType } from '../model/add-transaction-type'
-import { ServiceAccount } from '../service/service-account'
+import { Provider } from '../model/provider'
 import { ServiceProvider } from '../service/service-provider'
 import { ServiceTransaction } from '../service/service-transaction'
 import { Transaction } from '../model/transaction'
@@ -33,7 +33,6 @@ export class EditTransactionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.serviceTransaction.accountKey = this.accountKey
     this.setupFormEditTransaction()
     var scope = this
     this.serviceProvider.getProviders(function(providers) {
@@ -44,10 +43,15 @@ export class EditTransactionComponent implements OnInit {
   setupFormEditTransaction() {
     this.serviceTransaction.getTransaction(this.accountKey, this.transactionKey, dto => {
       this.transactionInEdition = new Transaction(dto)
-      this.formTitle = `Editar monto ${this.transactionInEdition.amount}`
+      this.formTitle = `Editar transaccion`
     })
   }
+
   saveTransaction(transaction: Transaction) {
+    if (transaction.keyProvider != null) {
+      transaction.provider = this.providers.find(b => b.key === transaction.keyProvider)
+      transaction.shortDescription = `Pago a proveedor [${transaction.provider.nombre}]`
+    }
     this.serviceTransaction.updateTransaction(
       this.accountKey,
       this.transactionKey,

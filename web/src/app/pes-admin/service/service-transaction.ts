@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core'
   providedIn: 'root',
 })
 export class ServiceTransaction {
-  accountKey: string
   accountsRef: AngularFireList<Account>
   constructor(private db: AngularFireDatabase) {
     this.accountsRef = db.list('cuentas/')
