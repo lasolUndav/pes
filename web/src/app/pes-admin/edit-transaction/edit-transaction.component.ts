@@ -57,6 +57,6 @@ export class EditTransactionComponent implements OnInit {
   }
 
   backToTransactions(): void {
-    this.route.navigate(['/admin/transacciones'])
+    this.route.navigate([`/admin/transacciones/${this.accountKey}`])
   }
 }

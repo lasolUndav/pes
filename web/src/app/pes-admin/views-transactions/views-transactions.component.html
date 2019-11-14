@@ -39,8 +39,7 @@
                 <div>
                   <p mat-line *ngIf="transactionOutput.state === 'Pending'">Estado: Pendiente</p>
                   <p mat-line *ngIf="transactionOutput.state == 'Done'">Estado: Realizado</p>
-                  <p mat-line>Fecha: {{transactionOutput.getDateFormat()}}</p>
-                  <p mat-line>Hora: {{transactionOutput.getTimeFormat()}}</p>
+                  <p mat-line>Fecha: {{transactionOutput.dateTime |date:"mediumDate"}}</p>
                   <p mat-line>Descripcion: {{transactionOutput.description}}</p>
                 </div>
               </mat-card-content>
@@ -79,8 +78,7 @@
                 <div>
                   <p mat-line *ngIf="transactionInput.state === 'Pending'">Estado: Pendiente</p>
                   <p mat-line *ngIf="transactionInput.state === 'Done'">Estado: Realizado</p>
-                  <p mat-line>Fecha: {{transactionInput.getDateFormat()}}</p>
-                  <p mat-line>Hora: {{transactionInput.getTimeFormat()}}</p>
+                  <p mat-line>Fecha: {{transactionInput.dateTime |date:"mediumDate"}}</p>
                   <p mat-line>Descripcion: {{transactionInput.description}}</p>
                 </div>
               </mat-card-content>

@@ -64,7 +64,12 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
-        path: 'admin/transaccion',
+        path: 'admin/transacciones/:id',
+        component: ViewsTransactionsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'admin/crearTransaccion',
         component: AddTransactionComponent,
         canActivate: [AuthGuard],
       },
