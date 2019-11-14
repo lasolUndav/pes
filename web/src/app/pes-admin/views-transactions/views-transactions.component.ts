@@ -42,12 +42,14 @@ export class ViewsTransactionsComponent implements OnInit {
   }
 
   loadTransaction(account: Account) {
-    account.transactions.forEach(transaction => {
-      if (transaction.type === 1) {
-        this.transactionsOutput.push(transaction)
-      } else {
-        this.transactionsInput.push(transaction)
-      }
-    })
+    if (account.transactions !== null) {
+      account.transactions.forEach(transaction => {
+        if (transaction.type === 1) {
+          this.transactionsOutput.push(transaction)
+        } else {
+          this.transactionsInput.push(transaction)
+        }
+      })
+    }
   }
 }
