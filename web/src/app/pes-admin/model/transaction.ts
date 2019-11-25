@@ -28,7 +28,6 @@ export class Transaction {
   constructor(dto) {
     if ('key' in dto) {
       this.key = dto.key
-      console.log(this.key)
     } else {
       this.key = null
     }
