@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core'
 
 import { MatChipInputEvent } from '@angular/material'
 import { Provider } from '../model/provider'
-import { ServiceProvider } from '../service/service-provider'
+import { ServiceProvider } from '../service/provider.service'
 
 @Component({
   selector: 'app-provider',

@@ -3,7 +3,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database'
 import { Account } from '../model/account'
 import { Agreement } from '../model/agreement'
 import { Injectable } from '@angular/core'
-import { ServiceAccount } from '../service/service-account'
+import { ServiceAccount } from './account.service'
 import { map } from 'rxjs/operators'
 
 @Injectable({
