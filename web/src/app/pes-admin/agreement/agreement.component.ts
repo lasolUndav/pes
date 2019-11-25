@@ -1,11 +1,13 @@
 import { ActivatedRoute, Router } from '@angular/router'
+import { COMMA, ENTER } from '@angular/cdk/keycodes'
 import { Component, OnInit } from '@angular/core'
-import { MatChipInputEvent } from '@angular/material'
+import { MatChipInputEvent, _MatChipMixinBase } from '@angular/material'
+
 import { Account } from '../model/account'
 import { Agreement } from '../model/agreement'
-import { ServiceAgreement } from '../service/service-agreement'
 import { AgreementTransactionCategory } from '../model/agreement-transaction-category'
-import { COMMA, ENTER } from '@angular/cdk/keycodes'
+import { ServiceAgreement } from '../service/service-agreement'
+import { __core_private_testing_placeholder__ } from '@angular/core/testing'
 
 @Component({
   selector: 'app-agreement',
@@ -101,12 +103,15 @@ export class AgreementComponent implements OnInit {
     const value = this.mayusculaPrimera(event.value)
 
     if ((value || '').trim()) {
-        this.agreementInEdition.categorias.push(new AgreementTransactionCategory(value))
+      this.agreementInEdition.categorias.push(new AgreementTransactionCategory(value))
     }
 
     if (input) {
       input.value = ''
     }
   }
-  remove(item: AgreementTransactionCategory) {}
+  remove(item: AgreementTransactionCategory) {
+    const indice = this.agreementInEdition.categorias.indexOf(item)
+    this.agreementInEdition.categorias.splice(indice, 1)
+  }
 }
