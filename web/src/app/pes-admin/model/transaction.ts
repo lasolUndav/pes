@@ -87,21 +87,10 @@ export class Transaction {
 
     if (this.provider != null) {
       dto['keyProveedor'] = this.provider.key
+    } else if (this.keyProvider != null) {
+      dto['keyProveedor'] = this.keyProvider
     }
 
     return dto
-  }
-
-  getDateFormat(): string {
-    return (
-      this.dateTime.getDay() +
-      '/' +
-      this.dateTime.getMonth() +
-      '/' +
-      this.dateTime.getFullYear()
-    )
-  }
-  getTimeFormat(): string {
-    return this.dateTime.getHours() + ':' + this.dateTime.getMinutes() + ' hs'
   }
 }

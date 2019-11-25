@@ -10,7 +10,6 @@ import { map } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class ServiceAgreement {
-  lastAccountLoaded: string
   agreementsRef: AngularFireList<Agreement> = null
   constructor(private db: AngularFireDatabase, private serviceAccount: ServiceAccount) {
     this.agreementsRef = db.list('/convenios')
