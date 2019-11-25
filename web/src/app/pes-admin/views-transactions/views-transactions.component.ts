@@ -3,8 +3,10 @@ import { Component, OnInit } from '@angular/core'
 
 import { Account } from '../model/account'
 import { ServiceAccount } from '../service/service-account'
+import { ServiceExcel } from '../service/service-excel'
 import { Transaction } from '../model/transaction'
 
+const newLocal = 'fecha'
 @Component({
   selector: 'app-views-transactions',
   templateUrl: './views-transactions.component.html',
@@ -17,10 +19,12 @@ export class ViewsTransactionsComponent implements OnInit {
   transactionsOutput = []
   transactionsInput = []
   panelOpenTransaction = false
+
   constructor(
     private route: Router,
     private ruteActive: ActivatedRoute,
-    private serviceAccount: ServiceAccount
+    private serviceAccount: ServiceAccount,
+    private serviceExcel: ServiceExcel
   ) {
     this.service = serviceAccount
     this.account = null
@@ -48,5 +52,28 @@ export class ViewsTransactionsComponent implements OnInit {
         this.transactionsInput.push(transaction)
       }
     })
+  }
+  getDataTransactions(): any {
+    const data = []
+    let data2 = {}
+    this.account.transactions.forEach(t => {
+      data2 = {
+        Fecha: t.getDateFormat(),
+        Tipo: t.type === 1 ? 'Salida' : 'Entrada',
+        Estado: t.state === 0 ? 'Pendiente' : 'Realizada',
+        Nombre: t.shortDescription,
+        Descripcion: t.description,
+        Monto: t.amount,
+      }
+      data.push(data2)
+    })
+    return data
+  }
+
+  exportAsXLSX(): void {
+    this.serviceExcel.exportAsExcelFile(
+      this.getDataTransactions(),
+      'Historial_De_Transacciones_'
+    )
   }
 }

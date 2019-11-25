@@ -19,7 +19,6 @@
 
   flex-direction: row-reverse;
 
-  justify-content: space-between;
 }
 
 .box1 {
@@ -51,4 +50,9 @@
 .icon {
   font-size: 20px;
   align-content: space-around;
+}
+
+.excelImg {
+  size: 40px;
+  height: 40px;
 }
