@@ -6,8 +6,8 @@ import { Transaction, TranstactionType } from '../model/transaction'
 import { Account } from '../model/account'
 import { AddTransactionType } from '../model/add-transaction-type'
 import { Provider } from '../model/provider'
-import { ServiceAccount } from '../service/service-account'
-import { ServiceProvider } from '../service/service-provider'
+import { ServiceAccount } from '../service/account.service'
+import { ServiceProvider } from '../service/provider.service'
 
 @Component({
   selector: 'app-add-transaction',

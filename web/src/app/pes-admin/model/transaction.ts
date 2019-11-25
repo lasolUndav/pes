@@ -1,6 +1,6 @@
 import { AgreementTransactionCategory } from './agreement-transaction-category'
 import { Provider } from './provider'
-import { ServiceProvider } from '../service/service-provider'
+import { ServiceProvider } from '../service/provider.service'
 
 export enum TransactionState {
   Pending = 0,

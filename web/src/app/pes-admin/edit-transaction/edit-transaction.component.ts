@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core'
 
 import { AddTransactionType } from '../model/add-transaction-type'
 import { Provider } from '../model/provider'
-import { ServiceProvider } from '../service/service-provider'
-import { ServiceTransaction } from '../service/service-transaction'
+import { ServiceProvider } from '../service/provider.service'
+import { ServiceTransaction } from '../service/transaction.service'
 import { Transaction } from '../model/transaction'
 
 @Component({
