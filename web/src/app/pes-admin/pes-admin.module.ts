@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { BrowserModule } from '@angular/platform-browser'
 import { CommonModule } from '@angular/common'
 import { ConfirmDeleteProviderComponent } from './providers/confirm-delete-provider/confirm-delete-provider.component'
+import { EditTransactionComponent } from './edit-transaction/edit-transaction.component'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { MatMenuModule } from '@angular/material'
 import { NgModule } from '@angular/core'
@@ -35,6 +36,7 @@ import { environment } from '../../environments/environment'
     AccountsComponent,
     ViewsTransactionsComponent,
     AddTransactionComponent,
+    EditTransactionComponent,
   ],
   imports: [
     BrowserAnimationsModule,
