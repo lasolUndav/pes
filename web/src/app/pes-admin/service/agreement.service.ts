@@ -3,14 +3,13 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database'
 import { Account } from '../model/account'
 import { Agreement } from '../model/agreement'
 import { Injectable } from '@angular/core'
-import { ServiceAccount } from '../service/service-account'
+import { ServiceAccount } from './account.service'
 import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServiceAgreement {
-  lastAccountLoaded: string
   agreementsRef: AngularFireList<Agreement> = null
   constructor(private db: AngularFireDatabase, private serviceAccount: ServiceAccount) {
     this.agreementsRef = db.list('/convenios')

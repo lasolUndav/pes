@@ -6,8 +6,7 @@ import { MatChipInputEvent, _MatChipMixinBase } from '@angular/material'
 import { Account } from '../model/account'
 import { Agreement } from '../model/agreement'
 import { AgreementTransactionCategory } from '../model/agreement-transaction-category'
-import { ServiceAgreement } from '../service/service-agreement'
-import { __core_private_testing_placeholder__ } from '@angular/core/testing'
+import { ServiceAgreement } from '../service/agreement.service'
 
 @Component({
   selector: 'app-agreement',

@@ -12,13 +12,9 @@
 
 .box {
   width: 100%;
-
   height: 80%;
-
   display: flex;
-
   flex-direction: row-reverse;
-
   justify-content: space-between;
 }
 
@@ -30,6 +26,14 @@
   justify-content: center;
 
 
+}
+
+.box3 {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 
 @media all and (max-width: 500px) {

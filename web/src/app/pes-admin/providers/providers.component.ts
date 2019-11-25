@@ -5,7 +5,7 @@ import { FormControl } from '@angular/forms'
 import { MatDialog } from '@angular/material'
 import { Provider } from '../model/provider'
 import { ProviderDetailComponent } from './provider-detail/provider-detail.component'
-import { ServiceProvider } from '../service/service-provider'
+import { ServiceProvider } from '../service/provider.service'
 
 @Component({
   selector: 'app-providers',
