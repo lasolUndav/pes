@@ -19,7 +19,7 @@
           {{item.name}}
           <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
         </mat-chip>
-        <input placeholder="Categorias" [matChipInputFor]="chipList"
+        <input placeholder="Categorias de rendición requeridas" [matChipInputFor]="chipList"
           [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
           (matChipInputTokenEnd)="add($event)">
       </mat-chip-list>
