@@ -30,6 +30,7 @@
     "@angular/router": "~7.2.0",
     "angularfire2": "^5.1.3",
     "core-js": "^2.5.4",
+    "dateformat": "^3.0.3",
     "file-saver": "^2.0.2",
     "firebase": "^5.11.1",
     "hammerjs": "^2.0.8",

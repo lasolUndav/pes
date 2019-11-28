@@ -2,6 +2,7 @@ import * as FileSaver from 'file-saver'
 import * as XLSX from 'xlsx'
 
 import { Injectable } from '@angular/core'
+import { getLocaleDateFormat } from '@angular/common'
 
 const EXCEL_TYPE =
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
@@ -20,19 +21,22 @@ export class ServiceExcel {
       Sheets: { Transacciones: worksheet },
       SheetNames: ['Transacciones'],
     }
+
     const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' })
     //const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'buffer' });
     this.saveAsExcelFile(excelBuffer, excelFileName)
   }
-  getDateFormat(): string {
-    return (
-      new Date().getDay() + '-' + new Date().getMonth() + '-' + new Date().getFullYear()
-    )
-  }
+
   private saveAsExcelFile(buffer: any, fileName: string): void {
+    let date = new Date()
+    let dateformat = require('dateformat')
+
     const Transacciones: Blob = new Blob([buffer], {
       type: EXCEL_TYPE,
     })
-    FileSaver.saveAs(Transacciones, fileName + this.getDateFormat() + EXCEL_EXTENSION)
+    FileSaver.saveAs(
+      Transacciones,
+      fileName + dateformat(date, 'dd-mm-yyyy') + EXCEL_EXTENSION
+    )
   }
 }
