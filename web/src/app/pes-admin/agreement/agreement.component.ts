@@ -88,6 +88,7 @@ export class AgreementComponent implements OnInit {
         agreement,
         new Account({
           nombre: this.agreementInEdition.nombre,
+          keyAgreement: agreement.key,
         })
       )
     }

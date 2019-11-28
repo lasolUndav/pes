@@ -5,8 +5,10 @@ import { Transaction, TranstactionType } from '../model/transaction'
 
 import { Account } from '../model/account'
 import { AddTransactionType } from '../model/add-transaction-type'
+import { AgreementTransactionCategory } from '../model/agreement-transaction-category'
 import { Provider } from '../model/provider'
 import { ServiceAccount } from '../service/account.service'
+import { ServiceAgreement } from '../service/agreement.service'
 import { ServiceProvider } from '../service/provider.service'
 
 @Component({
@@ -19,26 +21,40 @@ export class AddTransactionComponent implements OnInit {
   transactionInEdition: Transaction
   formTitle: string
   accountKey: string
+  agreementKey: string
   type: AddTransactionType
+  categorys: Array<AgreementTransactionCategory>
+
   constructor(
     private route: Router,
     private ruteActive: ActivatedRoute,
     private serviceAccount: ServiceAccount,
-    private serviceProvider: ServiceProvider
+    private serviceProvider: ServiceProvider,
+    private serviceAgreement: ServiceAgreement
   ) {
     this.accountKey = this.ruteActive.snapshot.paramMap.get('id')
     // Casteo de string a enum
     this.type = AddTransactionType[this.ruteActive.snapshot.paramMap.get('type')]
     this.transactionInEdition = null
     this.providers = null
+    this.agreementKey = null
   }
 
   ngOnInit(): void {
     this.setupFormNewTransaction()
     var scope = this
+    this.serviceAccount.getAccount(this.accountKey, data => {
+      scope.agreementKey = data.keyConvenio
+    })
     this.serviceProvider.getProviders(function(providers) {
       scope.providers = providers
     })
+    /*
+    NO ME RECONOCE EL CONVENIO
+    this.serviceAgreement.getAgreement(this.agreementKey, data => {
+      this.categorys = data.categorias
+    })
+    */
   }
   backToAccounts(): void {
     this.route.navigate(['/admin/cuentas'])
@@ -76,6 +92,7 @@ export class AddTransactionComponent implements OnInit {
       }]`
     }
     this.serviceAccount.addTransaction(this.accountKey, this.transactionInEdition)
+    console.log(this.categorys)
     this.backToAccounts()
   }
 }

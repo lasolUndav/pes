@@ -2,12 +2,14 @@ import { Transaction, TransactionState, TranstactionType } from './transaction'
 
 export class Account {
   public key: string
+  public keyAgreement: string
   public transactions: Array<Transaction>
   public name: string
 
   constructor(dto) {
     this.key = dto.key
     this.name = dto.nombre
+    this.keyAgreement = dto.keyAgreement
     this.transactions = []
     if ('transacciones' in dto) {
       Object.entries(dto.transacciones).forEach(([key, transaction]) => {
@@ -23,6 +25,7 @@ export class Account {
   public toDto() {
     let dto = {
       nombre: this.name,
+      keyConvenio: this.keyAgreement,
       transacciones: this.transactions,
     }
 
