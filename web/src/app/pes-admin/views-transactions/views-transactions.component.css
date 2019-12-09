@@ -43,6 +43,10 @@
     flex-direction: column;
     flex-wrap: nowrap;
   }
+
+  .box2 {
+    font-size: 80%;
+  }
 }
 
 .box2 {
