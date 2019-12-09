@@ -40,6 +40,15 @@
       </mat-select>
     </mat-form-field>
 
+    <mat-form-field class="full-width">
+      <mat-label>Categoria</mat-label>
+      <mat-select *ngFor="let category of categorys" [(value)]="transactionInEdition.category">
+        <mat-option value="category">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <button id="save" mat-raised-button color="primary" (click)="saveTransaction(transactionInEdition)">Guardar</button>
     &nbsp; &nbsp; &nbsp;
     <button id="cancel" mat-raised-button (click)='backToAccounts()' color="accent">Cancelar</button>

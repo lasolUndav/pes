@@ -37,24 +37,19 @@ export class AddTransactionComponent implements OnInit {
     this.type = AddTransactionType[this.ruteActive.snapshot.paramMap.get('type')]
     this.transactionInEdition = null
     this.providers = null
-    this.agreementKey = null
+    this.serviceAccount.getAccount(this.accountKey, account => {
+      this.serviceAgreement.getAgreement(account.keyConvenio, agreement => {
+        this.categorys = agreement.categorias
+      })
+    })
   }
 
   ngOnInit(): void {
     this.setupFormNewTransaction()
     var scope = this
-    this.serviceAccount.getAccount(this.accountKey, data => {
-      scope.agreementKey = data.keyConvenio
-    })
-    this.serviceProvider.getProviders(function(providers) {
+    this.serviceProvider.getProviders(function (providers) {
       scope.providers = providers
     })
-    /*
-    NO ME RECONOCE EL CONVENIO
-    this.serviceAgreement.getAgreement(this.agreementKey, data => {
-      this.categorys = data.categorias
-    })
-    */
   }
   backToAccounts(): void {
     this.route.navigate(['/admin/cuentas'])
@@ -89,10 +84,9 @@ export class AddTransactionComponent implements OnInit {
     if (this.type === AddTransactionType.ProviderPayOutput) {
       this.transactionInEdition.shortDescription = `Pago a proveedor [${
         this.transactionInEdition.provider.nombre
-      }]`
+        }]`
     }
     this.serviceAccount.addTransaction(this.accountKey, this.transactionInEdition)
-    console.log(this.categorys)
     this.backToAccounts()
   }
 }
