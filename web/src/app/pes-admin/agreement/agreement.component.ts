@@ -1,8 +1,11 @@
 import { ActivatedRoute, Router } from '@angular/router'
+import { COMMA, ENTER } from '@angular/cdk/keycodes'
 import { Component, OnInit } from '@angular/core'
+import { MatChipInputEvent, _MatChipMixinBase } from '@angular/material'
 
 import { Account } from '../model/account'
 import { Agreement } from '../model/agreement'
+import { AgreementTransactionCategory } from '../model/agreement-transaction-category'
 import { ServiceAgreement } from '../service/agreement.service'
 
 @Component({
@@ -11,12 +14,17 @@ import { ServiceAgreement } from '../service/agreement.service'
   styleUrls: ['./agreement.component.css'],
 })
 export class AgreementComponent implements OnInit {
+  selectable = true
+  removable = true
+  addOnBlur = true
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA]
   checkAccount = false
   enableAccountCreation = false
   agreementInEdition: Agreement
   isNew: boolean
   agreementKey: string
   formTitle: string
+  tagsCategory: string
 
   constructor(
     private route: Router,
@@ -24,6 +32,7 @@ export class AgreementComponent implements OnInit {
     private serviceAgreement: ServiceAgreement
   ) {
     this.agreementInEdition = null
+    this.tagsCategory = ''
   }
 
   ngOnInit(): void {
@@ -82,5 +91,26 @@ export class AgreementComponent implements OnInit {
         })
       )
     }
+  }
+  mayusculaPrimera(string): string {
+    string.toLowerCase()
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  }
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input
+    const value = this.mayusculaPrimera(event.value)
+
+    if ((value || '').trim()) {
+      this.agreementInEdition.categorias.push(new AgreementTransactionCategory(value))
+    }
+
+    if (input) {
+      input.value = ''
+    }
+  }
+  remove(item: AgreementTransactionCategory) {
+    const indice = this.agreementInEdition.categorias.indexOf(item)
+    this.agreementInEdition.categorias.splice(indice, 1)
   }
 }

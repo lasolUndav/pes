@@ -11,7 +11,6 @@ export class Agreement {
 
   constructor(dto) {
     this.nombre = dto.nombre
-    this.categorias = new Array<AgreementTransactionCategory>()
     this.periodoInicio = dto.periodoInicio
     this.periodoFin = dto.periodoFin
     this.monto = dto.monto
@@ -25,6 +24,11 @@ export class Agreement {
       this.keyCuenta = dto.keyCuenta
     } else {
       this.keyCuenta = null
+    }
+    if ('categorias' in dto) {
+      this.categorias = dto.categorias
+    } else {
+      this.categorias = new Array<AgreementTransactionCategory>()
     }
   }
 
@@ -42,6 +46,10 @@ export class Agreement {
 
     if (this.keyCuenta != null) {
       dto['keyCuenta'] = this.keyCuenta
+    }
+
+    if (this.categorias != null) {
+      dto['categorias'] = this.categorias
     }
 
     return dto
