@@ -7,7 +7,7 @@ import { AgreementsComponent } from './agreements/agreements.component'
 import { AngularFireAuthModule } from 'angularfire2/auth'
 import { AngularFireDatabaseModule } from 'angularfire2/database'
 import { AngularFireModule } from 'angularfire2'
-import { AngularFireStorage } from 'angularfire2/storage'
+import { AngularFireStorageModule } from '@angular/fire/storage'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { BrowserModule } from '@angular/platform-browser'
 import { CommonModule } from '@angular/common'
@@ -50,7 +50,7 @@ import { environment } from '../../environments/environment'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    AngularFireStorage,
+    AngularFireStorageModule,
     FlexLayoutModule,
     MatMenuModule,
   ],

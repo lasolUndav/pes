@@ -1,7 +1,7 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
-import { AngularFireAuthModule } from 'angularfire2/auth'
 import { AngularFireModule } from 'angularfire2'
+import { AngularFireStorageModule } from '@angular/fire/storage'
 import { AppComponent } from './app.component'
 import { AppRoutingModule } from './app-routing.module'
 import { AuthGuard } from './auth/auth-guard.service'
@@ -38,7 +38,7 @@ import { environment } from '../environments/environment'
     ReactiveFormsModule,
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
+    AngularFireStorageModule,
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
