@@ -4,6 +4,7 @@
       <h2>Convenios</h2>
       <button class="buttonAdd" mat-raised-button color="primary" [routerLink]="['/admin/convenio',{id: null} ]">Agregar
         Nuevo</button>
+
     </div>
     <mat-spinner class="spinner" *ngIf="agreements == null"></mat-spinner>
     <mat-accordion *ngFor="let agreement of agreements">
@@ -15,19 +16,29 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-card-content class="box">
-            <button class="buttonEdit" mat-mini-fab matTooltip="Editar"
-              [routerLink]="['/admin/convenio',{id: agreement.key} ]">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <p mat-line>
-              <span class='mat-body-strong'>Periodo: </span>
-              <span>{{agreement.periodoInicio |date:"mediumDate" }} - </span>
-              <span>{{agreement.periodoFin|date:"mediumDate" }}</span>
-            </p>
-            <p mat-line>
-              <span class='mat-body-strong'>Monto: </span>
-              <span>{{agreement.monto}}</span>
-            </p>
+            <div class="box1">
+              <button class="buttonEdit" mat-mini-fab matTooltip="Editar"
+                [routerLink]="['/admin/convenio',{id: agreement.key} ]">
+                <mat-icon>edit</mat-icon>
+              </button>
+              &nbsp; &nbsp; &nbsp;
+
+              <button class="buttonEdit" mat-mini-fab matTooltip="Subir Convenio">
+                <mat-icon>cloud_upload</mat-icon>
+              </button>
+            </div>
+            <div class="box2">
+              <p mat-line>
+                <span class='mat-body-strong'>Periodo: </span>
+                <span>{{agreement.periodoInicio |date:"mediumDate" }} - </span>
+                <span>{{agreement.periodoFin|date:"mediumDate" }}</span>
+              </p>
+              <p mat-line>
+                <span class='mat-body-strong'>Monto: </span>
+                <span>{{agreement.monto}}</span>
+              </p>
+            </div>
+
           </mat-card-content>
         </mat-expansion-panel>
       </div>
