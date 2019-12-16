@@ -23,9 +23,6 @@
               </button>
               &nbsp; &nbsp; &nbsp;
 
-              <button class="buttonEdit" mat-mini-fab matTooltip="Subir Convenio">
-                <mat-icon>cloud_upload</mat-icon>
-              </button>
             </div>
             <div class="box2">
               <p mat-line>
@@ -37,8 +34,16 @@
                 <span class='mat-body-strong'>Monto: </span>
                 <span>{{agreement.monto}}</span>
               </p>
-            </div>
+              <mat-progress-bar [value]="uploadProgress | async"></mat-progress-bar>
+              <div class="item">
+                Progress: {{ (uploadProgress | async) / 100 | percent }}
+              </div>
+              <div class="item">
+                <input #inputFile class="hidden" type="file" (change)="uploadFile($event)" access=".pdf,.docx">
 
+              </div>
+
+            </div>
           </mat-card-content>
         </mat-expansion-panel>
       </div>

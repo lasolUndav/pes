@@ -21,6 +21,7 @@ import {
 } from '@angular/material'
 
 import { FlexLayoutModule } from '@angular/flex-layout'
+import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { NgModule } from '@angular/core'
 
 @NgModule({
@@ -45,6 +46,7 @@ import { NgModule } from '@angular/core'
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatProgressBarModule,
   ],
   exports: [
     MatButtonModule,
@@ -67,6 +69,7 @@ import { NgModule } from '@angular/core'
     MatNativeDateModule,
     MatTabsModule,
     MatSelectModule,
+    MatProgressBarModule,
   ],
 })
 export class PesAdminMaterialModule {}
