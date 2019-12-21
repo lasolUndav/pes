@@ -2,8 +2,8 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { Component, OnInit } from '@angular/core'
 
 import { Account } from '../model/account'
-import { ServiceAccount } from '../service/service-account'
-import { ServiceExcel } from '../service/service-excel'
+import { ServiceAccount } from '../service/account.service'
+import { ServiceExcel } from '../service/excel.service'
 import { Transaction } from '../model/transaction'
 
 const newLocal = 'fecha'
@@ -32,6 +32,7 @@ export class ViewsTransactionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.accountKey = this.ruteActive.snapshot.paramMap.get('id')
     this.loadAccount()
   }
   backToAccounts(): void {
@@ -45,19 +46,19 @@ export class ViewsTransactionsComponent implements OnInit {
   }
 
   loadTransaction(account: Account) {
-    account.transactions.forEach(transaction => {
-      if (transaction.type === 1) {
-        this.transactionsOutput.push(transaction)
-      } else {
-        this.transactionsInput.push(transaction)
-      }
-    })
+    if (account.transactions !== null) {
+      account.transactions.forEach(transaction => {
+        if (transaction.type === 1) {
+          this.transactionsOutput.push(transaction)
+        } else {
+          this.transactionsInput.push(transaction)
+        }
+      })
+    }
   }
   getDataTransactions(): any {
-    const data = []
-    let data2 = {}
-    this.account.transactions.forEach(t => {
-      data2 = {
+    return this.account.transactions.map(t => {
+      return {
         Fecha: t.getDateFormat(),
         Tipo: t.type === 1 ? 'Salida' : 'Entrada',
         Estado: t.state === 0 ? 'Pendiente' : 'Realizada',
@@ -65,9 +66,7 @@ export class ViewsTransactionsComponent implements OnInit {
         Descripcion: t.description,
         Monto: t.amount,
       }
-      data.push(data2)
     })
-    return data
   }
 
   exportAsXLSX(): void {

@@ -1,0 +1,49 @@
+<mat-card>
+  <h1>{{formTitle}}</h1>
+  <mat-spinner class="spinner" *ngIf="transactionInEdition == null || providers == null"></mat-spinner>
+  <form class="form" *ngIf="transactionInEdition != null && providers != null">
+
+    <mat-form-field *ngIf="transactionInEdition.type == 1" class="full-width">
+      <mat-label>Proveedor</mat-label>
+      <mat-select [(value)]="transactionInEdition.keyProvider">
+        <mat-option *ngFor="let provider of providers" [(value)]="provider.key">{{provider.nombre}}</mat-option>
+
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="transactionInEdition.type != 1" class="full-width">
+      <input type="text" name="titulo" placeholder="Descripcion corta de la transaccion" matInput
+        [(ngModel)]="transactionInEdition.shortDescription">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="text" name="descripcion" placeholder="Descripcion detallada de la transaccion" matInput
+        [(ngModel)]="transactionInEdition.description">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="text" name="monto" placeholder="Monto" matInput [(ngModel)]="transactionInEdition.amount">
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput [matDatepicker]="picker1" placeholder="Fecha de la transaccion"
+        [(ngModel)]="transactionInEdition.dateTime" name="Fecha">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Estado</mat-label>
+      <mat-select [(value)]="transactionInEdition.state">
+        <mat-option value="Pending">Pendiente</mat-option>
+        <mat-option value="Done">Realizada</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button id="save" mat-raised-button color="primary" (click)="saveTransaction(transactionInEdition)">Guardar</button>
+    &nbsp; &nbsp; &nbsp;
+    <button id="cancel" mat-raised-button (click)='backToTransactions()' color="accent">Cancelar</button>
+    &nbsp; &nbsp; &nbsp;
+  </form>
+</mat-card>

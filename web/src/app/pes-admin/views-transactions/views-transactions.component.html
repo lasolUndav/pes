@@ -33,12 +33,19 @@
                   </mat-panel-title>
                 </mat-card-content>
               </mat-expansion-panel-header>
-              <mat-card-content>
-                <p mat-line *ngIf="transactionOutput.state === 'Pending'">Estado: Pendiente</p>
-                <p mat-line *ngIf="transactionOutput.state == 'Done'">Estado: Realizado</p>
-                <p mat-line>Fecha: {{transactionOutput.getDateFormat()}}</p>
-                <p mat-line>Hora: {{transactionOutput.getTimeFormat()}}</p>
-                <p mat-line>Descripcion: {{transactionOutput.description}}</p>
+              <mat-card-content class="box3">
+                <div>
+                  <button class="buttonEdit" mat-mini-fab matTooltip="Editar" [routerLink]="['/admin/editarTransaccion', {idAccount: accountKey, id: transactionOutput.key, type:
+                    transactionOutput.type}]">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                </div>
+                <div>
+                  <p mat-line *ngIf="transactionOutput.state === 'Pending'">Estado: Pendiente</p>
+                  <p mat-line *ngIf="transactionOutput.state == 'Done'">Estado: Realizado</p>
+                  <p mat-line>Fecha: {{transactionOutput.dateTime |date:"mediumDate"}}</p>
+                  <p mat-line>Descripcion: {{transactionOutput.description}}</p>
+                </div>
               </mat-card-content>
             </mat-expansion-panel>
           </mat-accordion>
@@ -65,12 +72,19 @@
                   </mat-panel-title>
                 </mat-card-content>
               </mat-expansion-panel-header>
-              <mat-card-content>
-                <p mat-line *ngIf="transactionInput.state === 'Pending'">Estado: Pendiente</p>
-                <p mat-line *ngIf="transactionInput.state === 'Done'">Estado: Realizado</p>
-                <p mat-line>Fecha: {{transactionInput.getDateFormat()}}</p>
-                <p mat-line>Hora: {{transactionInput.getTimeFormat()}}</p>
-                <p mat-line>Descripcion: {{transactionInput.description}}</p>
+              <mat-card-content class="box3">
+                <div>
+                  <button class="buttonEdit" mat-mini-fab matTooltip="Editar" [routerLink]="['/admin/editarTransaccion', {idAccount: accountKey, id: transactionInput.key, type:
+                    transactionInput.type}]">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                </div>
+                <div>
+                  <p mat-line *ngIf="transactionInput.state === 'Pending'">Estado: Pendiente</p>
+                  <p mat-line *ngIf="transactionInput.state === 'Done'">Estado: Realizado</p>
+                  <p mat-line>Fecha: {{transactionInput.dateTime |date:"mediumDate"}}</p>
+                  <p mat-line>Descripcion: {{transactionInput.description}}</p>
+                </div>
               </mat-card-content>
             </mat-expansion-panel>
           </mat-accordion>
